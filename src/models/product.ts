@@ -1,7 +1,7 @@
 export interface Product {
-  id: number;
-  nombre: string;
+  id: string;
+  name: string;
   description: string;
-  charateritic: string;
+  charateristic: string;
   created_at: string;
 }
