@@ -1,15 +1,18 @@
 "use client";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Vehicle, VehicleList } from "@/models/vehicle";
-import { addElement, getAllElements, getElementById, getElementsByProperty } from "@/app/utils/firebaseConnections";
-import { DocumentData } from "firebase/firestore";
+
+import { searchDocumentsByProperty } from "../../utils/product";
+import { addHeavyDuty, getAllHeavyDuty, updateHeavyDuty } from "@/app/utils/heavyDuty";
+import { HeavyDuty, HeavyDutyList } from "@/models/heavy-duty";
+import { getAllElements } from "@/app/utils/firebaseConnections";
+import Link from "next/link";
 
 function Page() {
   const [data, setData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
 
+  const [newID, setNewID] = React.useState("");
   const [newBrand, setNewBrand] = React.useState("");
   const [newModel, setNewModel] = useState("");
   const [newHp, setNewHp] = useState("");
@@ -18,11 +21,19 @@ function Page() {
   const [newFinish, setNewFinish] = useState("");
   const [newOil, setNewOil] = useState("");
   const [newAir, setNewAir] = useState("");
+  const [newSecondAir, setNewSecondAir] = useState("");
   const [newCabine, setNewCabine] = useState("");
   const [newGas, setNewGas] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [newSeparatorGas, setNewSeparatorGas] = useState("");
+  const [newSecondGas, setNewSecondGas] = useState("");
+  const [newHidraulic, setNewHidraulic] = useState("");
+  const [newSecante, setNewSecante] = useState("");
+  const [newRefrigerant, setNewRefrigerant] = useState("");
+
+  const [activateEdit, setActivateEdit] = React.useState("");
+  const [updateName, setUpdatename] = React.useState("");
+  const [updateDescription, setUpdatedescription] = React.useState("");
+  const [updateCharacteristic, setUpdatecharacteristic] = React.useState("");
 
   useEffect(() => {
     fetchData();
@@ -33,17 +44,16 @@ function Page() {
     setError(null);
 
     try {
-      const data: any = await getAllElements("vehicle");
-      data.map(async (element: any) => (element.data.productName = await searchProductName(element.data.product_id)));
+      const data: any = await getAllElements("heavy-duty");
+      console.log("HD: ", data);
       setData(data);
-      console.log(data);
     } catch (error: any) {
       setError(error);
     }
   }
 
   function addNewVehicle() {
-    const newVehicle: Vehicle = {
+    const newVehicle: HeavyDuty = {
       brand: newBrand,
       model: newModel,
       hp: newHp,
@@ -51,42 +61,22 @@ function Page() {
       start: newStart,
       finish: newFinish,
       oil: newOil,
-      air: newAir,
+      primary_air: newAir,
+      secondary_air: newAir,
       cabine: newCabine,
-      gas: newGas,
-      product_id: selectedOption,
+      primary_gas: newGas,
+      secondary_gas: newGas,
+      separator_gas: newSeparatorGas,
+      hydraulic: newHidraulic,
+      secante: newSecante,
+      refrigerant: newRefrigerant,
       created_at: new Date().toString(),
     };
 
-    addElement("vehicles", newVehicle).then((data) => {
-      data.status && (cleanNewCells(), fetchData());
+    addHeavyDuty(newVehicle).then((data: any) => {
+      data.status && fetchData(), cleanNewCells();
+      !data.status && console.log("error HD");
     });
-  }
-
-  async function handleSearch(event: any) {
-    setSearchTerm(event.target.value);
-    if (searchTerm.trim() === "") {
-      setSearchResults([]);
-      return;
-    }
-
-    try {
-      const elements = await getElementsByProperty("product", "name", searchTerm);
-      setSearchResults(elements);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
-
-  function handleOptionSelected(event: any) {
-    setSelectedOption(event.target.value);
-  }
-
-  async function searchProductName(productId: string) {
-    if (!productId) return "";
-    const productName = await getElementById("product", productId);
-    if (productName) return productName?.name;
-    else return "";
   }
 
   function cleanNewCells() {
@@ -104,8 +94,8 @@ function Page() {
 
   return (
     <section className="my-10 mx-5 overflow-x-auto">
-      <h1 className="text-black font-semibold text-xl mb-10">Vehiculos</h1>
-      <Link href={"/main/vehicles/detail"}>
+      <h1 className="text-black font-semibold text-xl mb-10">Heavy Duty</h1>
+      <Link href={"/main/heavy-duty/detail"}>
         <button className="bg-primary text-white p-4 mr-2 mb-2">Agregar</button>
       </Link>
       <table className="table-auto w-full shadow-md">
@@ -118,10 +108,15 @@ function Page() {
             <th className="px-4 py-2 text-left">Inicio</th>
             <th className="px-4 py-2 text-left">Fin</th>
             <th className="px-4 py-2 text-left">Aceite</th>
-            <th className="px-4 py-2 text-left">Aire</th>
+            <th className="px-4 py-2 text-left">Aired Primario</th>
+            <th className="px-4 py-2 text-left">Aired Secundario</th>
             <th className="px-4 py-2 text-left">Cabina</th>
-            <th className="px-4 py-2 text-left">Gas</th>
-            <th className="px-4 py-2 text-left">Producto</th>
+            <th className="px-4 py-2 text-left">Gas Primario</th>
+            <th className="px-4 py-2 text-left">Gas Secundario</th>
+            <th className="px-4 py-2 text-left">Gas Separador</th>
+            <th className="px-4 py-2 text-left">Hidraulico</th>
+            <th className="px-4 py-2 text-left">Secante</th>
+            <th className="px-4 py-2 text-left">Refrigerante</th>
             <th className="px-4 py-2 text-left">Acción</th>
           </tr>
         </thead>
@@ -152,27 +147,34 @@ function Page() {
               <input value={newAir} onChange={(e) => setNewAir(e.target.value)} placeholder="Nuevo" />
             </td>
             <td className="px-4 py-2">
+              <input value={newSecondAir} onChange={(e) => setNewSecondAir(e.target.value)} placeholder="Nuevo" />
+            </td>
+            <td className="px-4 py-2">
               <input value={newCabine} onChange={(e) => setNewCabine(e.target.value)} placeholder="Nuevo" />
             </td>
             <td className="px-4 py-2">
               <input value={newGas} onChange={(e) => setNewGas(e.target.value)} placeholder="Nuevo" />
             </td>
             <td className="px-4 py-2">
-              <input onChange={handleSearch} placeholder="Nuevo" />
-              <select onChange={handleOptionSelected}>
-                {searchResults.map((result, index) => (
-                  <option key={index} value={result.id}>
-                    {result.data.name}
-                  </option>
-                ))}
-              </select>
-              <ul></ul>
+              <input value={newSecondGas} onChange={(e) => setNewSecondGas(e.target.value)} placeholder="Nuevo" />
+            </td>
+            <td className="px-4 py-2">
+              <input value={newSeparatorGas} onChange={(e) => setNewSeparatorGas(e.target.value)} placeholder="Nuevo" />
+            </td>
+            <td className="px-4 py-2">
+              <input value={newHidraulic} onChange={(e) => setNewHidraulic(e.target.value)} placeholder="Nuevo" />
+            </td>
+            <td className="px-4 py-2">
+              <input value={newSecante} onChange={(e) => setNewSecante(e.target.value)} placeholder="Nuevo" />
+            </td>
+            <td className="px-4 py-2">
+              <input value={newRefrigerant} onChange={(e) => setNewRefrigerant(e.target.value)} placeholder="Nuevo" />
             </td>
             <td className="px-4 py-2">
               <button onClick={addNewVehicle}>Agregar</button>
             </td>
           </tr>
-          {data.map((vehicle: any, index) => (
+          {data.map((vehicle: HeavyDutyList, index) => (
             <>
               <tr key={index}>
                 <td className="px-4 py-2">{vehicle.data.brand}</td>
@@ -182,12 +184,17 @@ function Page() {
                 <td className="px-4 py-2">{vehicle.data.start}</td>
                 <td className="px-4 py-2">{vehicle.data.finish}</td>
                 <td className="px-4 py-2">{vehicle.data.oil}</td>
-                <td className="px-4 py-2">{vehicle.data.air}</td>
+                <td className="px-4 py-2">{vehicle.data.primary_air}</td>
+                <td className="px-4 py-2">{vehicle.data.secondary_air}</td>
                 <td className="px-4 py-2">{vehicle.data.cabine}</td>
-                <td className="px-4 py-2">{vehicle.data.gas}</td>
-                <td className="px-4 py-2">{vehicle.data.productName}</td>
+                <td className="px-4 py-2">{vehicle.data.primary_gas}</td>
+                <td className="px-4 py-2">{vehicle.data.secondary_gas}</td>
+                <td className="px-4 py-2">{vehicle.data.separator_gas}</td>
+                <td className="px-4 py-2">{vehicle.data.hydraulic}</td>
+                <td className="px-4 py-2">{vehicle.data.secante}</td>
+                <td className="px-4 py-2">{vehicle.data.refrigerant}</td>
                 <td className="px-4 py-2">
-                  <Link href={`/main/vehicles/detail/${vehicle.id}`}>
+                  <Link href={`/main/heavy-duty/detail/${vehicle.id}`}>
                     <button>Editar</button>
                   </Link>
                 </td>

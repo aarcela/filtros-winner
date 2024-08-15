@@ -1,15 +1,17 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { firestore } from "./../../../firebase";
-import { Product } from "@/models/product";
 
 export const getAllProducts = async () => {
-  const q = query(collection(firestore, "product"));
+  const q = collection(firestore, "product");
   const querySnapshot = await getDocs(q);
-  let product: any[] = [];
-  querySnapshot.forEach((doc) => {
-    product.push({ id: doc.id, ...doc.data() });
-  });
+  const product = querySnapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
   return product;
+};
+
+export const getProductById = async (collentionName: string, docId: string) => {
+  const docRef = doc(firestore, collentionName, docId);
+  const docSnap = await getDoc(docRef);
+  return docSnap.data();
 };
 
 export const addProduct = async (productData: any) => {
@@ -29,12 +31,12 @@ export async function searchDocumentsByProperty(productID: string) {
 
   if (querySnapshot.empty) {
     console.log("No documents found matching the query.");
-    return []; // Return an empty array if no documents are found
+    return [];
   }
-  return querySnapshot.docs.map((doc) => doc.id); // Return an array of document data objects
+  return querySnapshot.docs.map((doc) => doc.id);
 }
 
-export const updateProduct = async (id: any, updatedProduct: any) => {
+export const updateProduct = async (id: string, updatedProduct: any) => {
   try {
     const productRef = doc(firestore, "product", id);
     await updateDoc(productRef, updatedProduct);

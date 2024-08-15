@@ -1,11 +1,10 @@
 export interface HeavyDuty {
-  id: string;
   brand: string;
   model: string;
   hp: string;
   cil: string;
-  start: number;
-  finish: number;
+  start: string;
+  finish: string;
   oil: string;
   primary_air: string;
   secondary_air: string;
@@ -16,5 +15,11 @@ export interface HeavyDuty {
   hydraulic: string;
   secante: string;
   refrigerant: string;
-  created_at: string;
+  product_id?: string;
+  created_at?: string;
+}
+
+export interface HeavyDutyList {
+  id: string;
+  data: HeavyDuty;
 }

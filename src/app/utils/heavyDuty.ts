@@ -15,9 +15,9 @@ export const getAllHeavyDuty = async () => {
 export const addHeavyDuty = async (heavyDutyData: any) => {
   try {
     const docRef = await addDoc(collection(firestore, "heavyDuty"), heavyDutyData);
-    console.log("Document written with ID: ", docRef.id);
+    return { status: true, doc: docRef.id };
   } catch (e) {
-    console.error("Error adding document: ", e);
+    return { status: false };
   }
 };
 

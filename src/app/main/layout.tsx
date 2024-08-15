@@ -11,7 +11,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </Link>
         <ul className="flex space-x-4">
           <li>
-            <Link href="/">
+            <Link href="/main/products">
               <span className="text-white hover:underline">Productos</span>
             </Link>
           </li>
@@ -21,14 +21,21 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             </Link>
           </li>
           <li>
-            <Link href="/main/contact">
+            <Link href="/main/heavy-duty">
               <span className="text-white hover:underline">Heavy Duty</span>
             </Link>
           </li>
+          <li>
+            <Link href="/main/reference">
+              <span className="text-white hover:underline">Referencias</span>
+            </Link>
+          </li>
         </ul>
-        <button className="bg-blue-500 text-primary px-4 py-2 bg-gray hover:bg-blue-700 focus:outline-none">Salir</button>
+        <button className="bg-blue-500 text-primary px-4 py-2 bg-gray hover:bg-blue-700 focus:outline-none">
+          Salir
+        </button>
       </nav>
-      <div className="h-screen">{children}</div>
+      <div className="h-screen pb-4">{children}</div>
     </section>
   );
 }
