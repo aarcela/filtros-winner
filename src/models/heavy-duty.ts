@@ -2,6 +2,7 @@ export interface HeavyDuty {
   brand: string;
   model: string;
   hp: string;
+  motor: string;
   cil: string;
   start: string;
   finish: string;

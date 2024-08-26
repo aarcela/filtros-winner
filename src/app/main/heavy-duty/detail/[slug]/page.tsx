@@ -11,6 +11,7 @@ function Page({ params }: { params: { slug: string } }) {
   const [newCil, setNewCil] = useState("");
   const [newStart, setNewStart] = useState("");
   const [newFinish, setNewFinish] = useState("");
+  const [newMotor, setNewMotor] = useState("");
   const [newOil, setNewOil] = useState("");
   const [newPrimaryAir, setNewPrimaryAir] = useState("");
   const [newSecondaryAir, setNewSecondaryAir] = useState("");
@@ -31,6 +32,7 @@ function Page({ params }: { params: { slug: string } }) {
       brand: newBrand,
       model: newModel,
       hp: newHp,
+      motor: newMotor,
       cil: newCil,
       start: newStart,
       finish: newFinish,
@@ -61,6 +63,7 @@ function Page({ params }: { params: { slug: string } }) {
       setNewModel(heavyDuty.model);
       setNewHp(heavyDuty.hp);
       setNewCil(heavyDuty.cil);
+      setNewMotor(heavyDuty.motor);
       setNewStart(heavyDuty.start);
       setNewFinish(heavyDuty.finish);
       setNewOil(heavyDuty.oil);
@@ -126,6 +129,12 @@ function Page({ params }: { params: { slug: string } }) {
         onChange={(e) => setNewHp(e.target.value)}
         className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
         placeholder="HP"
+      />
+      <input
+        value={newMotor}
+        onChange={(e) => setNewMotor(e.target.value)}
+        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+        placeholder="Motor"
       />
       <input
         value={newCil}

@@ -16,6 +16,7 @@ function Page() {
   const [newCil, setNewCil] = useState("");
   const [newStart, setNewStart] = useState("");
   const [newFinish, setNewFinish] = useState("");
+  const [newMotor, setNewMotor] = useState("");
   const [newOil, setNewOil] = useState("");
   const [newAir, setNewAir] = useState("");
   const [newCabine, setNewCabine] = useState("");
@@ -46,14 +47,15 @@ function Page() {
     const newVehicle: Vehicle = {
       brand: newBrand,
       model: newModel,
+      motor: newMotor,
       hp: newHp,
       cil: newCil,
       start: newStart,
       finish: newFinish,
       oil: newOil,
       air: newAir,
-      cabine: newCabine,
       gas: newGas,
+      cabine: newCabine,
       product_id: selectedOption,
       created_at: new Date().toString(),
     };
@@ -94,6 +96,7 @@ function Page() {
     setNewModel("");
     setNewHp("");
     setNewCil("");
+    setNewMotor("");
     setNewStart("");
     setNewFinish("");
     setNewOil("");
@@ -113,15 +116,15 @@ function Page() {
           <tr className="bg-gray-800 text-white">
             <th className="px-4 py-2 text-left">Marca</th>
             <th className="px-4 py-2 text-left">Modelo</th>
+            <th className="px-4 py-2 text-left">Motor</th>
             <th className="px-4 py-2 text-left">HP</th>
             <th className="px-4 py-2 text-left">Cil</th>
             <th className="px-4 py-2 text-left">Inicio</th>
             <th className="px-4 py-2 text-left">Fin</th>
             <th className="px-4 py-2 text-left">Aceite</th>
             <th className="px-4 py-2 text-left">Aire</th>
-            <th className="px-4 py-2 text-left">Cabina</th>
             <th className="px-4 py-2 text-left">Gas</th>
-            <th className="px-4 py-2 text-left">Producto</th>
+            <th className="px-4 py-2 text-left">Cabina</th>
             <th className="px-4 py-2 text-left">Acción</th>
           </tr>
         </thead>
@@ -132,6 +135,9 @@ function Page() {
             </td>
             <td className="px-4 py-2">
               <input value={newModel} onChange={(e) => setNewModel(e.target.value)} placeholder="Nuevo" />
+            </td>
+            <td className="px-4 py-2">
+              <input value={newMotor} onChange={(e) => setNewMotor(e.target.value)} placeholder="Nuevo" />
             </td>
             <td className="px-4 py-2">
               <input value={newHp} onChange={(e) => setNewHp(e.target.value)} placeholder="Nuevo" />
@@ -152,21 +158,10 @@ function Page() {
               <input value={newAir} onChange={(e) => setNewAir(e.target.value)} placeholder="Nuevo" />
             </td>
             <td className="px-4 py-2">
-              <input value={newCabine} onChange={(e) => setNewCabine(e.target.value)} placeholder="Nuevo" />
-            </td>
-            <td className="px-4 py-2">
               <input value={newGas} onChange={(e) => setNewGas(e.target.value)} placeholder="Nuevo" />
             </td>
             <td className="px-4 py-2">
-              <input onChange={handleSearch} placeholder="Nuevo" />
-              <select onChange={handleOptionSelected}>
-                {searchResults.map((result, index) => (
-                  <option key={index} value={result.id}>
-                    {result.data.name}
-                  </option>
-                ))}
-              </select>
-              <ul></ul>
+              <input value={newCabine} onChange={(e) => setNewCabine(e.target.value)} placeholder="Nuevo" />
             </td>
             <td className="px-4 py-2">
               <button onClick={addNewVehicle}>Agregar</button>

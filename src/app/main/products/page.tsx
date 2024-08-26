@@ -3,16 +3,28 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { getAllProducts } from "../../utils/product";
 import { ProductList } from "@/models/product";
+import { liteClient as algoliasearch } from "algoliasearch/lite";
+import { Hits, InstantSearch, SearchBox, Highlight, Pagination } from "react-instantsearch";
+import Image from "next/image";
+const searchClient = algoliasearch("C5PVSYGZCS", "8dbd0582124b17e9da4f3ccc379dd0e2");
+
+function Hit({ hit }: any) {
+  return (
+    <article>
+      {/* <Image src={hit.image} alt={hit.name} /> */}
+      <p>{hit.categories[0]}</p>
+      <h1>
+        <Highlight attribute="name" hit={hit} />
+      </h1>
+      <p>${hit.price}</p>
+    </article>
+  );
+}
 
 function Page() {
   const [data, setData] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
-
-  const [activateEdit, setActivateEdit] = React.useState("");
-  const [updateName, setUpdatename] = React.useState("");
-  const [updateDescription, setUpdatedescription] = React.useState("");
-  const [updateCharacteristic, setUpdatecharacteristic] = React.useState("");
 
   useEffect(() => {
     fetchData();
@@ -31,30 +43,18 @@ function Page() {
     }
   }
 
-  // async function editProduct(product: Product) {
-  //   const editedProduct: any = {
-  //     name: updateName,
-  //     description: updateDescription,
-  //     charateristic: updateCharacteristic,
-  //   };
-
-  //   const collectionId = await searchDocumentsByProperty(product);
-  //   console.log(collectionId);
-
-  //   updateProduct(collectionId, editedProduct).then((data: any) => {
-  //     data.status && fetchData(), setActivateEdit("");
-  //     !data.status && console.log("error producto");
-  //   });
-  // }
-
   return (
     <section className="my-10 mx-5">
       <h1 className="text-black font-semibold text-xl mb-10">Productos</h1>
       <Link href={"/main/products/detail"}>
         <button className="bg-primary text-white p-4 mr-2 mb-2">Agregar</button>
       </Link>
-      <Link href={"/products/add"}></Link>
-      <table className="table-auto w-full shadow-md">
+      <InstantSearch indexName="ecommerce" searchClient={searchClient}>
+        <SearchBox />
+        {/* <Hits hitComponent={Hit} /> */}
+        {/* <Pagination /> */}
+      </InstantSearch>
+      <table className="table-auto w-full shadow-md mt-4">
         <thead className="bg-primary">
           <tr className="bg-gray-800 text-white">
             <th className="px-4 py-2 text-left">Nombre</th>
@@ -66,7 +66,7 @@ function Page() {
         <tbody className="text-black">
           {data.map((product: ProductList, index) => (
             <>
-              <tr key={product.id}>
+              <tr key={index}>
                 <td className="px-4 py-2">{product.data.name}</td>
                 <td className="px-4 py-2">{product.data.description}</td>
                 <td className="px-4 py-2">{product.data.charateristic}</td>

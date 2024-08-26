@@ -29,6 +29,7 @@ function Page() {
   const [newHidraulic, setNewHidraulic] = useState("");
   const [newSecante, setNewSecante] = useState("");
   const [newRefrigerant, setNewRefrigerant] = useState("");
+  const [newMotor, setNewMotor] = useState("");
 
   const [activateEdit, setActivateEdit] = React.useState("");
   const [updateName, setUpdatename] = React.useState("");
@@ -57,6 +58,7 @@ function Page() {
       brand: newBrand,
       model: newModel,
       hp: newHp,
+      motor: newMotor,
       cil: newCil,
       start: newStart,
       finish: newFinish,
@@ -104,6 +106,7 @@ function Page() {
             <th className="px-4 py-2 text-left">Marca</th>
             <th className="px-4 py-2 text-left">Modelo</th>
             <th className="px-4 py-2 text-left">HP</th>
+            <th className="px-4 py-2 text-left">Motor</th>
             <th className="px-4 py-2 text-left">Cil</th>
             <th className="px-4 py-2 text-left">Inicio</th>
             <th className="px-4 py-2 text-left">Fin</th>
@@ -133,6 +136,9 @@ function Page() {
             </td>
             <td className="px-4 py-2">
               <input value={newCil} onChange={(e) => setNewCil(e.target.value)} placeholder="Nuevo" />
+            </td>
+            <td className="px-4 py-2">
+              <input value={newMotor} onChange={(e) => setNewMotor(e.target.value)} placeholder="Nuevo" />
             </td>
             <td className="px-4 py-2">
               <input value={newStart} onChange={(e) => setNewStart(e.target.value)} placeholder="Nuevo" />

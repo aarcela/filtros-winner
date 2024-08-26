@@ -1,5 +1,6 @@
 export interface Vehicle {
   brand: string;
+  motor: string;
   model: string;
   hp: string;
   cil: string;

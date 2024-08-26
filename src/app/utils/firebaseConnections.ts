@@ -1,5 +1,6 @@
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
-import { firestore } from "./../../../firebase";
+import { firestore, storage } from "./../../../firebase";
+import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 
 export const getAllElements = async (database: string) => {
   const query = collection(firestore, database);
@@ -44,4 +45,11 @@ export const getElementsByProperty = async (collectionName: string, property: st
     return [];
   }
   return querySnapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
+};
+
+export const addImages = async (image: any, imageName: string) => {
+  const storageRef = ref(storage, `products/${new Date().getTime()}-${imageName}`);
+  await uploadBytesResumable(storageRef, image);
+  const imageUrl = await getDownloadURL(storageRef);
+  return imageUrl;
 };

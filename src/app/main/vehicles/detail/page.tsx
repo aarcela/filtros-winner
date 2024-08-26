@@ -16,6 +16,7 @@ function Page() {
   const [newStart, setNewStart] = useState("");
   const [newFinish, setNewFinish] = useState("");
   const [newOil, setNewOil] = useState("");
+  const [newMotor, setNewMotor] = useState("");
   const [newAir, setNewAir] = useState("");
   const [newCabine, setNewCabine] = useState("");
   const [newGas, setNewGas] = useState("");
@@ -41,6 +42,7 @@ function Page() {
     const newVehicle: Vehicle = {
       brand: newBrand,
       model: newModel,
+      motor: newMotor,
       hp: newHp,
       cil: newCil,
       start: newStart,
@@ -66,6 +68,11 @@ function Page() {
       <input
         className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
         onChange={(e) => setNewModel(e.target.value)}
+        placeholder="Nuevo model"
+      />
+      <input
+        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+        onChange={(e) => setNewMotor(e.target.value)}
         placeholder="Nuevo model"
       />
       <input

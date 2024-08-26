@@ -1,6 +1,5 @@
 "use client";
 import { getElementById, getElementsByProperty, updateElement } from "@/app/utils/firebaseConnections";
-import { getProductById, updateProduct } from "@/app/utils/product";
 import { Vehicle } from "@/models/vehicle";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -16,7 +15,7 @@ function Page({ params }: { params: { slug: string } }) {
   const [newAir, setNewAir] = useState("");
   const [newCabine, setNewCabine] = useState("");
   const [newGas, setNewGas] = useState("");
-  const [productId, setProductId] = useState("");
+  const [newMotor, setNewMotor] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [selectedOption, setSelectedOption] = useState("");
@@ -26,6 +25,7 @@ function Page({ params }: { params: { slug: string } }) {
     const updateVehicle: Vehicle = {
       brand: newBrand,
       model: newModel,
+      motor: newMotor,
       hp: newHp,
       cil: newCil,
       start: newStart,
@@ -57,6 +57,7 @@ function Page({ params }: { params: { slug: string } }) {
         setNewAir(vehicle.air),
         setNewCabine(vehicle.cabine),
         setNewGas(vehicle.gas);
+      setNewMotor(vehicle.motor);
       searchProductName(vehicle.product_id);
     }
     getProductData();
@@ -104,6 +105,12 @@ function Page({ params }: { params: { slug: string } }) {
         onChange={(e) => setNewModel(e.target.value)}
         className="w-full bg-gray text-gray-700 border-none px-4 py-2 my-2 h-10 focus:outline-none"
         placeholder="Model"
+      />
+      <input
+        value={newMotor}
+        onChange={(e) => setNewMotor(e.target.value)}
+        className="w-full bg-gray text-gray-700 border-none px-4 py-2 my-2 h-10 focus:outline-none"
+        placeholder="Motor"
       />
       <input
         value={newHp}

@@ -14,6 +14,7 @@ function Page() {
   const [newBrand, setNewBrand] = useState("");
   const [newCode, setNewCode] = useState("");
   const [newType, setNewType] = useState("");
+  const [newCodeReference, setNewCodeReference] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -23,6 +24,7 @@ function Page() {
     const newReference: Referece = {
       brand: newBrand,
       code: newCode,
+      code_reference: newCodeReference,
       type: newType,
       created_at: new Date().toString(),
     };
@@ -58,7 +60,8 @@ function Page() {
       <table className="table-auto w-full shadow-md">
         <thead className="bg-primary">
           <tr className="bg-gray-800 text-white">
-            <th className="px-4 py-2 text-left">Código</th>
+            <th className="px-4 py-2 text-left">Código Winner</th>
+            <th className="px-4 py-2 text-left">Código Referencia</th>
             <th className="px-4 py-2 text-left">Marca</th>
             <th className="px-4 py-2 text-left">Tipo</th>
             <th className="px-4 py-2 text-left">Acciones</th>
@@ -67,13 +70,20 @@ function Page() {
         <tbody className="text-black">
           <tr>
             <td className="px-4 py-2">
-              <input value={newBrand} placeholder="marca" onChange={(e) => setNewBrand(e.target.value)} />
+              <input value={newBrand} placeholder="Cod Winner" onChange={(e) => setNewBrand(e.target.value)} />
             </td>
             <td className="px-4 py-2">
-              <input value={newCode} placeholder="marca" onChange={(e) => setNewCode(e.target.value)} />
+              <input
+                value={newCodeReference}
+                placeholder="Cod Reference"
+                onChange={(e) => setNewCodeReference(e.target.value)}
+              />
             </td>
             <td className="px-4 py-2">
-              <input value={newType} placeholder="marca" onChange={(e) => setNewType(e.target.value)} />
+              <input value={newCode} placeholder="Marca" onChange={(e) => setNewCode(e.target.value)} />
+            </td>
+            <td className="px-4 py-2">
+              <input value={newType} placeholder="Tipo" onChange={(e) => setNewType(e.target.value)} />
             </td>
             <td className="px-4 py-2">
               <button onClick={addNewReference}>Agregar</button>
@@ -82,6 +92,7 @@ function Page() {
           {data.map((reference: RefereceList, index) => (
             <tr key={reference.id}>
               <td className="px-4 py-2">{reference.data.code}</td>
+              <td className="px-4 py-2">{reference.data.code_reference}</td>
               <td className="px-4 py-2">{reference.data.brand}</td>
               <td className="px-4 py-2">{reference.data.type}</td>
               <td className="px-4 py-2">
