@@ -2,9 +2,9 @@
 import Table from "@/app/components/Table";
 import Image from "next/image";
 
-function Page() {
+export default function Page() {
     return (
-        <section className="flex ">
+        <section className="flex flex-row">
             <div>
                 <Image
                     src="/public/assets/search-main-image.png"

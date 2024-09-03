@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Arimo } from "@next/font/google";
+import { Arimo } from "next/font/google";
 const arimo = Arimo({ subsets: ["latin"], weight: ["400", "700"] });
 import "./globals.css";
 
