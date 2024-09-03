@@ -5,7 +5,7 @@ import { getAllProducts } from "../../utils/product";
 import { ProductList } from "@/models/product";
 import { liteClient as algoliasearch } from "algoliasearch/lite";
 import { Hits, InstantSearch, SearchBox, Highlight, Pagination } from "react-instantsearch";
-import Image from "next/image";
+
 const searchClient = algoliasearch("C5PVSYGZCS", "8dbd0582124b17e9da4f3ccc379dd0e2");
 
 function Hit({ hit }: any) {

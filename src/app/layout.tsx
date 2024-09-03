@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Arimo } from "@next/font/google";
+const arimo = Arimo({ subsets: ["latin"], weight: ["400", "700"] });
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: "Filtros Winner",
-  description: "Página de búsqueda de productos Winner",
+    title: "Filtros Winner",
+    description: "Página de búsqueda de productos Winner",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body className={arimo.className}>{children}</body>
+        </html>
+    );
 }
