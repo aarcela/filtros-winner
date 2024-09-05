@@ -11,7 +11,11 @@ export default function Table({
             <thead className="bg-primary">
                 <tr className="bg-gray-800 text-white">
                     {props?.map((element: any, index: any) => {
-                        return <th className="px-4 text-left">{element}</th>;
+                        return (
+                            <th key={index} className="px-4 text-left">
+                                {element}
+                            </th>
+                        );
                     })}
 
                     {/* {*/}
