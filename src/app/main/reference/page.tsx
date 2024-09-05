@@ -49,8 +49,9 @@ function Page() {
 
   function cleanNewCells() {
     setNewBrand("");
-    setNewBrand("");
+    setNewCode("");
     setNewType("");
+    setNewCodeReference("");
   }
 
   return (

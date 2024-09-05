@@ -1,14 +1,43 @@
-import React from "react";
-import { liteClient as algoliasearch } from "algoliasearch/lite";
-import { InstantSearch } from "react-instantsearch";
-const searchClient = algoliasearch("C5PVSYGZCS", "8dbd0582124b17e9da4f3ccc379dd0e2");
+"use client";
 
-export default function CustomSearchBox() {
+import { liteClient as algoliasearch } from "algoliasearch/lite";
+import "instantsearch.css/themes/satellite.css";
+import {
+    Hits,
+    InstantSearch,
+    SearchBox,
+    Configure,
+    useInstantSearch,
+} from "react-instantsearch";
+import { Hit } from "./Hit";
+
+const searchClient = algoliasearch("9CMC95YXY9", "6b2c55fb4ddd322a18592ebff004c31a");
+
+export const CustomSearchBox = () => {
     return (
-        <InstantSearch indexName="ecommerce" searchClient={searchClient}>
-            {/* <SearchBox /> */}
-            {/* <Hits hitComponent={Hit} /> */}
-            {/* <Pagination /> */}
+        <InstantSearch searchClient={searchClient} indexName="filtro-winner">
+            <Configure hitsPerPage={5} />
+            <div className="ais-InstantSearch">
+                <SearchBox />
+                <EmptyQueryBoundary fallback={null}>
+                    <Hits hitComponent={Hit} />
+                </EmptyQueryBoundary>
+            </div>
         </InstantSearch>
     );
+};
+
+function EmptyQueryBoundary({ children, fallback }: any) {
+    const { indexUiState } = useInstantSearch();
+
+    if (!indexUiState.query) {
+        return (
+            <>
+                {fallback}
+                <div hidden>{children}</div>
+            </>
+        );
+    }
+
+    return children;
 }

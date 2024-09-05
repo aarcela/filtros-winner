@@ -37,7 +37,7 @@ export const getElementById = async (collectionName: string, docId: string) => {
 };
 
 export const getElementsByProperty = async (collectionName: string, property: string, searchTerm: string) => {
-  const q = query(collection(firestore, collectionName), where(property, ">=", searchTerm));
+  const q = query(collection(firestore, collectionName), where(property, "==", searchTerm));
   const querySnapshot = await getDocs(q);
 
   if (querySnapshot.empty) {
