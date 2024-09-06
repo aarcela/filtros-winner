@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Arimo } from "next/font/google";
-const arimo = Arimo({ subsets: ["latin"], weight: ["400", "700"] });
+import { Roboto } from "next/font/google";
+const arimo = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"], display: "swap" });
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,8 +14,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={arimo.className}>{children}</body>
+        <html lang="en" className={arimo.className}>
+            <body>{children}</body>
         </html>
     );
 }

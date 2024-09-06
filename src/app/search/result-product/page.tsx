@@ -4,7 +4,8 @@ import TableRowHeavyDuty from "@/app/components/TableRowHeavyDuty";
 import TableRowVehicle from "@/app/components/TableRowVehicle";
 import { getElementsByProperty } from "@/app/utils/firebaseConnections";
 import { HeavyDutyList } from "@/models/heavy-duty";
-import { Vehicle, VehicleList } from "@/models/vehicle";
+import { VehicleList } from "@/models/vehicle";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Page({ searchParams }: any) {
@@ -59,28 +60,46 @@ export default function Page({ searchParams }: any) {
     };
 
     return (
-        <section className="w-full  h-screen p-4">
-            <div className="w-full">
-                <h3 className="text-primary">Categoría:</h3>
-                <h1 className="text-7xl font-bold">{data.name}</h1>
-                <table className="table-auto w-full shadow-md mt-5">
-                    <thead className="bg-primary">
-                        <tr className="bg-gray-800 text-white">
+        <section className="w-full  h-screen p-16">
+            <div className="flex justify-evenly gap-10 mt-10">
+                <Image
+                    src={"/assets/test_filter.png"}
+                    width={537}
+                    height={340}
+                    alt="filter-winner"
+                />
+                <div className="">
+                    <h3 className="text-primary font-bold">Categoría:</h3>
+                    <h1 className="text-7xl font-bold">{data.name}</h1>
+                    <table className="table-auto w-full shadow-md mt-5 ">
+                        <thead className="bg-primary">
                             <th className="p-2 bg-gray-800 text-white">
                                 Expecificaciones Técnicas
                             </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>Modelo</tr>
-                    </tbody>
-                </table>
+                            <th className="p-2 bg-gray-800 text-white"></th>
+                        </thead>
+                        <tbody>
+                            <td className="p-4">
+                                <tr>Diámetro Externo: 8.8 mm</tr>
+                                <tr>Diámetro Interno: M20 x 1,5</tr>
+                                <tr>Altura Total: 81,4</tr>
+                                <tr>Empacadura Interna: 55,4</tr>
+                            </td>
+                            <td className="p-4">
+                                <tr>Espesor de Empacadura: 8.8 mm</tr>
+                                <tr>Altura de Empacadura: M20 x 1,5</tr>
+                                <tr>Válvula de Alivio: 81,4</tr>
+                                <tr>Válvula Anti-Drenaje: 55,4</tr>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div className="w-full mt-9">
-                <h3 className="text-3xl">Tabla de aplicaciones vehículo</h3>
+            <div className="w-full mt-10">
+                <h3 className="text-4xl font-bold">Tabla de aplicaciones</h3>
             </div>
             <div className="w-full">
-                {vehicleData && (
+                {vehicleData.lenght > 0 && (
                     <Table props={tableVehicleHeader}>
                         {vehicleData.map((element: VehicleList, index: any) => (
                             <TableRowVehicle key={index} props={element}></TableRowVehicle>
@@ -88,11 +107,8 @@ export default function Page({ searchParams }: any) {
                     </Table>
                 )}
             </div>
-            <div className="w-full mt-9">
-                <h3 className="text-3xl">Tabla de aplicaciones vehículo</h3>
-            </div>
             <div className="w-full">
-                {heavyDutyData && (
+                {heavyDutyData.length > 0 && (
                     <Table props={tableHeavyDutyHeader}>
                         {vehicleData.map((element: HeavyDutyList, index: any) => (
                             <TableRowHeavyDuty key={index} props={element}></TableRowHeavyDuty>

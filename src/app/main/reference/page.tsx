@@ -55,57 +55,69 @@ function Page() {
   }
 
   return (
-    <section className="my-10 mx-5">
-      <h1 className="text-black font-semibold text-xl mb-10">Referencias</h1>
-      <Link href={"/products/add"}></Link>
-      <table className="table-auto w-full shadow-md">
-        <thead className="bg-primary">
-          <tr className="bg-gray-800 text-white">
-            <th className="px-4 py-2 text-left">Código Winner</th>
-            <th className="px-4 py-2 text-left">Código Referencia</th>
-            <th className="px-4 py-2 text-left">Marca</th>
-            <th className="px-4 py-2 text-left">Tipo</th>
-            <th className="px-4 py-2 text-left">Acciones</th>
-          </tr>
-        </thead>
-        <tbody className="text-black">
-          <tr>
-            <td className="px-4 py-2">
-              <input value={newBrand} placeholder="Cod Winner" onChange={(e) => setNewBrand(e.target.value)} />
-            </td>
-            <td className="px-4 py-2">
-              <input
-                value={newCodeReference}
-                placeholder="Cod Reference"
-                onChange={(e) => setNewCodeReference(e.target.value)}
-              />
-            </td>
-            <td className="px-4 py-2">
-              <input value={newCode} placeholder="Marca" onChange={(e) => setNewCode(e.target.value)} />
-            </td>
-            <td className="px-4 py-2">
-              <input value={newType} placeholder="Tipo" onChange={(e) => setNewType(e.target.value)} />
-            </td>
-            <td className="px-4 py-2">
-              <button onClick={addNewReference}>Agregar</button>
-            </td>
-          </tr>
-          {data.map((reference: RefereceList, index) => (
-            <tr key={reference.id}>
-              <td className="px-4 py-2">{reference.data.code}</td>
-              <td className="px-4 py-2">{reference.data.code_reference}</td>
-              <td className="px-4 py-2">{reference.data.brand}</td>
-              <td className="px-4 py-2">{reference.data.type}</td>
-              <td className="px-4 py-2">
-                <Link href={`/main/products/detail/${reference.id}`}>
-                  <button>Editar</button>
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </section>
+      <section className="my-10 mx-5">
+          <h1 className="text-black font-semibold text-xl mb-10">Referencias</h1>
+          <Link href={"/products/add"}></Link>
+          <table className="table-auto w-full shadow-md">
+              <thead className="bg-primary">
+                  <tr className="bg-gray-800 text-white">
+                      <th className="px-4 py-2 text-left">Código Winner</th>
+                      <th className="px-4 py-2 text-left">Código Referencia</th>
+                      <th className="px-4 py-2 text-left">Marca</th>
+                      <th className="px-4 py-2 text-left">Tipo</th>
+                      <th className="px-4 py-2 text-left">Acciones</th>
+                  </tr>
+              </thead>
+              <tbody className="text-black">
+                  <tr>
+                      <td className="px-4 py-2">
+                          <input
+                              value={newCode}
+                              placeholder="Cod Winner"
+                              onChange={(e) => setNewCode(e.target.value)}
+                          />
+                      </td>
+                      <td className="px-4 py-2">
+                          <input
+                              value={newCodeReference}
+                              placeholder="Cod Reference"
+                              onChange={(e) => setNewCodeReference(e.target.value)}
+                          />
+                      </td>
+                      <td className="px-4 py-2">
+                          <input
+                              value={newBrand}
+                              placeholder="Marca"
+                              onChange={(e) => setNewBrand(e.target.value)}
+                          />
+                      </td>
+                      <td className="px-4 py-2">
+                          <input
+                              value={newType}
+                              placeholder="Tipo"
+                              onChange={(e) => setNewType(e.target.value)}
+                          />
+                      </td>
+                      <td className="px-4 py-2">
+                          <button onClick={addNewReference}>Agregar</button>
+                      </td>
+                  </tr>
+                  {data.map((reference: RefereceList, index) => (
+                      <tr key={reference.id}>
+                          <td className="px-4 py-2">{reference.data.code}</td>
+                          <td className="px-4 py-2">{reference.data.code_reference}</td>
+                          <td className="px-4 py-2">{reference.data.brand}</td>
+                          <td className="px-4 py-2">{reference.data.type}</td>
+                          <td className="px-4 py-2">
+                              <Link href={`/main/products/detail/${reference.id}`}>
+                                  <button>Editar</button>
+                              </Link>
+                          </td>
+                      </tr>
+                  ))}
+              </tbody>
+          </table>
+      </section>
   );
 }
 
