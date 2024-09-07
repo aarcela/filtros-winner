@@ -8,7 +8,7 @@ function Page() {
     return (
         <>
             <ApplicationFilter />
-            <section className="flex bg-search-bg bg-no-repeat bg-cover bg-center bg-black bg-opacity-70 w-full h-screen justify-stretch items-center bg-blend-darken px-20">
+            <section className="flex flex-1 bg-search-bg bg-no-repeat bg-cover bg-center bg-black bg-opacity-70 w-full  justify-stretch items-center bg-blend-darken px-20">
                 <div>
                     <h1 className="text-white text-8xl font-bold">
                         ¡Somos poder de filtración!

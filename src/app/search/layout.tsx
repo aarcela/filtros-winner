@@ -7,7 +7,7 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
     return (
         <section className="bg-white">
             <nav className="bg-primary flex items-center justify-around px-4 py-10 gap-4">
-                <Link href="/search/home">
+                <Link href="/">
                     <Image src="/assets/winner_logo.svg" alt="logo" width={277} height={53} />
                 </Link>
                 <CustomSearchBox />

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-const arimo = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"], display: "swap" });
+const arimo = Roboto({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "700"],
+    display: "swap",
+});
 import "./globals.css";
 
 export const metadata: Metadata = {

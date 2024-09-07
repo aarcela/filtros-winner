@@ -11,7 +11,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/">
                     <Image src="/assets/winner_logo.svg" alt="logo" width={198} height={38} />
                 </Link>
-                <ul className="flex space-x-4">
+                <CustomSearchBox />
+                <ul className="flex space-x-10">
                     <li>
                         <Link href="/main/products">
                             <span className="text-white hover:underline">Productos</span>
@@ -19,7 +20,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                     </li>
                     <li>
                         <Link href="/main/vehicles">
-                            <span className="text-white hover:underline">Vehiculos</span>
+                            <span className="text-white hover:underline">Vehículos</span>
                         </Link>
                     </li>
                     <li>
@@ -37,7 +38,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                     Salir
                 </button>
             </nav>
-            <CustomSearchBox />
             <div className="h-screen pb-4">{children}</div>
         </section>
     );
