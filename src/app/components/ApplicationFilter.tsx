@@ -11,22 +11,12 @@ function ApplicationFilter() {
     const handleFirstSelectVehicle = async (event: any) => {
         const vehiclesFound = await getElementsByProperty(
             "vehicle",
-            "category",
+            "brand",
             event.target.value
         );
         setIsVehicle(true);
         setVehicleList(vehiclesFound);
         console.log(vehicleList);
-    };
-    const handleFirstSelectHeavyDuty = async (event: any) => {
-        const heavyDutyFound = await getElementsByProperty(
-            "heavy-duty",
-            "category",
-            event.target.value
-        );
-        setIsVehicle(false);
-        setVehicleList(heavyDutyFound);
-        console.log(heavyDutyFound);
     };
     const searchApplication = async () => {
         console.log(secondSelect);
@@ -37,52 +27,23 @@ function ApplicationFilter() {
         <section className="w-full bg-gray h-auto p-4">
             <h3 className="font-bold text-3xl mb-4">Búsqueda por aplicación</h3>
             <select className="mr-4 p-4">
-                <option value="">Seleccione...</option>
-                <option onClick={(e) => handleFirstSelectVehicle(e)} value="Aceite_Automotriz">
-                    Aceite Automotriz
+                <option value="">Seleccione la marca</option>
+                <option onClick={(e) => handleFirstSelectVehicle(e)} value="Marca_1">
+                    Marca 1
                 </option>
-                <option onClick={(e) => handleFirstSelectVehicle(e)} value="Aire_Panel">
-                    Aire Panel
+                <option onClick={(e) => handleFirstSelectVehicle(e)} value="Marca_2">
+                    Marca 2
                 </option>
                 <option onClick={(e) => handleFirstSelectVehicle(e)} value="Carburado">
-                    Carburado
-                </option>
-                <option onClick={(e) => handleFirstSelectVehicle(e)} value="Gasolina">
-                    Gasolina
-                </option>
-                <option onClick={(e) => handleFirstSelectVehicle(e)} value="Cabina">
-                    Cabina
-                </option>
-                <option value="Heavy_Duty_Aceite" onClick={(e) => handleFirstSelectHeavyDuty(e)}>
-                    Heavy Duty Aceite
-                </option>
-                <option value="Aire_Industrial" onClick={(e) => handleFirstSelectHeavyDuty(e)}>
-                    Aire Industrial
-                </option>
-                <option value="Heavy_Duty_Comb" onClick={(e) => handleFirstSelectHeavyDuty(e)}>
-                    Heavy Duty Comb
-                </option>
-                <option value="Hidraulico" onClick={(e) => handleFirstSelectHeavyDuty(e)}>
-                    Hidráulico
-                </option>
-                <option value="Secante_Frenos" onClick={(e) => handleFirstSelectHeavyDuty(e)}>
-                    Secante Frenos
-                </option>
-                <option value="Refrigerante" onClick={(e) => handleFirstSelectHeavyDuty(e)}>
-                    Refrigerante
+                    Marca 3
                 </option>
             </select>
-            <select className="mr-4 p-4" onChange={(e) => setSecondSelect(e.target.value)}>
-                <option value="">Seleccione...</option>
-                {vehicleList.length > 0 &&
-                    vehicleList?.map((vehicle: any) => {
-                        return (
-                            <option key={vehicle.id} value={vehicle.id}>
-                                {vehicle.data.model}
-                            </option>
-                        );
-                    })}
-            </select>
+            {/* <select className="mr-4 p-4" onChange={(e) => setSecondSelect(e.target.value)}>
+                <option value="">Seleccione el modelo</option>
+                <option value="Carburado">
+                    Modelo 1
+                </option>
+            </select> */}
             <button
                 className="bg-primary text-white p-4 mr-2"
                 onClick={() => searchApplication()}

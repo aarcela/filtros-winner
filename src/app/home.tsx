@@ -11,7 +11,7 @@ function HomePage() {
         <>
             <section className="bg-white min-h-screen flex flex-col justify-between">
                 <nav className="bg-primary flex items-center justify-around px-4 py-10 gap-4">
-                    <Link href="/search/home">
+                    <Link href="/">
                         <Image
                             src="/assets/winner_logo.svg"
                             alt="logo"

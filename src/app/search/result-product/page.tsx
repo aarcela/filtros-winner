@@ -69,7 +69,7 @@ export default function Page({ searchParams }: any) {
                     alt="filter-winner"
                 />
                 <div className="">
-                    <h3 className="text-primary font-bold">Categoría:</h3>
+                    <h3 className="text-primary font-bold">Categoría: {data.category}</h3>
                     <h1 className="text-7xl font-bold">{data.name}</h1>
                     <table className="table-auto w-full shadow-md mt-5 ">
                         <thead className="bg-primary">
