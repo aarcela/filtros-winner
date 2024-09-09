@@ -99,13 +99,11 @@ export default function Page({ searchParams }: any) {
                 <h3 className="text-4xl font-bold">Tabla de aplicaciones</h3>
             </div>
             <div className="w-full">
-                {vehicleData.lenght > 0 && (
-                    <Table props={tableVehicleHeader}>
-                        {vehicleData.map((element: VehicleList, index: any) => (
-                            <TableRowVehicle key={index} props={element}></TableRowVehicle>
-                        ))}
-                    </Table>
-                )}
+                <Table props={tableVehicleHeader}>
+                    {vehicleData.map((element: VehicleList, index: any) => (
+                        <TableRowVehicle key={index} props={element}></TableRowVehicle>
+                    ))}
+                </Table>
             </div>
             <div className="w-full">
                 {heavyDutyData.length > 0 && (

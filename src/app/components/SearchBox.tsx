@@ -8,6 +8,7 @@ import {
     SearchBox,
     Configure,
     useInstantSearch,
+    Pagination,
 } from "react-instantsearch";
 import { Hit } from "./Hit";
 
@@ -19,9 +20,10 @@ export const CustomSearchBox = () => {
             <InstantSearch searchClient={searchClient} indexName="filtro-winner">
                 <Configure hitsPerPage={5} />
                 <div className="ais-InstantSearch">
-                    <SearchBox />
+                    <SearchBox placeholder="Búsqueda por código referencia o aplicación" />
                     <EmptyQueryBoundary fallback={null}>
                         <Hits hitComponent={Hit} className="absolute" />
+                        {/* <Pagination /> */}
                     </EmptyQueryBoundary>
                 </div>
             </InstantSearch>

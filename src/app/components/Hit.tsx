@@ -18,7 +18,7 @@ export const Hit = ({ hit }: any) => {
                     <Highlight attribute="name" hit={hit} />
                 </div>
                 <div className="hit-charateristic">
-                    <Highlight attribute="charateristic" hit={hit} />
+                    <Highlight attribute="category" hit={hit} />
                 </div>
             </div>
         </article>

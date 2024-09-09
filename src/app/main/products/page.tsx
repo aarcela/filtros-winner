@@ -39,12 +39,10 @@ function Page() {
             <Table props={productTableHeader}>
                 {data.map((product: ProductList, index) => (
                     <tr key={index + product.id}>
+                        <td className="px-4 py-2 bg-gray font-light">{product.data.category}</td>
                         <td className="px-4 py-2 bg-gray font-light">{product.data.name}</td>
                         <td className="px-4 py-2 bg-gray font-light">
                             {product.data.description}
-                        </td>
-                        <td className="px-4 py-2 bg-gray font-light">
-                            {product.data.charateristic}
                         </td>
                         <td className="px-4 py-2 bg-gray font-light">
                             <Link

@@ -10,7 +10,7 @@ function HomePage() {
     return (
         <>
             <section className="bg-white min-h-screen flex flex-col justify-between">
-                <nav className="bg-primary flex items-center justify-around px-4 py-10 gap-4">
+                <nav className="bg-primary flex items-center py-5 gap-80 px-20">
                     <Link href="/">
                         <Image
                             src="/assets/winner_logo.svg"
@@ -20,6 +20,33 @@ function HomePage() {
                         />
                     </Link>
                     <CustomSearchBox />
+                    <div className="flex gap-2">
+                        <Link href="https://www.instagram.com/winnerfiltros/">
+                            <Image
+                                className="p-2 bg-white rounded-full"
+                                src="/assets/icons/instagram.svg"
+                                height={32}
+                                width={32}
+                                alt=""
+                            />
+                        </Link>
+                        <Link href="https://www.facebook.com/p/Winner-Filtros-100031039042106/">
+                            <Image
+                                className="p-2 bg-white rounded-full"
+                                src="/assets/icons/facebook.svg"
+                                height={35}
+                                width={35}
+                                alt=""
+                            />
+                        </Link>
+                        <Image
+                            className="p-2 bg-white rounded-full"
+                            src="/assets/icons/whatsapp.svg"
+                            height={32}
+                            width={32}
+                            alt=""
+                        />
+                    </div>
                 </nav>
                 <Page />
                 <nav className="bg-primary text-center flex items-center justify-between px-4 py-2  ">

@@ -6,6 +6,7 @@ import { addElement, getAllElements, getElementById, getElementsByProperty } fro
 import { DocumentData } from "firebase/firestore";
 import { VehicleCategory } from "@/enums/category";
 import Table from "@/app/components/Table";
+import Autocomplete from "@/app/components/AutocompleteInput";
 
 function Page() {
     const tableVehicleHeader = [
@@ -24,6 +25,7 @@ function Page() {
         "Acción",
     ];
     const [data, setData] = React.useState([]);
+    const [productList, setProductList] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
 
@@ -45,6 +47,7 @@ function Page() {
 
     useEffect(() => {
         fetchData();
+        fetchProducts();
     }, []);
 
     async function fetchData() {
@@ -58,7 +61,15 @@ function Page() {
                     (element.data.productName = await searchProductName(element.data.product_id))
             );
             setData(data);
-            console.log(data);
+        } catch (error: any) {
+            setError(error);
+        }
+    }
+
+    async function fetchProducts() {
+        try {
+            const data: any = await getAllElements("product");
+            setProductList(data);
         } catch (error: any) {
             setError(error);
         }
@@ -86,25 +97,6 @@ function Page() {
         addElement("vehicle", newVehicle).then((data) => {
             data.status && (cleanNewCells(), fetchData());
         });
-    }
-
-    async function handleSearch(event: any) {
-        setSearchTerm(event.target.value);
-        if (searchTerm.trim() === "") {
-            setSearchResults([]);
-            return;
-        }
-
-        try {
-            const elements = await getElementsByProperty("product", "name", searchTerm);
-            setSearchResults(elements);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    }
-
-    function handleOptionSelected(event: any) {
-        setSelectedOption(event.target.value);
     }
 
     async function searchProductName(productId: string) {
@@ -186,31 +178,51 @@ function Page() {
                         />
                     </td>
                     <td className="px-4 py-2 font-light ">
-                        <input
+                        {/* <input
                             value={newOil}
                             onChange={(e) => setNewOil(e.target.value)}
                             placeholder="Nuevo"
+                        /> */}
+                        <Autocomplete
+                            props={productList}
+                            value={newOil}
+                            onSelectedProduct={(value: any) => setNewOil(value)}
                         />
                     </td>
                     <td className="px-4 py-2  font-light ">
-                        <input
+                        {/* <input
                             value={newAir}
                             onChange={(e) => setNewAir(e.target.value)}
                             placeholder="Nuevo"
+                        /> */}
+                        <Autocomplete
+                            props={productList}
+                            value={newAir}
+                            onSelectedProduct={(value: any) => setNewAir(value)}
                         />
                     </td>
                     <td className="px-4 py-2 font-light ">
-                        <input
+                        {/* <input
                             value={newGas}
                             onChange={(e) => setNewGas(e.target.value)}
                             placeholder="Nuevo"
+                        /> */}
+                        <Autocomplete
+                            props={productList}
+                            value={newGas}
+                            onSelectedProduct={(value: any) => setNewGas(value)}
                         />
                     </td>
                     <td className="px-4 py-2  font-light ">
-                        <input
+                        {/* <input
                             value={newCabine}
                             onChange={(e) => setNewCabine(e.target.value)}
                             placeholder="Nuevo"
+                        /> */}
+                        <Autocomplete
+                            props={productList}
+                            value={newCabine}
+                            onSelectedProduct={(value: any) => setNewCabine(value)}
                         />
                     </td>
                     <td className="px-4 py-2  font-light ">
@@ -255,7 +267,9 @@ function Page() {
                             <td className="px-4 py-2 bg-gray font-light ">
                                 {vehicle.data.finish}
                             </td>
-                            <td className="px-4 py-2 bg-gray font-light ">{vehicle.data.oil}</td>
+                            <td className="px-4 py-2 bg-gray font-light ">
+                                {vehicle.data.oil}{" "}
+                            </td>
                             <td className="px-4 py-2 bg-gray font-light ">{vehicle.data.air}</td>
                             <td className="px-4 py-2 bg-gray font-light ">{vehicle.data.gas}</td>
                             <td className="px-4 py-2 bg-gray font-light ">
