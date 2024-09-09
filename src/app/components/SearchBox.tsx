@@ -16,7 +16,7 @@ const searchClient = algoliasearch("9CMC95YXY9", "6b2c55fb4ddd322a18592ebff004c3
 
 export const CustomSearchBox = () => {
     return (
-        <section className="w-1/3 pt-4">
+        <section className="w-full pt-4">
             <InstantSearch searchClient={searchClient} indexName="filtro-winner">
                 <Configure hitsPerPage={5} />
                 <div className="ais-InstantSearch">
