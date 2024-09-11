@@ -49,13 +49,13 @@ function Page() {
             <h1 className="text-black font-semibold text-3xl my-5">Agregar nuevo producto</h1>
             <input
                 onChange={(e) => setNewname(e.target.value)}
-                className="w-full bg-gray text-white border-none px-4 py-3 mb-5 focus:outline-none"
+                className="w-full bg-gray border-none px-4 py-3 mb-5 focus:outline-none"
                 placeholder="Nombre / Código del producto"
             />
             <select
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value)}
-                className="w-full bg-gray text-white border-none px-4 py-3 mb-5  focus:outline-none"
+                className="w-full bg-gray border-none px-4 py-3 mb-5  focus:outline-none"
             >
                 <option value="" className="text-gray">
                     Seleccione categoría del producto
@@ -92,7 +92,7 @@ function Page() {
                             <input
                                 type="text"
                                 id="username"
-                                className="bg-gray text-white border-none px-4 py-2 focus:outline-none basis-1/2"
+                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
                             />
                         </div>
                     </div>

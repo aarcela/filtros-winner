@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
-import { searchDocumentsByProperty } from "../../utils/product";
-import { addHeavyDuty, getAllHeavyDuty, updateHeavyDuty } from "@/app/utils/heavyDuty";
+import { addHeavyDuty } from "@/app/utils/heavyDuty";
 import { HeavyDuty, HeavyDutyList } from "@/models/heavy-duty";
 import { getAllElements } from "@/app/utils/firebaseConnections";
 import Link from "next/link";
@@ -18,8 +16,8 @@ function Page() {
         "Inicio",
         "Fin",
         "Aceite",
-        "Aired Primario",
-        "Aired Secundario",
+        "Aire Primario",
+        "Aire Secundario",
         "Cabina",
         "Gas Primario",
         "Gas Secundario",
@@ -116,6 +114,7 @@ function Page() {
         setNewAir("");
         setNewCabine("");
         setNewGas("");
+        setNewMotor("");
     }
 
     return (

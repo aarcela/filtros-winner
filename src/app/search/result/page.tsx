@@ -2,7 +2,7 @@
 
 import ApplicationFilter from "@/app/components/ApplicationFilter";
 import Table from "@/app/components/Table";
-import { getElementById } from "@/app/utils/firebaseConnections";
+import { getElementById, getElementsByProperty } from "@/app/utils/firebaseConnections";
 import { useEffect, useState } from "react";
 
 export default function Page({ searchParams }: any) {
@@ -42,20 +42,26 @@ export default function Page({ searchParams }: any) {
     const id = searchParams.id;
     const isVehicle = searchParams.type;
     const [vehicleData, setVehicleData] = useState<any>();
+    const [heavyDutyData, setheavyDutyData] = useState<any>();
 
     useEffect(() => {
-        searchParams.type == "true" ? fetchVehicle() : fetchHeavyDuty();
-    }, [id]);
+        fetchVehicle();
+        fetchHeavyDuty();
+    }, [id, vehicleData]);
 
     const fetchVehicle = async () => {
-        const data = await getElementById("vehicle", id);
-        setVehicleData(data);
+        // const data = await getElementById("vehicle", id);
+        getElementsByProperty("vehicle", "model", id).then((data) => {
+            setVehicleData(data);
+            console.log(vehicleData);
+        });
     };
 
     const fetchHeavyDuty = async () => {
-        const data = await getElementById("heavy-duty", id);
-        console.log(data);
-        setVehicleData(data);
+        // const data = await getElementById("heavy-duty", id);
+        getElementsByProperty("heavy-duty", "model", id).then((data) => {
+            setheavyDutyData(data);
+        });
     };
 
     return (
@@ -63,46 +69,48 @@ export default function Page({ searchParams }: any) {
         <section className="h-screen overflow-x-auto w-full">
             <ApplicationFilter />
             <div className="m-10">
-                <h3>Resultados para:</h3>
+                <h3>Resultados para: {id}</h3>
                 <h2 className="font-bold text-xl">{vehicleData?.model}</h2>
-                <Table props={isVehicle ? tableVehicleHeader : tableHeavyDutyHeader}>
-                    {isVehicle && (
-                        <tr>
-                            <td className="px-4 py-2">{vehicleData?.brand}</td>
-                            <td className="px-4 py-2">{vehicleData?.model}</td>
-                            <td className="px-4 py-2">{vehicleData?.motor}</td>
-                            <td className="px-4 py-2">{vehicleData?.hp}</td>
-                            <td className="px-4 py-2">{vehicleData?.cil}</td>
-                            <td className="px-4 py-2">{vehicleData?.start}</td>
-                            <td className="px-4 py-2">{vehicleData?.finish}</td>
-                            <td className="px-4 py-2">{vehicleData?.oil}</td>
-                            <td className="px-4 py-2">{vehicleData?.air}</td>
-                            <td className="px-4 py-2">{vehicleData?.gas}</td>
-                            <td className="px-4 py-2">{vehicleData?.cabine}</td>
-                            <td className="px-4 py-2">{vehicleData?.category}</td>
+                <Table props={tableVehicleHeader}>
+                    {vehicleData?.map((element: any, index: any) => (
+                        <tr key={index}>
+                            <td className="px-4 py-2">{element?.data?.brand}</td>
+                            <td className="px-4 py-2">{element?.data?.model}</td>
+                            <td className="px-4 py-2">{element?.data?.motor}</td>
+                            <td className="px-4 py-2">{element?.data?.hp}</td>
+                            <td className="px-4 py-2">{element?.data?.cil}</td>
+                            <td className="px-4 py-2">{element?.data?.start}</td>
+                            <td className="px-4 py-2">{element?.data?.finish}</td>
+                            <td className="px-4 py-2">{element?.data?.oil}</td>
+                            <td className="px-4 py-2">{element?.data?.air}</td>
+                            <td className="px-4 py-2">{element?.data?.gas}</td>
+                            <td className="px-4 py-2">{element?.data?.cabine}</td>
+                            <td className="px-4 py-2">{element?.data?.category}</td>
                         </tr>
-                    )}
-                    {!isVehicle && (
-                        <tr>
-                            <td className="px-4 py-2">{vehicleData?.brand}</td>
-                            <td className="px-4 py-2">{vehicleData?.model}</td>
-                            <td className="px-4 py-2">{vehicleData?.hp}</td>
-                            <td className="px-4 py-2">{vehicleData?.cil}</td>
-                            <td className="px-4 py-2">{vehicleData?.start}</td>
-                            <td className="px-4 py-2">{vehicleData?.finish}</td>
-                            <td className="px-4 py-2">{vehicleData?.oil}</td>
-                            <td className="px-4 py-2">{vehicleData?.primary_air}</td>
-                            <td className="px-4 py-2">{vehicleData?.secondary_air}</td>
-                            <td className="px-4 py-2">{vehicleData?.cabine}</td>
-                            <td className="px-4 py-2">{vehicleData?.primary_gas}</td>
-                            <td className="px-4 py-2">{vehicleData?.secondary_gas}</td>
-                            <td className="px-4 py-2">{vehicleData?.separator_gas}</td>
-                            <td className="px-4 py-2">{vehicleData?.hydraulic}</td>
-                            <td className="px-4 py-2">{vehicleData?.secante}</td>
-                            <td className="px-4 py-2">{vehicleData?.refrigerant}</td>
-                            <td className="px-4 py-2">{vehicleData?.category}</td>
+                    ))}
+                </Table>
+                <Table props={tableHeavyDutyHeader}>
+                    {heavyDutyData?.map((element: any, index: any) => (
+                        <tr key={index}>
+                            <td className="px-4 py-2">{element?.data?.brand}</td>
+                            <td className="px-4 py-2">{element?.data?.model}</td>
+                            <td className="px-4 py-2">{element?.data?.hp}</td>
+                            <td className="px-4 py-2">{element?.data?.cil}</td>
+                            <td className="px-4 py-2">{element?.data?.start}</td>
+                            <td className="px-4 py-2">{element?.data?.finish}</td>
+                            <td className="px-4 py-2">{element?.data?.oil}</td>
+                            <td className="px-4 py-2">{element?.data?.primary_air}</td>
+                            <td className="px-4 py-2">{element?.data?.secondary_air}</td>
+                            <td className="px-4 py-2">{element?.data?.cabine}</td>
+                            <td className="px-4 py-2">{element?.data?.primary_gas}</td>
+                            <td className="px-4 py-2">{element?.data?.secondary_gas}</td>
+                            <td className="px-4 py-2">{element?.data?.separator_gas}</td>
+                            <td className="px-4 py-2">{element?.data?.hydraulic}</td>
+                            <td className="px-4 py-2">{element?.data?.secante}</td>
+                            <td className="px-4 py-2">{element?.data?.refrigerant}</td>
+                            <td className="px-4 py-2">{element?.data?.category}</td>
                         </tr>
-                    )}
+                    ))}
                 </Table>
             </div>
         </section>

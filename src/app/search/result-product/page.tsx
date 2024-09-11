@@ -37,26 +37,44 @@ export default function Page({ searchParams }: any) {
     useEffect(() => {
         if (itemId) {
             fetchData();
+            fetchVehicle();
+            fetchHeavyDuty();
         }
     }, [itemId]);
 
     const fetchData = async () => {
         const fetchData = await getElementsByProperty("product", "name", itemId);
         setData(fetchData[0].data);
-        if (fetchData[0].id) {
-            const vehicleData = await getElementsByProperty(
-                "vehicle",
-                "product_id",
-                fetchData[0].id
-            );
-            setVehicleData(vehicleData);
-            const heavyDutyData = await getElementsByProperty(
-                "heavy-duty",
-                "product_id",
-                fetchData[0].id
-            );
-            setHeavyDutyData(heavyDutyData);
-        }
+
+        // if (fetchData[0].id) {
+        //     const vehicleData = await getElementsByProperty(
+        //         "vehicle",
+        //         "product_id",
+        //         fetchData[0].id
+        //     );
+        //     setVehicleData(vehicleData);
+        //     const heavyDutyData = await getElementsByProperty(
+        //         "heavy-duty",
+        //         "product_id",
+        //         fetchData[0].id
+        //     );
+        //     setHeavyDutyData(heavyDutyData);
+        // }
+    };
+
+    const fetchVehicle = async () => {
+        // const data = await getElementById("vehicle", id);
+        getElementsByProperty("vehicle", "gas", itemId).then((data) => {
+            setVehicleData(data);
+            console.log(vehicleData);
+        });
+    };
+
+    const fetchHeavyDuty = async () => {
+        // const data = await getElementById("heavy-duty", id);
+        getElementsByProperty("heavy-duty", "gas", itemId).then((data) => {
+            setHeavyDutyData(data);
+        });
     };
 
     return (

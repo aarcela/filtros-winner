@@ -7,12 +7,12 @@ import { CustomSearchBox } from "../components/SearchBox";
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     return (
         <section className="bg-white">
-            <nav className="bg-primary flex items-center justify-between px-4 py-2">
+            <nav className="bg-primary flex items-center  gap-3 px-4 py-2">
                 <Link href="/">
                     <Image src="/assets/winner_logo.svg" alt="logo" width={198} height={38} />
                 </Link>
                 <CustomSearchBox />
-                <ul className="flex space-x-10">
+                <ul className="flex gap-3">
                     <li>
                         <Link href="/main/products">
                             <span className="text-white hover:underline">Productos</span>
@@ -25,7 +25,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                     </li>
                     <li>
                         <Link href="/main/heavy-duty">
-                            <span className="text-white hover:underline">Heavy Duty</span>
+                            <span className="text-white hover:underline">HeavyDuty</span>
                         </Link>
                     </li>
                     <li>

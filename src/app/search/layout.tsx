@@ -6,30 +6,30 @@ import { CustomSearchBox } from "../components/SearchBox";
 export default function SearchLayout({ children }: { children: React.ReactNode }) {
     return (
         <section className="bg-white">
-            <nav className="bg-primary flex items-center py-5 gap-80 px-20">
+            <nav className="bg-primary flex items-center py-5 gap-5 px-20">
                 <Link href="/">
                     <Image src="/assets/winner_logo.svg" alt="logo" width={277} height={53} />
                 </Link>
                 <CustomSearchBox />
                 <div className="flex gap-2">
-                    <Link href="https://www.instagram.com/winnerfiltros/">
-                        <Image
-                            className="p-2 bg-white rounded-full"
-                            src="/assets/icons/instagram.svg"
-                            height={32}
-                            width={32}
-                            alt=""
-                        />
-                    </Link>
-                    <Link href="https://www.facebook.com/p/Winner-Filtros-100031039042106/">
-                        <Image
-                            className="p-2 bg-white rounded-full"
-                            src="/assets/icons/facebook.svg"
-                            height={35}
-                            width={35}
-                            alt=""
-                        />
-                    </Link>
+                    {/* <Link href="https://www.instagram.com/winnerfiltros/"> */}
+                    <Image
+                        className="p-2 bg-white rounded-full"
+                        src="/assets/icons/instagram.svg"
+                        height={32}
+                        width={32}
+                        alt=""
+                    />
+                    {/* </Link>
+                    <Link href="https://www.facebook.com/p/Winner-Filtros-100031039042106/"> */}
+                    <Image
+                        className="p-2 bg-white rounded-full"
+                        src="/assets/icons/facebook.svg"
+                        height={35}
+                        width={35}
+                        alt=""
+                    />
+                    {/* </Link> */}
                     <Image
                         className="p-2 bg-white rounded-full"
                         src="/assets/icons/whatsapp.svg"

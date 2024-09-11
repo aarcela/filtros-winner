@@ -29,14 +29,17 @@ function ApplicationFilter() {
             <div className="flex w-full">
                 <select className="mr-4 p-4 w-1/3">
                     <option value="">Seleccione la marca</option>
-                    <option onClick={(e) => handleFirstSelectVehicle(e)} value="Marca_1">
+                    <option onClick={(e) => handleFirstSelectVehicle(e)} value="Marca 1">
                         Marca 1
                     </option>
-                    <option onClick={(e) => handleFirstSelectVehicle(e)} value="Marca_2">
+                    <option onClick={(e) => handleFirstSelectVehicle(e)} value="Marca 2">
                         Marca 2
                     </option>
-                    <option onClick={(e) => handleFirstSelectVehicle(e)} value="Carburado">
+                    <option onClick={(e) => handleFirstSelectVehicle(e)} value="Marca 3">
                         Marca 3
+                    </option>
+                    <option onClick={(e) => handleFirstSelectVehicle(e)} value="Ford">
+                        Ford
                     </option>
                 </select>
                 <select
@@ -44,7 +47,9 @@ function ApplicationFilter() {
                     onChange={(e) => setSecondSelect(e.target.value)}
                 >
                     <option value="">Seleccione el modelo</option>
-                    <option value="Carburado">Modelo 1</option>
+                    <option value="Modelo 1">Modelo 1</option>
+                    <option value="KA">KA</option>
+                    <option value="Focus">Focus</option>
                 </select>
                 <button
                     className="bg-primary text-white p-4 mr-2 w-1/3"
