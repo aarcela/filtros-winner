@@ -12,9 +12,9 @@ export default function Table({
                 <tr className="bg-gray-800 text-white">
                     {props?.map((element: any, index: any) => {
                         return (
-                            <th key={index} className="p-4 text-left">
+                            <td key={index} className="p-4 text-left">
                                 {element}
-                            </th>
+                            </td>
                         );
                     })}
                 </tr>

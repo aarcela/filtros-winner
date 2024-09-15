@@ -21,7 +21,6 @@ function Page() {
         "Aire",
         "Gas",
         "Cabina",
-        "Category",
         "Acción",
     ];
     const [data, setData] = React.useState([]);
@@ -123,9 +122,9 @@ function Page() {
     return (
         <section className="my-5 mx-5 overflow-x-auto">
             <h1 className="text-black font-semibold text-3xl mb-5">Vehiculos</h1>
-            <Link href={"/main/vehicles/detail"}>
+            {/* <Link href={"/main/vehicles/detail"}>
                 <button className="bg-primary text-white p-4 mr-2 mb-2">Agregar</button>
-            </Link>
+            </Link> */}
             <Table props={tableVehicleHeader}>
                 <tr>
                     <td className="px-4 py-2 font-light ">
@@ -190,42 +189,42 @@ function Page() {
                         />
                     </td>
                     <td className="px-4 py-2  font-light ">
-                        {/* <input
+                        <input
                             value={newAir}
                             onChange={(e) => setNewAir(e.target.value)}
                             placeholder="Nuevo"
-                        /> */}
-                        <Autocomplete
+                        />
+                        {/* <Autocomplete
                             props={productList}
                             value={newAir}
                             onSelectedProduct={(value: any) => setNewAir(value)}
-                        />
+                        /> */}
                     </td>
                     <td className="px-4 py-2 font-light ">
-                        {/* <input
+                        <input
                             value={newGas}
                             onChange={(e) => setNewGas(e.target.value)}
                             placeholder="Nuevo"
-                        /> */}
-                        <Autocomplete
+                        />
+                        {/* <Autocomplete
                             props={productList}
                             value={newGas}
                             onSelectedProduct={(value: any) => setNewGas(value)}
-                        />
+                        /> */}
                     </td>
                     <td className="px-4 py-2  font-light ">
-                        {/* <input
+                        <input
                             value={newCabine}
                             onChange={(e) => setNewCabine(e.target.value)}
                             placeholder="Nuevo"
-                        /> */}
-                        <Autocomplete
+                        />
+                        {/* <Autocomplete
                             props={productList}
                             value={newCabine}
                             onSelectedProduct={(value: any) => setNewCabine(value)}
-                        />
+                        /> */}
                     </td>
-                    <td className="px-4 py-2  font-light ">
+                    {/* <td className="px-4 py-2  font-light ">
                         <select
                             value={newCategory}
                             className="bg-white"
@@ -240,7 +239,7 @@ function Page() {
                             <option value="Gasolina">Gasolina</option>
                             <option value="Cabina">Cabina</option>
                         </select>
-                    </td>
+                    </td> */}
                     <td className="px-4 py-2 bg-gray font-light ">
                         <button className="text-primary" onClick={addNewVehicle}>
                             Agregar
@@ -275,9 +274,9 @@ function Page() {
                             <td className="px-4 py-2 bg-gray font-light ">
                                 {vehicle.data.cabine}
                             </td>
-                            <td className="px-4 py-2 bg-gray font-light ">
+                            {/* <td className="px-4 py-2 bg-gray font-light ">
                                 {vehicle.data.category}
-                            </td>
+                            </td> */}
                             <td className="px-4 py-2 bg-gray font-light ">
                                 <Link href={`/main/vehicles/detail/${vehicle.id}`}>
                                     <button className="text-primary">Editar</button>

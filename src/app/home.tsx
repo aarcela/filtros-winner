@@ -9,8 +9,8 @@ import { CustomSearchBox } from "./components/SearchBox";
 function HomePage() {
     return (
         <>
-            <section className="bg-white min-h-screen flex flex-col justify-between">
-                <nav className="bg-primary flex items-center py-5 gap-10 px-20">
+            <section className="bg-white flex flex-col justify-between h-screen fixed">
+                <nav className="bg-primary sm:items-center px-5 py-5 flex sm:gap-10 sm:px-20 sm:flex-row flex-col">
                     <Link href="/">
                         <Image
                             src="/assets/winner_logo.svg"

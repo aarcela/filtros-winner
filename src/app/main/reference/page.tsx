@@ -19,7 +19,6 @@ function Page() {
 
     const [newBrand, setNewBrand] = useState("");
     const [newCode, setNewCode] = useState("");
-    const [newType, setNewType] = useState("");
     const [newCodeReference, setNewCodeReference] = useState("");
 
     useEffect(() => {
@@ -28,10 +27,9 @@ function Page() {
 
     function addNewReference() {
         const newReference: Referece = {
-            brand: newBrand,
             code: newCode,
             code_reference: newCodeReference,
-            type: newType,
+            brand: newBrand,
             created_at: new Date().toString(),
         };
 
@@ -56,7 +54,6 @@ function Page() {
     function cleanNewCells() {
         setNewBrand("");
         setNewCode("");
-        setNewType("");
         setNewCodeReference("");
     }
 
@@ -88,13 +85,6 @@ function Page() {
                         />
                     </td>
                     <td className="px-4 py-2">
-                        <input
-                            value={newType}
-                            placeholder="Nuevo Tipo"
-                            onChange={(e) => setNewType(e.target.value)}
-                        />
-                    </td>
-                    <td className="px-4 py-2">
                         <button className="text-primary font-light" onClick={addNewReference}>
                             Agregar
                         </button>
@@ -107,7 +97,6 @@ function Page() {
                             {reference.data.code_reference}
                         </td>
                         <td className="px-4 py-2 bg-gray font-light">{reference.data.brand}</td>
-                        <td className="px-4 py-2 bg-gray font-light">{reference.data.type}</td>
                         <td className="px-4 py-2 bg-gray font-light">
                             <Link href={`/main/products/detail/${reference.id}`}>
                                 <button className="text-primary font-light">Editar</button>

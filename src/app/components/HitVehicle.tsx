@@ -3,21 +3,21 @@ import { Highlight } from "react-instantsearch";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export const Hit = ({ hit }: any) => {
+export const HitVehicle = ({ hit }: any) => {
     const router = useRouter();
 
     function handleHitClick(item: any) {
-        router.push(`/search/result-product/?item=${item.name}`);
+        console.log(item);
+        router.push(`/search/result/?id=${item.model}`);
     }
     return (
         <div onClick={() => handleHitClick(hit)}>
             {/* <Image src={hit.image_1} /> */}
-            Producto
             <div className="hit-name">
-                <Highlight attribute="name" hit={hit} />
+                <Highlight attribute="brand" hit={hit} />
             </div>
             <div className="hit-charateristic">
-                <Highlight attribute="category" hit={hit} />
+                <Highlight attribute="model" hit={hit} />
             </div>
         </div>
     );

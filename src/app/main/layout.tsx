@@ -38,7 +38,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                     Salir
                 </button>
             </nav>
-            <div className="h-screen pb-4">{children}</div>
+            <div className="pb-4">{children}</div>
         </section>
     );
 }

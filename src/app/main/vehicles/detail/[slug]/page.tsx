@@ -57,8 +57,8 @@ function Page({ params }: { params: { slug: string } }) {
         setNewAir(vehicle.air),
         setNewCabine(vehicle.cabine),
         setNewGas(vehicle.gas);
-      setNewMotor(vehicle.motor);
-      searchProductName(vehicle.product_id);
+        setNewMotor(vehicle.motor);
+        searchProductName(vehicle.product_id);
     }
     getProductData();
   }, [params.slug]);
@@ -92,75 +92,77 @@ function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <section className="my-10 mx-5">
-      <h1 className="text-black font-semibold text-xl mb-10">Editar vehiculo: {params.slug} </h1>
-      <input
-        value={newBrand}
-        onChange={(e) => setNewBrand(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Nombre"
-      />
-      <input
-        value={newModel}
-        onChange={(e) => setNewModel(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Model"
-      />
-      <input
-        value={newMotor}
-        onChange={(e) => setNewMotor(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Motor"
-      />
-      <input
-        value={newHp}
-        onChange={(e) => setNewHp(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="HP"
-      />
-      <input
-        value={newCil}
-        onChange={(e) => setNewCil(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Cil"
-      />
-      <input
-        value={newStart}
-        onChange={(e) => setNewStart(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Start"
-      />
-      <input
-        value={newFinish}
-        onChange={(e) => setNewFinish(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Finish"
-      />
-      <input
-        value={newOil}
-        onChange={(e) => setNewOil(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Oil"
-      />
-      <input
-        value={newAir}
-        onChange={(e) => setNewAir(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Air"
-      />
-      <input
-        value={newCabine}
-        onChange={(e) => setNewCabine(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Cabine"
-      />
-      <input
-        value={newGas}
-        onChange={(e) => setNewGas(e.target.value)}
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        placeholder="Gas"
-      />
-      <span className="text-black">Producto: {productName}</span>
+      <section className="my-10 mx-5">
+          <h1 className="text-black font-semibold text-xl mb-10">
+              Editar vehiculo: {params.slug}{" "}
+          </h1>
+          <input
+              value={newBrand}
+              onChange={(e) => setNewBrand(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Nombre"
+          />
+          <input
+              value={newModel}
+              onChange={(e) => setNewModel(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Model"
+          />
+          <input
+              value={newMotor}
+              onChange={(e) => setNewMotor(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Motor"
+          />
+          <input
+              value={newHp}
+              onChange={(e) => setNewHp(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="HP"
+          />
+          <input
+              value={newCil}
+              onChange={(e) => setNewCil(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Cil"
+          />
+          <input
+              value={newStart}
+              onChange={(e) => setNewStart(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Start"
+          />
+          <input
+              value={newFinish}
+              onChange={(e) => setNewFinish(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Finish"
+          />
+          <input
+              value={newOil}
+              onChange={(e) => setNewOil(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Oil"
+          />
+          <input
+              value={newAir}
+              onChange={(e) => setNewAir(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Air"
+          />
+          <input
+              value={newCabine}
+              onChange={(e) => setNewCabine(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Cabine"
+          />
+          <input
+              value={newGas}
+              onChange={(e) => setNewGas(e.target.value)}
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              placeholder="Gas"
+          />
+          {/* <span className="text-black">Producto: {productName}</span>
       <input
         onChange={handleSearch}
         className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
@@ -172,14 +174,14 @@ function Page({ params }: { params: { slug: string } }) {
             {result.data.name}
           </option>
         ))}
-      </select>
-      <button className="bg-primary text-white p-4 mr-2" onClick={editVehicle}>
-        Editar
-      </button>
-      <Link href={"/main/vehicles"}>
-        <button className="bg-gray text-white p-4">Atrás</button>
-      </Link>
-    </section>
+      </select> */}
+          <button className="bg-primary text-white p-4 mr-2" onClick={editVehicle}>
+              Editar
+          </button>
+          <Link href={"/main/vehicles"}>
+              <button className="bg-gray text-white p-4">Atrás</button>
+          </Link>
+      </section>
   );
 }
 

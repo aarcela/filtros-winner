@@ -5,8 +5,8 @@ import { CustomSearchBox } from "../components/SearchBox";
 
 export default function SearchLayout({ children }: { children: React.ReactNode }) {
     return (
-        <section className="bg-white">
-            <nav className="bg-primary flex items-center py-5 gap-5 px-20">
+        <section className="bg-white h-screen flex flex-col">
+            <nav className="bg-primary sm:items-center px-5 py-5 flex sm:gap-10 sm:px-20 sm:flex-row flex-col">
                 <Link href="/">
                     <Image src="/assets/winner_logo.svg" alt="logo" width={277} height={53} />
                 </Link>
@@ -39,8 +39,8 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
                     />
                 </div>
             </nav>
-            <div className="">{children}</div>
-            <nav className="bg-primary text-center flex items-center justify-between px-4 py-2">
+            <div className="flex flex-1">{children}</div>
+            <nav className="bg-primary text-center flex items-center justify-between px-4 py-2 ">
                 <h3 className="text-white ">Filtros Winner - Todos los derechos reservados</h3>
             </nav>
         </section>

@@ -36,87 +36,131 @@ export default function Page({ searchParams }: any) {
 
     useEffect(() => {
         if (itemId) {
-            fetchData();
-            fetchVehicle();
-            fetchHeavyDuty();
+            fetchData(itemId);
         }
-    }, [itemId]);
+    });
 
-    const fetchData = async () => {
-        const fetchData = await getElementsByProperty("product", "name", itemId);
+    const fetchData = async (id: any) => {
+        const fetchData = await getElementsByProperty("product", "name", id);
         setData(fetchData[0].data);
-
-        // if (fetchData[0].id) {
-        //     const vehicleData = await getElementsByProperty(
-        //         "vehicle",
-        //         "product_id",
-        //         fetchData[0].id
-        //     );
-        //     setVehicleData(vehicleData);
-        //     const heavyDutyData = await getElementsByProperty(
-        //         "heavy-duty",
-        //         "product_id",
-        //         fetchData[0].id
-        //     );
-        //     setHeavyDutyData(heavyDutyData);
-        // }
+        console.log("Product: ", data);
+        if (fetchData[0].data) {
+            await fetchVehicle(fetchData[0].data);
+            await fetchHeavyDuty(fetchData[0].data);
+        }
     };
 
-    const fetchVehicle = async () => {
-        // const data = await getElementById("vehicle", id);
-        getElementsByProperty("vehicle", "gas", itemId).then((data) => {
+    const fetchVehicle = async (productData: any) => {
+        let productColumn = "";
+        if (productData.category.includes("Air")) {
+            productColumn = "air";
+        } else if (productData.category.includes("Aceite")) {
+            productColumn = "oil";
+        } else if (productData.category.includes("Combustible")) {
+            productColumn = "gas";
+        } else if (productData.category.includes("Hidraúlico")) {
+            productColumn = "hydraulic";
+        } else if (productData.category.includes("Cabina")) {
+            productColumn = "cabine";
+        } else if (productData.category.includes("Secante")) {
+            productColumn = "secante";
+        } else {
+            return;
+        }
+        getElementsByProperty("vehicle", productColumn, productData.name).then((data) => {
             setVehicleData(data);
-            console.log(vehicleData);
         });
     };
 
-    const fetchHeavyDuty = async () => {
-        // const data = await getElementById("heavy-duty", id);
-        getElementsByProperty("heavy-duty", "gas", itemId).then((data) => {
+    const fetchHeavyDuty = async (productData: any) => {
+        let productColumn = "";
+        if (productData.category.includes("Air")) {
+            productColumn = "air";
+        } else if (productData.category.includes("Aceite")) {
+            productColumn = "oil";
+        } else if (productData.category.includes("Combustible")) {
+            productColumn = "gas";
+        } else if (productData.category.includes("Hidraúlico")) {
+            productColumn = "hydraulic";
+        } else if (productData.category.includes("Cabina")) {
+            productColumn = "cabine";
+        } else if (productData.category.includes("Secante")) {
+            productColumn = "secante";
+        } else {
+            return;
+        }
+        getElementsByProperty("heavy-duty", productColumn, productData.name).then((data) => {
             setHeavyDutyData(data);
         });
     };
 
     return (
-        <section className="w-full  h-screen p-16">
-            <div className="flex justify-evenly gap-10 mt-10">
+        <section className="w-full p-5 sm:p-16">
+            <div className="flex flex-col justify-evenly gap-10 mt-10 sm:flex-row">
                 <Image
                     src={"/assets/test_filter.png"}
                     width={537}
                     height={340}
                     alt="filter-winner"
                 />
-                <div className="">
+                <div className="flex flex-1 flex-col">
                     <h3 className="text-primary font-bold">Categoría: {data.category}</h3>
-                    <h1 className="text-7xl font-bold">{data.name}</h1>
+                    <h1 className="text-3xl sm:text-7xl font-bold">{data.name}</h1>
                     <table className="table-auto w-full shadow-md mt-5 ">
                         <thead className="bg-primary">
-                            <th className="p-2 bg-gray-800 text-white">
-                                Expecificaciones Técnicas
-                            </th>
-                            <th className="p-2 bg-gray-800 text-white"></th>
+                            <tr>
+                                <th className="p-2 bg-gray-800 text-white">
+                                    Expecificaciones Técnicas
+                                </th>
+                                <th className="p-2 bg-gray-800 text-white"></th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td className="p-4">
-                                <tr>Diámetro Externo: 8.8 mm</tr>
-                                <tr>Diámetro Interno: M20 x 1,5</tr>
-                                <tr>Altura Total: 81,4</tr>
-                                <tr>Empacadura Interna: 55,4</tr>
-                            </td>
-                            <td className="p-4">
-                                <tr>Espesor de Empacadura: 8.8 mm</tr>
-                                <tr>Altura de Empacadura: M20 x 1,5</tr>
-                                <tr>Válvula de Alivio: 81,4</tr>
-                                <tr>Válvula Anti-Drenaje: 55,4</tr>
-                            </td>
+                            <tr className="p-4">
+                                {data?.["Anti-drain"] && (
+                                    <td>Anti-drain: {data?.["Anti-drain"]}</td>
+                                )}
+                                {data?.["By Pass Valve"] && (
+                                    <td>By Pass Valve: {data?.["By Pass Valve"]}</td>
+                                )}
+                            </tr>
+                            <tr>
+                                {data?.["Drain"] && <td>Drain: {data?.["Drain"]}</td>}
+                                {data?.["GS-ID"] && <td>GS-ID: {data?.["GS-ID"]}</td>}
+                            </tr>
+                            <tr>
+                                {data?.["GS-OD"] && <td>GS-OD: {data?.["GS-OD"]}</td>}
+                                {data?.["H"] && <td>H: {data?.["H"]}</td>}
+                            </tr>
+                            <tr>
+                                {data?.["ID"] && <td>ID: {data?.["ID"]}</td>}
+                                {data?.["ID2"] && <td>ID2: {data?.["ID2"]}</td>}
+                            </tr>
+                            <tr>
+                                {data?.["IN"] && <td>IN: {data?.["IN"]}</td>}
+                                {data?.["L"] && <td>L: {data?.["L"]}</td>}
+                            </tr>
+                            <tr>
+                                {data?.["Li"] && <td>Li: {data?.["Li"]}</td>}
+                                {data?.["OD"] && <td>OD: {data?.["OD"]}</td>}
+                            </tr>
+                            <tr>
+                                {data?.["OUT"] && <td>OUT: {data?.["OUT"]}</td>}
+                                {data?.["TH"] && <td>TH: {data?.["TH"]}</td>}
+                            </tr>
+                            <tr>
+                                {data?.["W"] && <td>W: {data?.["W"]}</td>}
+                                {data?.["We"] && <td>We: {data?.["We"]}</td>}
+                            </tr>
+                            <tr>{data?.["Wi"] && <td>Wi: {data?.["Wi"]}</td>}</tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div className="w-full mt-10">
-                <h3 className="text-4xl font-bold">Tabla de aplicaciones</h3>
+                <h3 className="text-2xl sm:text-4xl font-bold">Tabla de aplicaciones</h3>
             </div>
-            <div className="w-full">
+            <div className="w-full overflow-x-auto">
                 <Table props={tableVehicleHeader}>
                     {vehicleData.map((element: VehicleList, index: any) => (
                         <TableRowVehicle key={index} props={element}></TableRowVehicle>

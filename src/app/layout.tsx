@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={arimo.className}>
-            <body>{children}</body>
+            <body className="bg-white h-full">{children}</body>
         </html>
     );
 }
