@@ -29,24 +29,20 @@ function Page({ params }: { params: { slug: string } }) {
 
   function editHeavyDuty() {
     const updateHeavyDuty: HeavyDuty = {
-      brand: newBrand,
-      model: newModel,
-      hp: newHp,
-      motor: newMotor,
-      cil: newCil,
-      start: newStart,
-      finish: newFinish,
-      oil: newOil,
-      primary_air: newPrimaryAir,
-      secondary_air: newSecondaryAir,
-      cabine: newCabine,
-      primary_gas: newPrimaryGas,
-      secondary_gas: newSecondaryGas,
-      separator_gas: newSeparatorGas,
-      hydraulic: newHydraulic,
-      secante: newSecante,
-      refrigerant: newRefrigerant,
-      product_id: selectedOption,
+        brand: newBrand,
+        model: newModel,
+        hp: newHp,
+        motor: newMotor,
+        cil: newCil,
+        start: newStart,
+        finish: newFinish,
+        oil: newOil,
+        primary_air: newPrimaryAir,
+        primary_gas: newPrimaryGas,
+        hydraulic: newHydraulic,
+        secante: newSecante,
+        refrigerant: newRefrigerant,
+        product_id: selectedOption,
     };
 
     updateElement("heavy-duty", params.slug, updateHeavyDuty).then((data) => {
@@ -56,57 +52,53 @@ function Page({ params }: { params: { slug: string } }) {
   }
 
   useEffect(() => {
-    async function getProductData() {
-      const heavyDuty: any = await getElementById("heavy-duty", params.slug);
-      console.log("HEAVY DUTY: ", await heavyDuty);
-      setNewBrand(heavyDuty.brand);
-      setNewModel(heavyDuty.model);
-      setNewHp(heavyDuty.hp);
-      setNewCil(heavyDuty.cil);
-      setNewMotor(heavyDuty.motor);
-      setNewStart(heavyDuty.start);
-      setNewFinish(heavyDuty.finish);
-      setNewOil(heavyDuty.oil);
-      setNewPrimaryAir(heavyDuty.primary_air);
-      setNewSecondaryAir(heavyDuty.secondary_air);
-      setNewCabine(heavyDuty.cabine);
-      setNewPrimaryGas(heavyDuty.primary_gas);
-      setNewSecondaryGas(heavyDuty.secondary_air);
-      setNewSeparatorGas(heavyDuty.separator_gas);
-      setNewHydraulic(heavyDuty.hydraulic);
-      setNewSecante(heavyDuty.secante);
-      setNewRefrigerant(heavyDuty.refrigerant);
-      searchProductName(heavyDuty.product_id);
-    }
-    getProductData();
+      async function getProductData() {
+          const heavyDuty: any = await getElementById("heavy-duty", params.slug);
+          console.log("HEAVY DUTY: ", await heavyDuty);
+          setNewBrand(heavyDuty.brand);
+          setNewModel(heavyDuty.model);
+          setNewHp(heavyDuty.hp);
+          setNewCil(heavyDuty.cil);
+          setNewMotor(heavyDuty.motor);
+          setNewStart(heavyDuty.start);
+          setNewFinish(heavyDuty.finish);
+          setNewOil(heavyDuty.oil);
+          setNewPrimaryAir(heavyDuty.primary_air);
+          setNewPrimaryGas(heavyDuty.primary_gas);
+          setNewHydraulic(heavyDuty.hydraulic);
+          setNewSecante(heavyDuty.secante);
+          setNewRefrigerant(heavyDuty.refrigerant);
+          searchProductName(heavyDuty.product_id);
+      }
+      getProductData();
   }, [params.slug]);
 
   async function handleSearch(event: any) {
-    setSearchTerm(event.target.value);
-    if (searchTerm.trim() === "") {
-      setSearchResults([]);
-      return;
-    }
+      setSearchTerm(event.target.value);
+      if (searchTerm.trim() === "") {
+          setSearchResults([]);
+          return;
+      }
 
-    try {
-      const elements = await getElementsByProperty("product", "name", searchTerm);
-      setSearchResults(elements);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+      try {
+          const elements = await getElementsByProperty("product", "name", searchTerm);
+          setSearchResults(elements);
+      } catch (error) {
+          console.error("Error fetching data:", error);
+      }
   }
 
   function handleOptionSelected(event: any) {
-    console.log(event.target.value);
-    setSelectedOption(event.target.value);
+      console.log(event.target.value);
+      setSelectedOption(event.target.value);
   }
 
   async function searchProductName(productId: string) {
-    if (!productId) return;
-    const productName = await getElementById("product", productId);
-    console.log(productName);
-    if (!productName) return "";
-    setProductName(productName?.name);
+      if (!productId) return;
+      const productName = await getElementById("product", productId);
+      console.log(productName);
+      if (!productName) return "";
+      setProductName(productName?.name);
   }
 
   return (
@@ -169,34 +161,10 @@ function Page({ params }: { params: { slug: string } }) {
               placeholder="Air"
           />
           <input
-              value={newSecondaryAir}
-              onChange={(e) => setNewSecondaryAir(e.target.value)}
-              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-              placeholder="Second Air"
-          />
-          <input
-              value={newCabine}
-              onChange={(e) => setNewCabine(e.target.value)}
-              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-              placeholder="Cabine"
-          />
-          <input
               value={newPrimaryGas}
               onChange={(e) => setNewPrimaryGas(e.target.value)}
               className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
               placeholder="Primary Gas"
-          />
-          <input
-              value={newSecondaryGas}
-              onChange={(e) => setNewSecondaryGas(e.target.value)}
-              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-              placeholder="Secondary Gas"
-          />
-          <input
-              value={newSeparatorGas}
-              onChange={(e) => setNewSeparatorGas(e.target.value)}
-              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-              placeholder="Separator Gas"
           />
           <input
               value={newHydraulic}
