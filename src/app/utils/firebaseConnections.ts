@@ -57,11 +57,9 @@ export const getElementsByProperty = async (
     const q = query(
         collection(firestore, collectionName),
         orderBy(property),
-
         startAt(searchTerm),
-
         endAt(searchTerm + "\uf8ff")
-        // where(property, "==", new RegExp(`^${searchTerm}\\s*$`))
+        // where(property, "==", searchTerm)
     );
     const querySnapshot = await getDocs(q);
 
