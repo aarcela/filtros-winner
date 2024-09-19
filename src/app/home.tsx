@@ -9,7 +9,7 @@ import { CustomSearchBox } from "./components/SearchBox";
 function HomePage() {
     return (
         <>
-            <section className="bg-white flex flex-col justify-between h-screen fixed">
+            <section className="bg-white flex flex-col justify-between h-screen">
                 <nav className="bg-primary sm:items-center px-5 py-5 flex sm:gap-10 sm:px-20 sm:flex-row flex-col">
                     <Link href="/">
                         <Image

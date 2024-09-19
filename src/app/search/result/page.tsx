@@ -1,8 +1,9 @@
 "use client";
-
 import ApplicationFilter from "@/app/components/ApplicationFilter";
 import Table from "@/app/components/Table";
 import { getElementById, getElementsByProperty } from "@/app/utils/firebaseConnections";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Page({ searchParams }: any) {
@@ -16,7 +17,6 @@ export default function Page({ searchParams }: any) {
         "Aire",
         "Gas",
         "Cabina",
-        "Categoría",
     ];
     const tableHeavyDutyHeader = [
         "Motor",
@@ -47,15 +47,14 @@ export default function Page({ searchParams }: any) {
 
     const fetchVehicle = async () => {
         // const data = await getElementById("vehicle", id);
-        getElementsByProperty("vehicle", "model", id).then((data) => {
+        getElementsByProperty("vehicle", "model", id.trim()).then((data) => {
             setVehicleData(data);
-            console.log(vehicleData);
         });
     };
 
     const fetchHeavyDuty = async () => {
         // const data = await getElementById("heavy-duty", id);
-        getElementsByProperty("heavy-duty", "model", id).then((data) => {
+        getElementsByProperty("heavy-duty", "model", id.trim()).then((data) => {
             setheavyDutyData(data);
         });
     };
@@ -69,50 +68,279 @@ export default function Page({ searchParams }: any) {
                 </h3>
                 <h2 className="font-bold text-xl">{vehicleData?.model}</h2>
                 <div className="w-full overflow-x-auto">
-                    <Table props={tableVehicleHeader}>
-                        {vehicleData?.map((element: any, index: any) => (
-                            <tr key={index}>
-                                <td className="px-4 py-2">
-                                    {element?.data?.Motor} {element?.data?.motor}
-                                </td>
-                                <td className="px-4 py-2">{element?.data?.hp}</td>
-                                <td className="px-4 py-2">
-                                    {element?.data?.Cil}
-                                    {element?.data?.cil}
-                                </td>
-                                <td className="px-4 py-2">{element?.data?.start}</td>
-                                <td className="px-4 py-2">{element?.data?.finish}</td>
-                                <td className="px-4 py-2">{element?.data?.oil}</td>
-                                <td className="px-4 py-2">{element?.data?.air}</td>
-                                <td className="px-4 py-2">{element?.data?.gas}</td>
-                                <td className="px-4 py-2">{element?.data?.cabine}</td>
-                                <td className="px-4 py-2">{element?.data?.category}</td>
-                            </tr>
-                        ))}
-                    </Table>
-                    <Table props={tableHeavyDutyHeader}>
-                        {heavyDutyData?.map((element: any, index: any) => (
-                            <tr key={index}>
-                                <td className="px-4 py-2">
-                                    {element?.data?.Motor} {element?.data?.motor}
-                                </td>
-                                <td className="px-4 py-2">{element?.data?.hp}</td>
-                                <td className="px-4 py-2">{element?.data?.cil}</td>
-                                <td className="px-4 py-2">{element?.data?.start}</td>
-                                <td className="px-4 py-2">{element?.data?.finish}</td>
-                                <td className="px-4 py-2">{element?.data?.oil}</td>
-                                <td className="px-4 py-2">{element?.data?.primary_air}</td>
-                                <td className="px-4 py-2">{element?.data?.secondary_air}</td>
-                                <td className="px-4 py-2">{element?.data?.cabine}</td>
-                                <td className="px-4 py-2">{element?.data?.primary_gas}</td>
-                                <td className="px-4 py-2">{element?.data?.secondary_gas}</td>
-                                <td className="px-4 py-2">{element?.data?.separator_gas}</td>
-                                <td className="px-4 py-2">{element?.data?.hydraulic}</td>
-                                <td className="px-4 py-2">{element?.data?.secante}</td>
-                                <td className="px-4 py-2">{element?.data?.refrigerant}</td>
-                            </tr>
-                        ))}
-                    </Table>
+                    {vehicleData?.length > 0 && (
+                        <Table props={tableVehicleHeader}>
+                            {vehicleData?.map((element: any, index: any) => (
+                                <tr key={index}>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.Motor} {element?.data?.motor}
+                                    </td>
+                                    <td className="px-4 py-2">{element?.data?.hp}</td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.Cil}
+                                        {element?.data?.cil}
+                                    </td>
+                                    <td className="px-4 py-2">{element?.data?.start}</td>
+                                    <td className="px-4 py-2">{element?.data?.finish}</td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.oil && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.oil
+                                            }
+                                        >
+                                            {element?.data?.oil}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.air
+                                            }
+                                        >
+                                            {element?.data?.air}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.gas && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.gas
+                                            }
+                                        >
+                                            {element?.data?.gas}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">{element?.data?.cabine}</td>
+                                </tr>
+                            ))}
+                        </Table>
+                    )}
+                    {heavyDutyData?.length > 0 && (
+                        <Table props={tableHeavyDutyHeader}>
+                            {heavyDutyData?.map((element: any, index: any) => (
+                                <tr key={index}>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.Motor} {element?.data?.motor}
+                                    </td>
+                                    <td className="px-4 py-2">{element?.data?.hp}</td>
+                                    <td className="px-4 py-2">{element?.data?.cil}</td>
+                                    <td className="px-4 py-2">{element?.data?.start}</td>
+                                    <td className="px-4 py-2">{element?.data?.finish}</td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.oil && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.oil
+                                            }
+                                        >
+                                            {element?.data?.oil}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.primary_air && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.primary_air
+                                            }
+                                        >
+                                            {element?.data?.primary_air}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.secondary_air && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.secondary_air
+                                            }
+                                        >
+                                            {element?.data?.secondary_air}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.cabine && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.cabine
+                                            }
+                                        >
+                                            {element?.data?.cabine}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.primary_gas && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.primary_gas
+                                            }
+                                        >
+                                            {element?.data?.primary_gas}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.secondary_gas && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.secondary_gas
+                                            }
+                                        >
+                                            {element?.data?.secondary_gas}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.separator_gas && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.separator_gas
+                                            }
+                                        >
+                                            {element?.data?.separator_gas}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.hydraulic && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.hydraulic
+                                            }
+                                        >
+                                            {element?.data?.hydraulic}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.secante && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.secante
+                                            }
+                                        >
+                                            {element?.data?.secante}
+                                        </Link>
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.refrigerant && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.refrigerant
+                                            }
+                                        >
+                                            {element?.data?.refrigerant}
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
+                        </Table>
+                    )}
                 </div>
             </div>
         </section>

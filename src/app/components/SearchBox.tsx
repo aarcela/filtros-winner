@@ -22,10 +22,10 @@ export const CustomSearchBox = () => {
     return (
         <section className="w-80 sm:w-full pt-4">
             <InstantSearch searchClient={searchClient}>
-                <Configure hitsPerPage={5} />
+                <Configure hitsPerPage={3} />
                 <SearchBox placeholder="Búsqueda por código referencia o aplicación" />
                 <EmptyQueryBoundary fallback={null}>
-                    <div className="absolute">
+                    <div className="absolute overflow-y-auto h-3/4">
                         <Index indexName="filtro-winner">
                             <Hits hitComponent={Hit} />
                         </Index>

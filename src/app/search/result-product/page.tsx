@@ -42,12 +42,14 @@ export default function Page({ searchParams }: any) {
 
     const fetchData = async (id: any) => {
         const fetchData = await getElementsByProperty("product", "name", id);
-        setData(fetchData[0].data);
-        console.log("Product: ", data);
-        if (fetchData[0].data) {
-            await fetchVehicle(fetchData[0].data);
-            await fetchHeavyDuty(fetchData[0].data);
-        }
+        try {
+            setData(fetchData[0].data);
+            console.log("Product: ", data);
+            if (fetchData[0].data) {
+                await fetchVehicle(fetchData[0].data);
+                await fetchHeavyDuty(fetchData[0].data);
+            }
+        } catch {}
     };
 
     const fetchVehicle = async (productData: any) => {
@@ -161,14 +163,16 @@ export default function Page({ searchParams }: any) {
                 <h3 className="text-2xl sm:text-4xl font-bold">Tabla de aplicaciones</h3>
             </div>
             <div className="w-full overflow-x-auto">
-                <Table props={tableVehicleHeader}>
-                    {vehicleData.map((element: VehicleList, index: any) => (
-                        <TableRowVehicle key={index} props={element}></TableRowVehicle>
-                    ))}
-                </Table>
+                {heavyDutyData?.length > 0 && (
+                    <Table props={tableVehicleHeader}>
+                        {vehicleData.map((element: VehicleList, index: any) => (
+                            <TableRowVehicle key={index} props={element}></TableRowVehicle>
+                        ))}
+                    </Table>
+                )}
             </div>
             <div className="w-full">
-                {heavyDutyData.length > 0 && (
+                {heavyDutyData?.length > 0 && (
                     <Table props={tableHeavyDutyHeader}>
                         {vehicleData.map((element: HeavyDutyList, index: any) => (
                             <TableRowHeavyDuty key={index} props={element}></TableRowHeavyDuty>
