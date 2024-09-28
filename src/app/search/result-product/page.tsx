@@ -9,10 +9,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Page({ searchParams }: any) {
-    const tableVehicleHeader = ["Marca", "Modelo", "Motor", "HP", "Cil", "Start", "Finish"];
+    const tableVehicleHeader = ["Motor", "HP", "Cil", "Start", "Finish"];
     const tableHeavyDutyHeader = [
-        "Marca",
-        "Modelo",
         "Motor",
         "HP",
         "Cil",
