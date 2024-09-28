@@ -13,30 +13,49 @@ import {
     Index,
 } from "react-instantsearch";
 import { Hit } from "./Hit";
-import { useState } from "react";
 import { HitVehicle } from "./HitVehicle";
 import { HitReference } from "./HitReference";
+import { useRef } from "react";
+import ReactDOM from "react-dom";
 
 const searchClient = algoliasearch("9CMC95YXY9", "6b2c55fb4ddd322a18592ebff004c31a");
 export const CustomSearchBox = () => {
+    const emptyQueryStringOnClicked = () => {
+        console.log("clicked");
+        const inputElement = document.querySelector(
+            ".ais-SearchBox-reset"
+        ) as HTMLInputElement | null;
+        if (inputElement) {
+            inputElement.click();
+        }
+    };
     return (
         <section className="w-80 sm:w-full pt-4">
             <InstantSearch searchClient={searchClient}>
                 <Configure hitsPerPage={3} />
-                <SearchBox placeholder="Búsqueda por código referencia o aplicación" />
+                <SearchBox placeholder="Búsqueda por código, referencia o aplicación" />
                 <EmptyQueryBoundary fallback={null}>
                     <div className="absolute overflow-y-auto h-3/4">
                         <Index indexName="filtro-winner">
-                            <Hits hitComponent={Hit} />
+                            <Hits hitComponent={Hit} onClick={emptyQueryStringOnClicked} />
                         </Index>
                         <Index indexName="prod_VEHICLES">
-                            <Hits hitComponent={HitVehicle} />
+                            <Hits
+                                hitComponent={HitVehicle}
+                                onClick={emptyQueryStringOnClicked}
+                            />
                         </Index>
                         <Index indexName="prod_HEAVYDUTY">
-                            <Hits hitComponent={HitVehicle} />
+                            <Hits
+                                hitComponent={HitVehicle}
+                                onClick={emptyQueryStringOnClicked}
+                            />
                         </Index>
                         <Index indexName="prod_REFERENCES">
-                            <Hits hitComponent={HitReference} />
+                            <Hits
+                                hitComponent={HitReference}
+                                onClick={emptyQueryStringOnClicked}
+                            />
                         </Index>
                     </div>
                     {/* <Pagination /> */}

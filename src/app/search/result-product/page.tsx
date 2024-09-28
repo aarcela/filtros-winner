@@ -107,11 +107,11 @@ export default function Page({ searchParams }: any) {
                 <div className="flex flex-1 flex-col">
                     <h3 className="text-primary font-bold">Categoría: {data.category}</h3>
                     <h1 className="text-3xl sm:text-7xl font-bold">{data.name}</h1>
-                    <table className="table-auto w-full shadow-md mt-5 ">
+                    <table className="table-auto w-full mt-5 ">
                         <thead className="bg-primary">
                             <tr>
                                 <th className="p-2 bg-gray-800 text-white">
-                                    Expecificaciones Técnicas
+                                    Especificaciones Técnicas
                                 </th>
                                 <th className="p-2 bg-gray-800 text-white"></th>
                             </tr>

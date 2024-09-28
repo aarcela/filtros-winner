@@ -6,13 +6,7 @@ import { addElement, getAllElements } from "@/app/utils/firebaseConnections";
 import Table from "@/app/components/Table";
 
 function Page() {
-    const tableHeaderReference = [
-        "Código Winner",
-        "Código Referencia",
-        "Marca",
-        "Tipo",
-        "Acciones",
-    ];
+    const tableHeaderReference = ["Código Winner", "Código Referencia", "Marca", "Acciones"];
     const [data, setData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
@@ -58,7 +52,7 @@ function Page() {
     }
 
     return (
-        <section className="my-5 mx-5">
+        <section className="w-full my-5 mx-5">
             <h1 className="text-black font-semibold text-3xl mb-5">Referencias</h1>
             <Link href={"/products/add"}></Link>
             <Table props={tableHeaderReference}>

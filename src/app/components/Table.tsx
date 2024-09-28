@@ -7,7 +7,7 @@ export default function Table({
     props?: React.PropsWithChildren<any[]>;
 }) {
     return (
-        <table className="table-auto w-full shadow-md mt-5 border-separate border-spacing-0.5">
+        <table className="table-auto w-full  mt-5 border-separate border-spacing-0.5">
             <thead className="bg-primary">
                 <tr className="bg-gray-800 text-white">
                     {props?.map((element: any, index: any) => {

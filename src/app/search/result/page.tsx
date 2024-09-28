@@ -19,9 +19,6 @@ export default function Page({ searchParams }: any) {
         "Cabina",
     ];
     const tableHeavyDutyHeader = [
-        "Motor",
-        "HP",
-        "Cil",
         "Start",
         "Finish",
         "Aceite",
@@ -131,7 +128,17 @@ export default function Page({ searchParams }: any) {
                                             {element?.data?.gas}
                                         </Link>
                                     </td>
-                                    <td className="px-4 py-2">{element?.data?.cabine}</td>
+                                    <td className="px-4 py-2">
+                                        <Link
+                                            className="text-primary underline"
+                                            href={
+                                                "/search/result-product/?item=" +
+                                                element?.data?.cabine
+                                            }
+                                        >
+                                            {element?.data?.cabine}
+                                        </Link>
+                                    </td>
                                 </tr>
                             ))}
                         </Table>
@@ -140,11 +147,6 @@ export default function Page({ searchParams }: any) {
                         <Table props={tableHeavyDutyHeader}>
                             {heavyDutyData?.map((element: any, index: any) => (
                                 <tr key={index}>
-                                    <td className="px-4 py-2">
-                                        {element?.data?.Motor} {element?.data?.motor}
-                                    </td>
-                                    <td className="px-4 py-2">{element?.data?.hp}</td>
-                                    <td className="px-4 py-2">{element?.data?.cil}</td>
                                     <td className="px-4 py-2">{element?.data?.start}</td>
                                     <td className="px-4 py-2">{element?.data?.finish}</td>
                                     <td className="px-4 py-2">

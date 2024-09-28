@@ -8,12 +8,12 @@ function Page() {
     return (
         <>
             <ApplicationFilter />
-            <section className="flex flex-1 bg-search-bg bg-no-repeat bg-cover bg-center bg-black bg-opacity-70 w-full items-center bg-blend-darken sm:px-20 flex-col sm:flex-row">
+            <section className="flex flex-1 bg-search-bg bg-no-repeat bg-bottom bg-cover bg-black bg-opacity-70 w-full items-center bg-blend-darken sm:px-20 flex-col sm:flex-row">
                 <div>
                     <h1 className="text-white text-2xl sm:text-8xl font-bold mt-5 sm:mt-0">
                         ¡Somos poder de filtración!
                     </h1>
-                    <Link href={"/"} className="hidden sm:visible">
+                    <Link href="https://filtroswinner.com/" target="_blank">
                         <button className="bg-primary text-white p-4 mr-2 mb-2 font-bold">
                             Ir a nuestra web principal
                         </button>
