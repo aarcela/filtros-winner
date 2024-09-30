@@ -9,24 +9,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Page({ searchParams }: any) {
-    const tableVehicleHeader = ["Motor", "HP", "Cil", "Start", "Finish"];
-    const tableHeavyDutyHeader = [
-        "Motor",
-        "HP",
-        "Cil",
-        "Start",
-        "Finish",
-        "Aceite",
-        "Aire Primario",
-        "Aire Secundario",
-        "Cabina",
-        "Gas Primario",
-        "Gas Secundario",
-        "Gas Separador",
-        "Hidraulico",
-        "Secante",
-        "Refrigerante",
-    ];
+    const tableVehicleHeader = ["Marca", "Modelo", "Motor", "HP", "Cil", "Start", "Finish"];
+    const tableHeavyDutyHeader = ["Marca", "Modelo", "Motor", "HP", "Cil", "Start", "Finish"];
     const itemId = searchParams.item;
     const [data, setData] = useState<any>({} as any);
     const [vehicleData, setVehicleData] = useState<any>([] as any);

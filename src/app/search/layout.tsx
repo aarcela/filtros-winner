@@ -40,7 +40,7 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
                 </div>
             </nav>
             <div className="flex flex-1">{children}</div>
-            <nav className="bg-primary text-center flex items-center justify-between px-4 py-2 items-end">
+            <nav className="bg-primary text-center flex items-center justify-between px-4 py-2">
                 <h3 className="text-white ">Filtros Winner - Todos los derechos reservados</h3>
             </nav>
         </section>

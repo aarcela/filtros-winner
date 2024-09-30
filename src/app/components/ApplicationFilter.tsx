@@ -24,10 +24,10 @@ function ApplicationFilter() {
     };
 
     return (
-        <section className="w-full bg-gray h-auto pl-5 py-4 sm:pl-20">
+        <section className="w-full bg-gray h-auto pl-5 py-4 sm:pl-20 order-3 sm:order-2 flex flex-col">
             <h3 className="font-bold text-3xl mb-4">Búsqueda por aplicación</h3>
-            <div className="flex w-full">
-                <select className="mr-4 p-4 w-1/3">
+            <div className="flex w-full flex-col sm:flex-row gap-3 sm:gap-1">
+                <select className="mr-4 p-4 sm:w-1/3">
                     <option value="">Seleccione la marca</option>
                     <option onClick={(e) => handleFirstSelectVehicle(e)} value="ACURA">
                         ACURA
@@ -79,7 +79,7 @@ function ApplicationFilter() {
                     </option>
                 </select>
                 <select
-                    className="mr-4 p-4 w-1/3"
+                    className="mr-4 p-4 sm:w-1/3"
                     onChange={(e) => setSecondSelect(e.target.value)}
                 >
                     <option value="">Seleccione el modelo</option>
@@ -143,7 +143,7 @@ function ApplicationFilter() {
                     <option value="LS2638">LS2638</option>
                 </select>
                 <button
-                    className="bg-primary text-white p-4 mr-5 w-1/3"
+                    className="bg-primary text-white p-4 mr-5 sm:w-1/3"
                     onClick={() => searchApplication()}
                 >
                     Buscar Filtro

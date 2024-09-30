@@ -30,7 +30,7 @@ export const CustomSearchBox = () => {
         }
     };
     return (
-        <section className="w-80 sm:w-full pt-4">
+        <section className="w-90 sm:w-full pt-4 order-last sm:order-2">
             <InstantSearch searchClient={searchClient}>
                 <Configure hitsPerPage={3} />
                 <SearchBox placeholder="Búsqueda por código, referencia o aplicación" />
