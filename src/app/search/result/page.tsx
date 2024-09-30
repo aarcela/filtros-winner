@@ -148,7 +148,9 @@ export default function Page({ searchParams }: any) {
                         <Table props={tableHeavyDutyHeader}>
                             {heavyDutyData?.map((element: any, index: any) => (
                                 <tr key={index}>
-                                    <td className="px-4 py-2">{element?.data?.motor}</td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.motor} {element?.data?.Motor}
+                                    </td>
                                     <td className="px-4 py-2">{element?.data?.start}</td>
                                     <td className="px-4 py-2">{element?.data?.finish}</td>
                                     <td className="px-4 py-2">

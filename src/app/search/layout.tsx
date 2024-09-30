@@ -11,7 +11,7 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
                     <Image src="/assets/winner_logo.svg" alt="logo" width={277} height={53} />
                 </Link>
                 <CustomSearchBox />
-                <div className="flex gap-2">
+                <div className="flex gap-2 order-last">
                     {/* <Link href="https://www.instagram.com/winnerfiltros/"> */}
                     <Image
                         className="p-2 bg-white rounded-full"
