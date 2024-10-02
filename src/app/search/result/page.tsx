@@ -20,6 +20,8 @@ export default function Page({ searchParams }: any) {
     ];
     const tableHeavyDutyHeader = [
         "Motor",
+        "HP",
+        "Cil",
         "Start",
         "Finish",
         "Aceite",
@@ -150,6 +152,12 @@ export default function Page({ searchParams }: any) {
                                 <tr key={index}>
                                     <td className="px-4 py-2">
                                         {element?.data?.motor} {element?.data?.Motor}
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.hp} {element?.data?.HP}
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        {element?.data?.cil} {element?.data?.Cil}
                                     </td>
                                     <td className="px-4 py-2">{element?.data?.start}</td>
                                     <td className="px-4 py-2">{element?.data?.finish}</td>
