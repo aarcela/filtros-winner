@@ -102,6 +102,14 @@ export default function Page({ searchParams }: any) {
                                         </Link>
                                     </td>
                                     <td className="px-4 py-2">
+                                        {element?.data?.air && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
                                         <Link
                                             className="text-primary underline"
                                             href={
@@ -132,6 +140,14 @@ export default function Page({ searchParams }: any) {
                                         </Link>
                                     </td>
                                     <td className="px-4 py-2">
+                                        {element?.data?.cabine && (
+                                            <Image
+                                                src="/assets/test_filter.png"
+                                                width={93}
+                                                height={62}
+                                                alt="filter"
+                                            ></Image>
+                                        )}
                                         <Link
                                             className="text-primary underline"
                                             href={

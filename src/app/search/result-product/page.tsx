@@ -100,42 +100,42 @@ export default function Page({ searchParams }: any) {
                         </thead>
                         <tbody>
                             <tr className="p-4">
-                                {data?.["Anti-drain"] && (
-                                    <td>Anti-drain: {data?.["Anti-drain"]}</td>
+                                {data?.["anti-drain"] && (
+                                    <td>Anti-drain: {data?.["anti-drain"]}</td>
                                 )}
                                 {data?.["By Pass Valve"] && (
-                                    <td>By Pass Valve: {data?.["By Pass Valve"]}</td>
+                                    <td>By Pass Valve: {data?.["by_pass_valve"]}</td>
                                 )}
                             </tr>
                             <tr>
-                                {data?.["Drain"] && <td>Drain: {data?.["Drain"]}</td>}
-                                {data?.["GS-ID"] && <td>GS-ID: {data?.["GS-ID"]}</td>}
+                                {data?.["drain"] && <td>Drain: {data?.["drain"]}</td>}
+                                {data?.["gs-id"] && <td>GS-ID: {data?.["gs-id"]}</td>}
                             </tr>
                             <tr>
-                                {data?.["GS-OD"] && <td>GS-OD: {data?.["GS-OD"]}</td>}
-                                {data?.["H"] && <td>H: {data?.["H"]}</td>}
+                                {data?.["gs-od"] && <td>GS-OD: {data?.["gs-od"]}</td>}
+                                {data?.["h"] && <td>H: {data?.["h"]}</td>}
                             </tr>
                             <tr>
-                                {data?.["ID"] && <td>ID: {data?.["ID"]}</td>}
-                                {data?.["ID2"] && <td>ID2: {data?.["ID2"]}</td>}
+                                {data?.["id"] && <td>ID: {data?.["id"]}</td>}
+                                {data?.["id2"] && <td>ID2: {data?.["id2"]}</td>}
                             </tr>
                             <tr>
-                                {data?.["IN"] && <td>IN: {data?.["IN"]}</td>}
-                                {data?.["L"] && <td>L: {data?.["L"]}</td>}
+                                {data?.["in"] && <td>IN: {data?.["in"]}</td>}
+                                {data?.["l"] && <td>L: {data?.["l"]}</td>}
                             </tr>
                             <tr>
-                                {data?.["Li"] && <td>Li: {data?.["Li"]}</td>}
-                                {data?.["OD"] && <td>OD: {data?.["OD"]}</td>}
+                                {data?.["li"] && <td>Li: {data?.["li"]}</td>}
+                                {data?.["od"] && <td>OD: {data?.["od"]}</td>}
                             </tr>
                             <tr>
-                                {data?.["OUT"] && <td>OUT: {data?.["OUT"]}</td>}
-                                {data?.["TH"] && <td>TH: {data?.["TH"]}</td>}
+                                {data?.["out"] && <td>OUT: {data?.["out"]}</td>}
+                                {data?.["th"] && <td>TH: {data?.["th"]}</td>}
                             </tr>
                             <tr>
-                                {data?.["W"] && <td>W: {data?.["W"]}</td>}
-                                {data?.["We"] && <td>We: {data?.["We"]}</td>}
+                                {data?.["w"] && <td>W: {data?.["w"]}</td>}
+                                {data?.["we"] && <td>We: {data?.["we"]}</td>}
                             </tr>
-                            <tr>{data?.["Wi"] && <td>Wi: {data?.["Wi"]}</td>}</tr>
+                            <tr>{data?.["wi"] && <td>Wi: {data?.["wi"]}</td>}</tr>
                         </tbody>
                     </table>
                 </div>

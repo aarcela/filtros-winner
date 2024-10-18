@@ -36,10 +36,10 @@ export const CustomSearchBox = () => {
                 <SearchBox placeholder="Búsqueda por código, referencia o aplicación" />
                 <EmptyQueryBoundary fallback={null}>
                     <div className="absolute overflow-y-auto h-3/4">
-                        <Index indexName="filtro-winner">
+                        <Index indexName="prod_PRODUCT">
                             <Hits hitComponent={Hit} onClick={emptyQueryStringOnClicked} />
                         </Index>
-                        <Index indexName="prod_VEHICLES">
+                        <Index indexName="prod_VEHICLE">
                             <Hits
                                 hitComponent={HitVehicle}
                                 onClick={emptyQueryStringOnClicked}
@@ -51,7 +51,7 @@ export const CustomSearchBox = () => {
                                 onClick={emptyQueryStringOnClicked}
                             />
                         </Index>
-                        <Index indexName="prod_REFERENCES">
+                        <Index indexName="prod_REFERENCE">
                             <Hits
                                 hitComponent={HitReference}
                                 onClick={emptyQueryStringOnClicked}
