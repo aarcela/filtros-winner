@@ -78,7 +78,7 @@ export default function Page({ searchParams }: any) {
     };
 
     return (
-        <section className="w-full p-5 sm:p-16">
+        <section className="w-full p-5 sm:p-16 bg-white">
             <div className="flex flex-col justify-evenly gap-10 mt-10 sm:flex-row">
                 <Image
                     src={"/assets/test_filter.png"}

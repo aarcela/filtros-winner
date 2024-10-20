@@ -95,7 +95,7 @@ function Page() {
     }
 
     return (
-        <section className="my-5 mx-5 overflow-x-auto">
+        <section className="my-5 mx-5 overflow-x-auto bg-white h-full">
             <h1 className="text-black font-semibold text-3xl mb-5">Heavy Duty</h1>
             {/* <Link href={"/main/heavy-duty/detail"}>
                 <button className="bg-primary text-white p-4 mr-2 mb-2">Agregar</button>

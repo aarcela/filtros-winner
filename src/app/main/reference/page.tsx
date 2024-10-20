@@ -52,7 +52,7 @@ function Page() {
     }
 
     return (
-        <section className="w-full my-5 mx-5">
+        <section className="w-full my-5 mx-5 bg-white h-full">
             <h1 className="text-black font-semibold text-3xl mb-5">Referencias</h1>
             <Link href={"/products/add"}></Link>
             <Table props={tableHeaderReference}>

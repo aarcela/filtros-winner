@@ -60,14 +60,14 @@ export default function Page({ searchParams }: any) {
     };
 
     return (
-        <section className="overflow-x-auto w-full">
+        <section className="overflow-x-auto w-full bg-white">
             <ApplicationFilter />
-            <div className="m-10">
+            <div className="m-10 bg-white">
                 <h3>
                     Resultados para: {brand} - {id}
                 </h3>
                 <h2 className="font-bold text-xl">{vehicleData?.model}</h2>
-                <div className="w-full overflow-x-auto">
+                <div className="w-full overflow-x-auto bg-white">
                     {vehicleData?.length > 0 && (
                         <Table props={tableVehicleHeader}>
                             {vehicleData?.map((element: any, index: any) => (

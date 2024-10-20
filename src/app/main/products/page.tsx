@@ -29,7 +29,7 @@ function Page() {
     }
 
     return (
-        <section className="mx-5 mt-5">
+        <section className="mx-5 mt-5 bg-white h-full">
             <h1 className="text-black font-semibold text-3xl mb-5">Productos</h1>
             <Link href={"/main/products/detail"}>
                 <button className="bg-primary text-white p-4 mr-2 mb-2">

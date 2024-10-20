@@ -4,7 +4,6 @@ import { addProduct } from "@/app/utils/product";
 import { Product } from "@/models/product";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useStats } from "react-instantsearch";
 
 function Page() {
     const [newName, setNewname] = useState("");
@@ -77,7 +76,7 @@ function Page() {
     }
 
     return (
-        <section className="my-5 mx-5 h-full">
+        <section className="my-5 mx-5 h-screen bg-white w-full">
             <h1 className="text-black font-semibold text-3xl my-5">Agregar nuevo producto</h1>
             <input
                 onChange={(e) => setNewname(e.target.value)}
@@ -265,16 +264,6 @@ function Page() {
                     </div>
                 )}
 
-                <div className="w-1/2 mb-1">
-                    <div className="flex">
-                        <span className="w-1/3">Altura</span>
-                        <input
-                            onChange={(e) => setHeight(e.target.value)}
-                            type="text"
-                            className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                        />
-                    </div>
-                </div>
                 {newCategory ===
                     ("Filtro Refrigerante Spin On" ||
                         "Filtro Hidraulico Spin On" ||
@@ -358,6 +347,7 @@ function Page() {
                 )}
             </div>
 
+            <h1 className="text-gray font-semibold text-2xl mb-5">Imágenes</h1>
             <div className="w-full">
                 <button
                     className="bg-primary text-white p-4 my-2 float-end"
