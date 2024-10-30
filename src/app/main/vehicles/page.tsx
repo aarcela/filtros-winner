@@ -19,7 +19,7 @@ function Page() {
         "Fin",
         "Aceite",
         "Aire",
-        "Gas",
+        "Combustible",
         "Cabina",
         "Acción",
     ];

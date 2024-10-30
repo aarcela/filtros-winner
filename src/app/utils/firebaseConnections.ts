@@ -38,7 +38,8 @@ export const updateElement = async (collectionName: string, id: string, updatedP
         const productRef = doc(firestore, collectionName, id);
         await updateDoc(productRef, updatedProduct);
         return { status: true, doc: id };
-    } catch {
+    } catch (error) {
+        console.error("Error updating document: ", error);
         return { status: false, doc: id };
     }
 };
@@ -70,9 +71,28 @@ export const getElementsByProperty = async (
     return querySnapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
 };
 
+export const getExactElementByProperty = async (
+    collectionName: string,
+    property: string,
+    searchTerm: string
+) => {
+    const q = query(collection(firestore, collectionName), where(property, "==", searchTerm));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+        console.log("No documents found matching the query.");
+        return [];
+    }
+    return querySnapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
+};
+
 export const addImages = async (image: any, imageName: string) => {
-    const storageRef = ref(storage, `products/${new Date().getTime()}-${imageName}`);
-    await uploadBytesResumable(storageRef, image);
-    const imageUrl = await getDownloadURL(storageRef);
-    return imageUrl;
+    try {
+        const storageRef = ref(storage, `products/${new Date().getTime()}-${imageName}`);
+        await uploadBytesResumable(storageRef, image);
+        const imageUrl = await getDownloadURL(storageRef);
+        return imageUrl;
+    } catch {
+        console.log("Error upload images");
+    }
 };

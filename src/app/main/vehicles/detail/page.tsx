@@ -58,70 +58,70 @@ function Page() {
   }
 
   return (
-    <section className="my-10 mx-5 overflow-x-auto">
-      <h1 className="text-black font-semibold text-xl mb-10">Editar vehículo</h1>
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewBrand(e.target.value)}
-        placeholder="Nuevo Brand"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewModel(e.target.value)}
-        placeholder="Nuevo model"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewMotor(e.target.value)}
-        placeholder="Nuevo model"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewHp(e.target.value)}
-        placeholder="Nuevo HP"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewCil(e.target.value)}
-        placeholder="Nuevo Cil"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewStart(e.target.value)}
-        placeholder="Nuevo Start"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewFinish(e.target.value)}
-        placeholder="Nuevo Finish"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewOil(e.target.value)}
-        placeholder="Nuevo Oil"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewAir(e.target.value)}
-        placeholder="Nuevo Air"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewCabine(e.target.value)}
-        placeholder="Nuevo Cabine"
-      />
-      <input
-        className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-        onChange={(e) => setNewGas(e.target.value)}
-        placeholder="Nuevo Gas"
-      />
-      <button className="bg-primary text-white p-4 mr-2" onClick={addNewVehicle}>
-        Guardar
-      </button>
-      <Link href={"/main/vehicles"}>
-        <button className="bg-gray text-white p-4">Atrás</button>
-      </Link>
-    </section>
+      <section className="my-10 mx-5 overflow-x-auto">
+          <h1 className="text-black font-semibold text-xl mb-10">Editar vehículo</h1>
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewBrand(e.target.value)}
+              placeholder="Nuevo Brand"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewModel(e.target.value)}
+              placeholder="Nuevo model"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewMotor(e.target.value)}
+              placeholder="Nuevo model"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewHp(e.target.value)}
+              placeholder="Nuevo HP"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewCil(e.target.value)}
+              placeholder="Nuevo Cil"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewStart(e.target.value)}
+              placeholder="Nuevo Start"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewFinish(e.target.value)}
+              placeholder="Nuevo Finish"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewOil(e.target.value)}
+              placeholder="Nuevo Oil"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewAir(e.target.value)}
+              placeholder="Nuevo Air"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewCabine(e.target.value)}
+              placeholder="Nuevo Cabine"
+          />
+          <input
+              className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
+              onChange={(e) => setNewGas(e.target.value)}
+              placeholder="Nuevo Combustible"
+          />
+          <button className="bg-primary text-white p-4 mr-2" onClick={addNewVehicle}>
+              Guardar
+          </button>
+          <Link href={"/main/vehicles"}>
+              <button className="bg-gray text-white p-4">Atrás</button>
+          </Link>
+      </section>
   );
 }
 

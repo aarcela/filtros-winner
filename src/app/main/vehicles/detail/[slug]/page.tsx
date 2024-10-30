@@ -160,7 +160,7 @@ function Page({ params }: { params: { slug: string } }) {
               value={newGas}
               onChange={(e) => setNewGas(e.target.value)}
               className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
-              placeholder="Gas"
+              placeholder="Combustible"
           />
           {/* <span className="text-black">Producto: {productName}</span>
       <input

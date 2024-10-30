@@ -91,7 +91,7 @@ function Page() {
           <input
               className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"
               onChange={(e) => setNewPrimaryGas(e.target.value)}
-              placeholder="Nuevo Gas 1"
+              placeholder="Nuevo Combustible"
           />
           <input
               className="w-full bg-gray text-gray-700 border-none  px-4 py-2 my-2 h-10 focus:outline-none"

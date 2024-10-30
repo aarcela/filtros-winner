@@ -12,7 +12,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                     <Image src="/assets/winner_logo.svg" alt="logo" width={198} height={38} />
                 </Link>
                 <CustomSearchBox />
-                <ul className="flex gap-3">
+                <ul className="flex gap-3 order-3">
                     <li>
                         <Link href="/main/products">
                             <span className="text-white hover:underline">Productos</span>
@@ -34,7 +34,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                         </Link>
                     </li>
                 </ul>
-                <button className="bg-blue-500 text-primary px-4 py-2 bg-gray hover:bg-blue-700 focus:outline-none">
+                <button className="bg-blue-500 text-primary px-4 py-2 bg-gray hover:bg-blue-700 focus:outline-none order-4">
                     Salir
                 </button>
             </nav>

@@ -1,7 +1,11 @@
 "use client";
 import ApplicationFilter from "@/app/components/ApplicationFilter";
 import Table from "@/app/components/Table";
-import { getElementById, getElementsByProperty } from "@/app/utils/firebaseConnections";
+import {
+    getElementById,
+    getElementsByProperty,
+    getExactElementByProperty,
+} from "@/app/utils/firebaseConnections";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -15,7 +19,7 @@ export default function Page({ searchParams }: any) {
         "Finish",
         "Aceite",
         "Aire",
-        "Gas",
+        "Combustible",
         "Cabina",
     ];
     const tableHeavyDutyHeader = [
@@ -28,9 +32,9 @@ export default function Page({ searchParams }: any) {
         "Aire Primario",
         "Aire Secundario",
         "Cabina",
-        "Gas Primario",
-        "Gas Secundario",
-        "Gas Separador",
+        "Combustible Primario",
+        "Combustible Secundario",
+        "Combustible Separador",
         "Hidraulico",
         "Secante",
         "Refrigerante",
@@ -43,19 +47,105 @@ export default function Page({ searchParams }: any) {
     useEffect(() => {
         fetchVehicle();
         fetchHeavyDuty();
-    }, [id, vehicleData]);
+    });
 
     const fetchVehicle = async () => {
-        // const data = await getElementById("vehicle", id);
         getElementsByProperty("vehicle", "model", id.trim()).then((data) => {
+            data.forEach((element) => {
+                getExactElementByProperty("product", "name", element.data.oil).then(
+                    (productData: any) => {
+                        if (
+                            productData &&
+                            productData.length > 0 &&
+                            productData[0]?.data.images
+                        ) {
+                            element.data.oilImage = productData[0].data.images[0];
+                        }
+                    }
+                );
+                getExactElementByProperty("product", "name", element.data.air).then(
+                    (productData: any) => {
+                        if (
+                            productData &&
+                            productData.length > 0 &&
+                            productData[0]?.data.images
+                        ) {
+                            element.data.airImage = productData[0].data.images[0];
+                        }
+                    }
+                );
+                getExactElementByProperty("product", "name", element.data.gas).then(
+                    (productData: any) => {
+                        if (
+                            productData &&
+                            productData.length > 0 &&
+                            productData[0]?.data.images
+                        ) {
+                            element.data.gasImage = productData[0].data.images[0];
+                        }
+                    }
+                );
+                getExactElementByProperty("product", "name", element.data.cabine).then(
+                    (productData: any) => {
+                        if (
+                            productData &&
+                            productData.length > 0 &&
+                            productData[0]?.data.images
+                        ) {
+                            element.data.cabineImage = productData[0].data.images[0];
+                        }
+                    }
+                );
+            });
             setVehicleData(data);
         });
     };
 
     const fetchHeavyDuty = async () => {
-        // const data = await getElementById("heavy-duty", id);
         getElementsByProperty("heavy-duty", "model", id.trim()).then((data) => {
+            data.forEach((element) => {
+                getElementsByProperty("product", "name", element.data.oil).then(
+                    (productData: any) => {
+                        console.log(productData);
+                        element.data.oilImage = productData.data.images;
+                    }
+                );
+                getExactElementByProperty("product", "name", element.data.air).then(
+                    (productData: any) => {
+                        if (
+                            productData &&
+                            productData.length > 0 &&
+                            productData[0]?.data.images
+                        ) {
+                            element.data.airImage = productData[0].data.images[0];
+                        }
+                    }
+                );
+                getExactElementByProperty("product", "name", element.data.gas).then(
+                    (productData: any) => {
+                        if (
+                            productData &&
+                            productData.length > 0 &&
+                            productData[0]?.data.images
+                        ) {
+                            element.data.gasImage = productData[0].data.images[0];
+                        }
+                    }
+                );
+                getExactElementByProperty("product", "name", element.data.cabine).then(
+                    (productData: any) => {
+                        if (
+                            productData &&
+                            productData.length > 0 &&
+                            productData[0]?.data.images
+                        ) {
+                            element.data.cabineImage = productData[0].data.images[0];
+                        }
+                    }
+                );
+            });
             setheavyDutyData(data);
+            console.log(data);
         });
     };
 
@@ -85,7 +175,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.oil && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.oilImage !== undefined
+                                                        ? element?.data?.oilImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -104,7 +198,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.air && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.airImage !== undefined
+                                                        ? element?.data?.airImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -123,7 +221,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.gas && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.gasImage !== undefined
+                                                        ? element?.data?.gasImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -142,7 +244,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.cabine && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.cabineImage !== undefined
+                                                        ? element?.data?.cabineImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -180,7 +286,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.oil && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.oilImage !== undefined
+                                                        ? element?.data?.oilImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -199,7 +309,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.primary_air && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.airImage !== undefined
+                                                        ? element?.data?.airImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -218,7 +332,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.secondary_air && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.airImage !== undefined
+                                                        ? element?.data?.airImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -237,7 +355,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.cabine && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.cabineImage !== undefined
+                                                        ? element?.data?.cabineImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -256,7 +378,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.primary_gas && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.gasImage !== undefined
+                                                        ? element?.data?.gasImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -275,7 +401,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.secondary_gas && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.gasImage !== undefined
+                                                        ? element?.data?.gasImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -294,7 +424,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.separator_gas && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.gasImage !== undefined
+                                                        ? element?.data?.gasImage
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -313,7 +447,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.hydraulic && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.images !== undefined
+                                                        ? element?.data?.images[0]
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -332,7 +470,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.secante && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.images !== undefined
+                                                        ? element?.data?.images[0]
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"
@@ -351,7 +493,11 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         {element?.data?.refrigerant && (
                                             <Image
-                                                src="/assets/test_filter.png"
+                                                src={
+                                                    element?.data?.images !== undefined
+                                                        ? element?.data?.images[0]
+                                                        : "/assets/test_filter.png"
+                                                }
                                                 width={93}
                                                 height={62}
                                                 alt="filter"

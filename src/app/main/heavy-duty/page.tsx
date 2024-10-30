@@ -17,7 +17,7 @@ function Page() {
         "Fin",
         "Aceite",
         "Aire",
-        "Gas",
+        "Combustible",
 
         "Hidraulico",
         "Secante",

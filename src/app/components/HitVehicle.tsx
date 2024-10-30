@@ -8,7 +8,7 @@ export const HitVehicle = ({ hit }: any) => {
 
     function handleHitClick(item: any) {
         console.log(item);
-        router.push(`/search/result/?id=${item.model}`);
+        router.push(`/search/result/?id=${item.model}&brand=${item.brand}`);
     }
     return (
         <div onClick={() => handleHitClick(hit)}>

@@ -20,7 +20,7 @@ export default function Page({ searchParams }: any) {
         if (itemId) {
             fetchData(itemId);
         }
-    });
+    }, []);
 
     const fetchData = async (id: any) => {
         const fetchData = await getElementsByProperty("product", "name", id);
@@ -81,64 +81,65 @@ export default function Page({ searchParams }: any) {
         <section className="w-full p-5 sm:p-16 bg-white">
             <div className="flex flex-col justify-evenly gap-10 mt-10 sm:flex-row">
                 <Image
-                    src={"/assets/test_filter.png"}
+                    src={
+                        data?.images !== undefined ? data?.images[0] : "/assets/test_filter.png"
+                    }
                     width={537}
                     height={340}
                     alt="filter-winner"
                 />
-                <div className="flex flex-1 flex-col">
+                <div className="flex flex-col w-96">
                     <h3 className="text-primary font-bold">Categoría: {data.category}</h3>
                     <h1 className="text-3xl sm:text-7xl font-bold">{data.name}</h1>
-                    <table className="table-auto w-full mt-5 ">
+                    <table className="table-auto mt-5 ">
                         <thead className="bg-primary">
                             <tr>
                                 <th className="p-2 bg-gray-800 text-white">
                                     Especificaciones Técnicas
                                 </th>
-                                <th className="p-2 bg-gray-800 text-white"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="p-4">
+                            <tr>
                                 {data?.["anti-drain"] && (
                                     <td>Anti-drain: {data?.["anti-drain"]}</td>
                                 )}
+                            </tr>
+                            <tr>
                                 {data?.["By Pass Valve"] && (
                                     <td>By Pass Valve: {data?.["by_pass_valve"]}</td>
                                 )}
                             </tr>
-                            <tr>
-                                {data?.["drain"] && <td>Drain: {data?.["drain"]}</td>}
-                                {data?.["gs-id"] && <td>GS-ID: {data?.["gs-id"]}</td>}
-                            </tr>
-                            <tr>
-                                {data?.["gs-od"] && <td>GS-OD: {data?.["gs-od"]}</td>}
-                                {data?.["h"] && <td>H: {data?.["h"]}</td>}
-                            </tr>
-                            <tr>
-                                {data?.["id"] && <td>ID: {data?.["id"]}</td>}
-                                {data?.["id2"] && <td>ID2: {data?.["id2"]}</td>}
-                            </tr>
-                            <tr>
-                                {data?.["in"] && <td>IN: {data?.["in"]}</td>}
-                                {data?.["l"] && <td>L: {data?.["l"]}</td>}
-                            </tr>
-                            <tr>
-                                {data?.["li"] && <td>Li: {data?.["li"]}</td>}
-                                {data?.["od"] && <td>OD: {data?.["od"]}</td>}
-                            </tr>
-                            <tr>
-                                {data?.["out"] && <td>OUT: {data?.["out"]}</td>}
-                                {data?.["th"] && <td>TH: {data?.["th"]}</td>}
-                            </tr>
-                            <tr>
-                                {data?.["w"] && <td>W: {data?.["w"]}</td>}
-                                {data?.["we"] && <td>We: {data?.["we"]}</td>}
-                            </tr>
+                            <tr>{data?.["drain"] && <td>Drain: {data?.["drain"]}</td>}</tr>
+                            <tr>{data?.["gs-id"] && <td>GS-ID: {data?.["gs-id"]}</td>}</tr>
+                            <tr>{data?.["gs-od"] && <td>GS-OD: {data?.["gs-od"]}</td>}</tr>
+                            <tr>{data?.["h"] && <td>H: {data?.["h"]}</td>}</tr>
+                            <tr>{data?.["id"] && <td>ID: {data?.["id"]}</td>}</tr>
+                            <tr>{data?.["id2"] && <td>ID2: {data?.["id2"]}</td>}</tr>
+                            <tr>{data?.["in"] && <td>IN: {data?.["in"]}</td>}</tr>
+                            <tr>{data?.["l"] && <td>L: {data?.["l"]}</td>}</tr>
+                            <tr>{data?.["li"] && <td>Li: {data?.["li"]}</td>}</tr>
+                            <tr>{data?.["od"] && <td>OD: {data?.["od"]}</td>}</tr>
+                            <tr>{data?.["out"] && <td>OUT: {data?.["out"]}</td>}</tr>
+                            <tr>{data?.["th"] && <td>TH: {data?.["th"]}</td>}</tr>
+                            <tr>{data?.["w"] && <td>W: {data?.["w"]}</td>}</tr>
+                            <tr>{data?.["we"] && <td>We: {data?.["we"]}</td>}</tr>
                             <tr>{data?.["wi"] && <td>Wi: {data?.["wi"]}</td>}</tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div className="flex w-100 h-auto gap-1 mt-2">
+                {data.images !== undefined &&
+                    data?.images.map((img: any, index: any) => (
+                        <Image
+                            key={index}
+                            src={img}
+                            alt="preview"
+                            width="100"
+                            height="100"
+                        ></Image>
+                    ))}
             </div>
             <div className="w-full mt-10">
                 <h3 className="text-2xl sm:text-4xl font-bold">Tabla de aplicaciones</h3>
