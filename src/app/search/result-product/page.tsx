@@ -20,7 +20,7 @@ export default function Page({ searchParams }: any) {
         if (itemId) {
             fetchData(itemId);
         }
-    }, []);
+    }, [itemId]);
 
     const fetchData = async (id: any) => {
         const fetchData = await getElementsByProperty("product", "name", id);

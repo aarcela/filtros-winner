@@ -21,66 +21,71 @@ function HomePage() {
                             />
                         </Link>
                         <div className="flex gap-2 sm:hidden w-1/3 mr-10">
-                            {/* <Link href="https://www.instagram.com/winnerfiltros/" target="_blank"> */}
-                            <Image
-                                className="p-2 bg-white rounded-full"
-                                src="/assets/icons/instagram.svg"
-                                height={32}
-                                width={32}
-                                alt=""
-                            />
-                            {/* </Link>
-                        <Link
-                            href="https://www.facebook.com/p/Winner-Filtros-100031039042106/"
-                            target="_blank"
-                        > */}
-                            <Image
-                                className="p-2 bg-white rounded-full"
-                                src="/assets/icons/facebook.svg"
-                                height={32}
-                                width={32}
-                                alt=""
-                            />
-                            {/* </Link> */}
+                            <Link
+                                href="https://www.instagram.com/winnerfiltros/"
+                                target="_blank"
+                            >
+                                <Image
+                                    className="p-2 bg-white rounded-full"
+                                    src="/assets/icons/instagram.svg"
+                                    height={55}
+                                    width={55}
+                                    alt=""
+                                />
+                            </Link>
+                            <Link
+                                href="https://www.facebook.com/p/Winner-Filtros-100031039042106/"
+                                target="_blank"
+                            >
+                                <Image
+                                    className="p-2 bg-white rounded-full"
+                                    src="/assets/icons/facebook.svg"
+                                    height={55}
+                                    width={55}
+                                    alt=""
+                                />
+                            </Link>
                             <Image
                                 className="p-2 bg-white rounded-full"
                                 src="/assets/icons/whatsapp.svg"
-                                height={32}
-                                width={32}
+                                height={55}
+                                width={55}
                                 alt=""
                             />
                         </div>
                     </div>
                     <CustomSearchBox />
                     <div className=" gap-2 hidden sm:order-3 sm:flex sm:visible">
-                        {/* <Link href="https://www.instagram.com/winnerfiltros/" target="_blank"> */}
-                        <Image
-                            className="p-2 bg-white rounded-full"
-                            src="/assets/icons/instagram.svg"
-                            height={32}
-                            width={32}
-                            alt=""
-                        />
-                        {/* </Link>
+                        <Link href="https://www.instagram.com/winnerfiltros/" target="_blank">
+                            <Image
+                                className="p-2 bg-white rounded-full"
+                                src="/assets/icons/instagram.svg"
+                                height={55}
+                                width={55}
+                                alt=""
+                            />
+                        </Link>
                         <Link
                             href="https://www.facebook.com/p/Winner-Filtros-100031039042106/"
                             target="_blank"
-                        > */}
-                        <Image
-                            className="p-2 bg-white rounded-full"
-                            src="/assets/icons/facebook.svg"
-                            height={32}
-                            width={32}
-                            alt=""
-                        />
-                        {/* </Link> */}
-                        <Image
-                            className="p-2 bg-white rounded-full"
-                            src="/assets/icons/whatsapp.svg"
-                            height={32}
-                            width={32}
-                            alt=""
-                        />
+                        >
+                            <Image
+                                className="p-2 bg-white rounded-full"
+                                src="/assets/icons/facebook.svg"
+                                height={55}
+                                width={55}
+                                alt=""
+                            />
+                        </Link>
+                        <Link href="" target="_blank">
+                            <Image
+                                className="p-2 bg-white rounded-full"
+                                src="/assets/icons/whatsapp.svg"
+                                height={55}
+                                width={55}
+                                alt=""
+                            />
+                        </Link>
                     </div>
                 </nav>
                 <Page />

@@ -47,107 +47,59 @@ export default function Page({ searchParams }: any) {
     useEffect(() => {
         fetchVehicle();
         fetchHeavyDuty();
-    });
+    }, [id]);
 
     const fetchVehicle = async () => {
-        getElementsByProperty("vehicle", "model", id.trim()).then((data) => {
-            data.forEach((element) => {
-                getExactElementByProperty("product", "name", element.data.oil).then(
-                    (productData: any) => {
-                        if (
-                            productData &&
-                            productData.length > 0 &&
-                            productData[0]?.data.images
-                        ) {
-                            element.data.oilImage = productData[0].data.images[0];
-                        }
+        try {
+            const data = await getElementsByProperty("vehicle", "model", id.trim());
+            const promises = data.map(async (element) => {
+                const products = ["oil", "air", "gas", "cabine"];
+                const imagePromises = products.map(async (product) => {
+                    const productData = await getExactElementByProperty(
+                        "product",
+                        "name",
+                        element.data[product]
+                    );
+                    if (productData && productData.length > 0 && productData[0]?.data.images) {
+                        element.data[`${product}Image`] = productData[0].data.images[0];
                     }
-                );
-                getExactElementByProperty("product", "name", element.data.air).then(
-                    (productData: any) => {
-                        if (
-                            productData &&
-                            productData.length > 0 &&
-                            productData[0]?.data.images
-                        ) {
-                            element.data.airImage = productData[0].data.images[0];
-                        }
-                    }
-                );
-                getExactElementByProperty("product", "name", element.data.gas).then(
-                    (productData: any) => {
-                        if (
-                            productData &&
-                            productData.length > 0 &&
-                            productData[0]?.data.images
-                        ) {
-                            element.data.gasImage = productData[0].data.images[0];
-                        }
-                    }
-                );
-                getExactElementByProperty("product", "name", element.data.cabine).then(
-                    (productData: any) => {
-                        if (
-                            productData &&
-                            productData.length > 0 &&
-                            productData[0]?.data.images
-                        ) {
-                            element.data.cabineImage = productData[0].data.images[0];
-                        }
-                    }
-                );
+                });
+                await Promise.all(imagePromises);
             });
-            setVehicleData(data);
-        });
+
+            await Promise.all(promises); // Wait for all elements to finish fetching images
+            setVehicleData(data); // Finally update the state with the fetched data
+        } catch (error) {
+            console.error("Error fetching vehicle data:", error);
+        }
     };
 
     const fetchHeavyDuty = async () => {
-        getElementsByProperty("heavy-duty", "model", id.trim()).then((data) => {
-            data.forEach((element) => {
-                getElementsByProperty("product", "name", element.data.oil).then(
-                    (productData: any) => {
-                        console.log(productData);
-                        element.data.oilImage = productData.data.images;
+        try {
+            const data = await getElementsByProperty("heavy-duty", "model", id.trim());
+            const promises = data.map(async (element) => {
+                const products = ["oil", "air", "gas", "cabine"];
+                const imagePromises = products.map(async (product) => {
+                    const productData = await getExactElementByProperty(
+                        "product",
+                        "name",
+                        element.data[product]
+                    );
+                    if (productData && productData.length > 0 && productData[0]?.data.images) {
+                        element.data[`${product}Image`] = productData[0].data.images[0];
                     }
-                );
-                getExactElementByProperty("product", "name", element.data.air).then(
-                    (productData: any) => {
-                        if (
-                            productData &&
-                            productData.length > 0 &&
-                            productData[0]?.data.images
-                        ) {
-                            element.data.airImage = productData[0].data.images[0];
-                        }
-                    }
-                );
-                getExactElementByProperty("product", "name", element.data.gas).then(
-                    (productData: any) => {
-                        if (
-                            productData &&
-                            productData.length > 0 &&
-                            productData[0]?.data.images
-                        ) {
-                            element.data.gasImage = productData[0].data.images[0];
-                        }
-                    }
-                );
-                getExactElementByProperty("product", "name", element.data.cabine).then(
-                    (productData: any) => {
-                        if (
-                            productData &&
-                            productData.length > 0 &&
-                            productData[0]?.data.images
-                        ) {
-                            element.data.cabineImage = productData[0].data.images[0];
-                        }
-                    }
-                );
+                });
+                await Promise.all(imagePromises);
             });
-            setheavyDutyData(data);
+
+            await Promise.all(promises); // Wait for all elements to finish fetching images
+            setheavyDutyData(data); // Finally update the state with the fetched data
             console.log(data);
-        });
+        } catch (error) {
+            console.error("Error fetching heavy-duty data:", error);
+        }
     };
+
 
     return (
         <section className="overflow-x-auto w-full bg-white">
