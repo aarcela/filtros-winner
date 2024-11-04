@@ -77,8 +77,16 @@ export default function Page({ searchParams }: any) {
     const fetchHeavyDuty = async () => {
         try {
             const data = await getElementsByProperty("heavy-duty", "model", id.trim());
+            console.log("HD: ", data);
             const promises = data.map(async (element) => {
-                const products = ["oil", "air", "gas", "cabine"];
+                const products = [
+                    "oil",
+                    "primary_air",
+                    "primary_fuel",
+                    "refrigerant",
+                    "secondary_air",
+                    "separator_gas",
+                ];
                 const imagePromises = products.map(async (product) => {
                     const productData = await getExactElementByProperty(
                         "product",
@@ -92,7 +100,7 @@ export default function Page({ searchParams }: any) {
                 await Promise.all(imagePromises);
             });
 
-            await Promise.all(promises); // Wait for all elements to finish fetching images
+            await Promise.all(promises);
             setheavyDutyData(data); // Finally update the state with the fetched data
             console.log(data);
         } catch (error) {
