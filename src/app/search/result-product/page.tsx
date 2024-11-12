@@ -5,6 +5,7 @@ import TableRowVehicle from "@/app/components/TableRowVehicle";
 import { getElementsByProperty } from "@/app/utils/firebaseConnections";
 import { HeavyDutyList } from "@/models/heavy-duty";
 import { VehicleList } from "@/models/vehicle";
+import { debug } from "console";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -35,7 +36,7 @@ export default function Page({ searchParams }: any) {
 
     const fetchVehicle = async (productData: any) => {
         let productColumn = "";
-        if (productData.category.includes("Air")) {
+        if (productData.category.includes("Aire")) {
             productColumn = "air";
         } else if (productData.category.includes("Aceite")) {
             productColumn = "oil";
@@ -51,18 +52,27 @@ export default function Page({ searchParams }: any) {
             return;
         }
         getElementsByProperty("vehicle", productColumn, productData.name).then((data) => {
-            setVehicleData(data);
+            const sortedVehicle = data.sort((a: any, b: any) => {
+                if (a.data.brand < b.data.brand) {
+                    return -1;
+                }
+                if (a.data.brand > b.data.brand) {
+                    return 1;
+                }
+                return 0;
+            });
+            setVehicleData(sortedVehicle);
         });
     };
 
     const fetchHeavyDuty = async (productData: any) => {
         let productColumn = "";
-        if (productData.category.includes("Air")) {
-            productColumn = "air";
+        if (productData.category.includes("Aire")) {
+            productColumn = "primary_air";
         } else if (productData.category.includes("Aceite")) {
             productColumn = "oil";
         } else if (productData.category.includes("Combustible")) {
-            productColumn = "gas";
+            productColumn = "primary_fuel";
         } else if (productData.category.includes("Hidraúlico")) {
             productColumn = "hydraulic";
         } else if (productData.category.includes("Cabina")) {
@@ -73,7 +83,16 @@ export default function Page({ searchParams }: any) {
             return;
         }
         getElementsByProperty("heavy-duty", productColumn, productData.name).then((data) => {
-            setHeavyDutyData(data);
+            const sortedVehicle = data.sort((a: any, b: any) => {
+                if (a.data.brand < b.data.brand) {
+                    return -1;
+                }
+                if (a.data.brand > b.data.brand) {
+                    return 1;
+                }
+                return 0;
+            });
+            setHeavyDutyData(sortedVehicle);
         });
     };
 

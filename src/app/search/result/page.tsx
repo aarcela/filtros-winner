@@ -2,7 +2,6 @@
 import ApplicationFilter from "@/app/components/ApplicationFilter";
 import Table from "@/app/components/Table";
 import {
-    getElementById,
     getElementsByProperty,
     getExactElementByProperty,
 } from "@/app/utils/firebaseConnections";
@@ -67,8 +66,17 @@ export default function Page({ searchParams }: any) {
                 await Promise.all(imagePromises);
             });
 
-            await Promise.all(promises); // Wait for all elements to finish fetching images
-            setVehicleData(data); // Finally update the state with the fetched data
+            await Promise.all(promises);
+            const sortedVehicle = data.sort((a: any, b: any) => {
+                if (a.data.start < b.data.start) {
+                    return -1;
+                }
+                if (a.data.start > b.data.start) {
+                    return 1;
+                }
+                return 0;
+            });
+            setVehicleData(sortedVehicle);
         } catch (error) {
             console.error("Error fetching vehicle data:", error);
         }
@@ -85,6 +93,7 @@ export default function Page({ searchParams }: any) {
                     "primary_fuel",
                     "refrigerant",
                     "secondary_air",
+                    "secondary_gas",
                     "separator_gas",
                 ];
                 const imagePromises = products.map(async (product) => {
@@ -101,13 +110,21 @@ export default function Page({ searchParams }: any) {
             });
 
             await Promise.all(promises);
-            setheavyDutyData(data); // Finally update the state with the fetched data
-            console.log(data);
+
+            const sortedHeavyDuty = data.sort((a: any, b: any) => {
+                if (a.data.start < b.data.start) {
+                    return -1;
+                }
+                if (a.data.start > b.data.start) {
+                    return 1;
+                }
+                return 0;
+            });
+            setheavyDutyData(sortedHeavyDuty);
         } catch (error) {
             console.error("Error fetching heavy-duty data:", error);
         }
     };
-
 
     return (
         <section className="overflow-x-auto w-full bg-white">
@@ -336,7 +353,7 @@ export default function Page({ searchParams }: any) {
                                         </Link>
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.primary_gas && (
+                                        {element?.data?.primary_fuel && (
                                             <Image
                                                 src={
                                                     element?.data?.gasImage !== undefined
@@ -352,10 +369,10 @@ export default function Page({ searchParams }: any) {
                                             className="text-primary underline"
                                             href={
                                                 "/search/result-product/?item=" +
-                                                element?.data?.primary_gas
+                                                element?.data?.primary_fuel
                                             }
                                         >
-                                            {element?.data?.primary_gas}
+                                            {element?.data?.primary_fuel}
                                         </Link>
                                     </td>
                                     <td className="px-4 py-2">
