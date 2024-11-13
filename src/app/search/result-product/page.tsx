@@ -53,12 +53,12 @@ export default function Page({ searchParams }: any) {
         }
         getElementsByProperty("vehicle", productColumn, productData.name).then((data) => {
             const sortedVehicle = data.sort((a: any, b: any) => {
-                if (a.data.brand < b.data.brand) {
-                    return -1;
-                }
-                if (a.data.brand > b.data.brand) {
-                    return 1;
-                }
+                if (a.data.brand < b.data.brand) return -1;
+                if (a.data.brand > b.data.brand) return 1;
+                if (a.data.model < b.data.model) return -1;
+                if (a.data.model > b.data.model) return 1;
+                if (a.data.start < b.data.start) return -1;
+                if (a.data.start > b.data.start) return 1;
                 return 0;
             });
             setVehicleData(sortedVehicle);
@@ -84,12 +84,12 @@ export default function Page({ searchParams }: any) {
         }
         getElementsByProperty("heavy-duty", productColumn, productData.name).then((data) => {
             const sortedVehicle = data.sort((a: any, b: any) => {
-                if (a.data.brand < b.data.brand) {
-                    return -1;
-                }
-                if (a.data.brand > b.data.brand) {
-                    return 1;
-                }
+                if (a.data.brand < b.data.brand) return -1;
+                if (a.data.brand > b.data.brand) return 1;
+                if (a.data.model < b.data.model) return -1;
+                if (a.data.model > b.data.model) return 1;
+                if (a.data.start < b.data.start) return -1;
+                if (a.data.start > b.data.start) return 1;
                 return 0;
             });
             setHeavyDutyData(sortedVehicle);

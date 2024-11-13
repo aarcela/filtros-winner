@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { getElementsByProperty } from "../utils/firebaseConnections";
 import { useRouter } from "next/navigation";
 import { brands, modelList } from "../constants";
 
