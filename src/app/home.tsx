@@ -26,10 +26,10 @@ function HomePage() {
                                 target="_blank"
                             >
                                 <Image
-                                    className="p-2 bg-white rounded-full"
+                                    className="p-1 bg-white rounded-full"
                                     src="/assets/icons/instagram.svg"
-                                    height={55}
-                                    width={55}
+                                    height={200}
+                                    width={200}
                                     alt=""
                                 />
                             </Link>
@@ -38,20 +38,22 @@ function HomePage() {
                                 target="_blank"
                             >
                                 <Image
-                                    className="p-2 bg-white rounded-full"
+                                    className="p-1 bg-white rounded-full"
                                     src="/assets/icons/facebook.svg"
-                                    height={55}
-                                    width={55}
+                                    height={200}
+                                    width={200}
                                     alt=""
                                 />
                             </Link>
-                            <Image
-                                className="p-2 bg-white rounded-full"
-                                src="/assets/icons/whatsapp.svg"
-                                height={55}
-                                width={55}
-                                alt=""
-                            />
+                            <Link href="" target="_blank">
+                                <Image
+                                    className="p-1 bg-white rounded-full"
+                                    src="/assets/icons/whatsapp.svg"
+                                    height={200}
+                                    width={200}
+                                    alt=""
+                                />
+                            </Link>
                         </div>
                     </div>
                     <CustomSearchBox />
