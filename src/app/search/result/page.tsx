@@ -50,7 +50,14 @@ export default function Page({ searchParams }: any) {
 
     const fetchVehicle = async () => {
         try {
-            const data = await getElementsByProperty("vehicle", "model", id.trim());
+            const data = await getElementsByProperty(
+                "vehicle",
+                "model",
+                id.trim(),
+                "brand",
+                brand.trim()
+            );
+            console.log("Vehicle: ", data);
             const promises = data.map(async (element) => {
                 const products = ["oil", "air", "gas", "cabine"];
                 const imagePromises = products.map(async (product) => {
@@ -84,7 +91,13 @@ export default function Page({ searchParams }: any) {
 
     const fetchHeavyDuty = async () => {
         try {
-            const data = await getElementsByProperty("heavy-duty", "model", id.trim());
+            const data = await getElementsByProperty(
+                "heavy-duty",
+                "model",
+                id.trim(),
+                "brand",
+                brand.trim()
+            );
             console.log("HD: ", data);
             const promises = data.map(async (element) => {
                 const products = [
