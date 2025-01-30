@@ -1,5 +1,6 @@
 "use client";
 import ApplicationFilter from "@/app/components/ApplicationFilter";
+import ImageProductLink from "@/app/components/ImageProductLink";
 import Table from "@/app/components/Table";
 import {
     getElementsByProperty,
@@ -163,96 +164,28 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">{element?.data?.start}</td>
                                     <td className="px-4 py-2">{element?.data?.finish}</td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.oil && (
-                                            <Image
-                                                src={
-                                                    element?.data?.oilImage !== undefined
-                                                        ? element?.data?.oilImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.oil
-                                            }
-                                        >
-                                            {element?.data?.oil}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.oil}
+                                            productImage={element?.data?.oilImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.air && (
-                                            <Image
-                                                src={
-                                                    element?.data?.airImage !== undefined
-                                                        ? element?.data?.airImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.air
-                                            }
-                                        >
-                                            {element?.data?.air}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.air}
+                                            productImage={element?.data?.airImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.gas && (
-                                            <Image
-                                                src={
-                                                    element?.data?.gasImage !== undefined
-                                                        ? element?.data?.gasImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.gas
-                                            }
-                                        >
-                                            {element?.data?.gas}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.gas}
+                                            productImage={element?.data?.gasImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.cabine && (
-                                            <Image
-                                                src={
-                                                    element?.data?.cabineImage !== undefined
-                                                        ? element?.data?.cabineImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.cabine
-                                            }
-                                        >
-                                            {element?.data?.cabine}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.cabine}
+                                            productImage={element?.data?.cabineImage}
+                                        />
                                     </td>
                                 </tr>
                             ))}
@@ -274,234 +207,64 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">{element?.data?.start}</td>
                                     <td className="px-4 py-2">{element?.data?.finish}</td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.oil && (
-                                            <Image
-                                                src={
-                                                    element?.data?.oilImage !== undefined
-                                                        ? element?.data?.oilImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.oil
-                                            }
-                                        >
-                                            {element?.data?.oil}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.oil}
+                                            productImage={element?.data?.oilImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.primary_air && (
-                                            <Image
-                                                src={
-                                                    element?.data?.airImage !== undefined
-                                                        ? element?.data?.airImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.primary_air
-                                            }
-                                        >
-                                            {element?.data?.primary_air}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.primary_air}
+                                            productImage={element?.data?.airImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.secondary_air && (
-                                            <Image
-                                                src={
-                                                    element?.data?.airImage !== undefined
-                                                        ? element?.data?.airImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.secondary_air
-                                            }
-                                        >
-                                            {element?.data?.secondary_air}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.secondary_air}
+                                            productImage={element?.data?.airImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.cabine && (
-                                            <Image
-                                                src={
-                                                    element?.data?.cabineImage !== undefined
-                                                        ? element?.data?.cabineImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.cabine
-                                            }
-                                        >
-                                            {element?.data?.cabine}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.cabine}
+                                            productImage={element?.data?.cabineImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.primary_fuel && (
-                                            <Image
-                                                src={
-                                                    element?.data?.gasImage !== undefined
-                                                        ? element?.data?.gasImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.primary_fuel
-                                            }
-                                        >
-                                            {element?.data?.primary_fuel}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.primary_fuel}
+                                            productImage={element?.data?.gasImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.secondary_gas && (
-                                            <Image
-                                                src={
-                                                    element?.data?.gasImage !== undefined
-                                                        ? element?.data?.gasImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.secondary_gas
-                                            }
-                                        >
-                                            {element?.data?.secondary_gas}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.secondary_gas}
+                                            productImage={element?.data?.gasImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.separator_gas && (
-                                            <Image
-                                                src={
-                                                    element?.data?.gasImage !== undefined
-                                                        ? element?.data?.gasImage
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.separator_gas
-                                            }
-                                        >
-                                            {element?.data?.separator_gas}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.separator_gas}
+                                            productImage={element?.data?.gasImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.hydraulic && (
-                                            <Image
-                                                src={
-                                                    element?.data?.images !== undefined
-                                                        ? element?.data?.images[0]
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.hydraulic
-                                            }
-                                        >
-                                            {element?.data?.hydraulic}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.oil}
+                                            productImage={element?.data?.oilImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.secante && (
-                                            <Image
-                                                src={
-                                                    element?.data?.images !== undefined
-                                                        ? element?.data?.images[0]
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.secante
-                                            }
-                                        >
-                                            {element?.data?.secante}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.secante}
+                                            productImage={element?.data?.secanteImage}
+                                        />
                                     </td>
                                     <td className="px-4 py-2">
-                                        {element?.data?.refrigerant && (
-                                            <Image
-                                                src={
-                                                    element?.data?.images !== undefined
-                                                        ? element?.data?.images[0]
-                                                        : "/assets/test_filter.png"
-                                                }
-                                                width={93}
-                                                height={62}
-                                                alt="filter"
-                                            ></Image>
-                                        )}
-                                        <Link
-                                            className="text-primary underline"
-                                            href={
-                                                "/search/result-product/?item=" +
-                                                element?.data?.refrigerant
-                                            }
-                                        >
-                                            {element?.data?.refrigerant}
-                                        </Link>
+                                        <ImageProductLink
+                                            productName={element?.data?.refrigerant}
+                                            productImage={element?.data?.refrigerantImage}
+                                        />
                                     </td>
                                 </tr>
                             ))}
