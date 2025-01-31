@@ -16,6 +16,12 @@ export default function Page({ searchParams }: any) {
     const [data, setData] = useState<any>({} as any);
     const [vehicleData, setVehicleData] = useState<any>([] as any);
     const [heavyDutyData, setHeavyDutyData] = useState<any>([] as any);
+    const [mainImage, setMainImage] = useState("");
+
+    const handleImageClick = (image: string) => {
+        setMainImage(image);
+    };
+  
 
     useEffect(() => {
         if (itemId) {
@@ -30,6 +36,7 @@ export default function Page({ searchParams }: any) {
             if (fetchData[0].data) {
                 await fetchVehicle(fetchData[0].data);
                 await fetchHeavyDuty(fetchData[0].data);
+                setMainImage(fetchData[0].data.images[0]);
             }
         } catch {}
     };
@@ -100,9 +107,7 @@ export default function Page({ searchParams }: any) {
         <section className="w-full p-5 sm:p-16 bg-white">
             <div className="flex flex-col justify-evenly gap-10 mt-10 sm:flex-row">
                 <Image
-                    src={
-                        data?.images !== undefined ? data?.images[0] : "/assets/test_filter.png"
-                    }
+                    src={data?.images !== undefined ? mainImage : "/assets/test_filter.png"}
                     width={537}
                     height={340}
                     alt="filter-winner"
@@ -152,12 +157,12 @@ export default function Page({ searchParams }: any) {
                 {data.images !== undefined &&
                     data?.images.map((img: any, index: any) => (
                         <Image
+                            onClick={() => handleImageClick(img)}
                             key={index}
                             src={img}
                             alt="preview"
                             width="100"
-                            height="100"
-                        ></Image>
+                            height="100"></Image>
                     ))}
             </div>
             <div className="w-full mt-10">
