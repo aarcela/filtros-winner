@@ -18,7 +18,7 @@ const ImageProductLink: React.FC<ImageProductLinkProps> = ({ productName, produc
                     alt="filter"
                 />
             ) : (
-                "No tiene"
+                <Image src={"/assets/winner-guion.png"} width={93} height={62} alt="not found" />
             )}
             <Link
                 className="text-primary underline"
