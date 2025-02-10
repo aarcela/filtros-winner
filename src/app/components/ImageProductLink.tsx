@@ -12,7 +12,7 @@ const ImageProductLink: React.FC<ImageProductLinkProps> = ({ productName, produc
         <>
             {productName ? (
                 <Image
-                    src={productImage !== undefined ? productImage : "/assets/test_filter.png"}
+                    src={productImage !== undefined ? productImage : "/assets/test_filter.jpg"}
                     width={93}
                     height={62}
                     alt="filter"
