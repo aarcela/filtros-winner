@@ -104,15 +104,16 @@ export default function Page({ searchParams }: any) {
     };
 
     return (
-        <section className="w-full p-5 sm:p-16 bg-white">
+        <section className="w-full p-5 sm:pt-2 sm:p-16 bg-white">
             <div className="flex flex-col justify-evenly gap-10 mt-10 sm:flex-row">
                 <Image
                     src={data?.images !== undefined ? mainImage : "/assets/test_filter.png"}
                     width={537}
                     height={340}
                     alt="filter-winner"
+                    style={{ height: "340px", width: "auto" }}
                 />
-                <div className="flex flex-col w-96">
+                <div className="flex flex-col w-1/3">
                     <h3 className="text-primary font-bold">Categoría: {data.category}</h3>
                     <h1 className="text-3xl sm:text-7xl font-bold">{data.name}</h1>
                     <table className="table-auto mt-5 ">
