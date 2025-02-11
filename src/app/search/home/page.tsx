@@ -1,14 +1,12 @@
 "use client";
 import ApplicationFilter from "@/app/components/ApplicationFilter";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 function Page() {
     return (
         <>
             <ApplicationFilter />
-            <section className="flex flex-1 bg-search-bg-mobile sm:bg-search-bg bg-no-repeat bg-top bg-cover  w-full items-center bg-blend-darken sm:px-20 flex-col sm:flex-row order-1 sm:order-2">
+            <section className="flex flex-1 bg-search-bg-mobile sm:bg-search-bg bg-no-repeat bg-center bg-cover  w-full items-center bg-blend-darken sm:px-20 flex-col sm:flex-row order-1 sm:order-2">
                 <div>
                     {/* <h1 className="text-white text-2xl sm:text-8xl font-bold mt-5 sm:mt-0">
                         ¡Somos poder de filtración!
