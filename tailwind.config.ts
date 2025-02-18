@@ -12,7 +12,7 @@ const config: Config = {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
                 "gradient-conic":
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-                "search-bg": "url('/assets/main-bg.jpg')",
+                "search-bg": "url('/assets/main-bg.png')",
                 "search-bg-mobile": "url('/assets/main-bg-mobile.jpg')",
                 "search-bg-medium": "url('/assets/main-bg-medium.png')",
             },
