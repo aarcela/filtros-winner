@@ -48,6 +48,11 @@ function Page() {
     async function fetchData() {
         try {
             const data: any = await getAllElements("heavy-duty");
+            data.sort(
+                (a: any, b: any) =>
+                    a.data.brand.localeCompare(b.data.brand) ||
+                    a.data.model.localeCompare(b.data.model)
+            );
             console.log("HD: ", data);
             setData(data);
         } catch (error: any) {}

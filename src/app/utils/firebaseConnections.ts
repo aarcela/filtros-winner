@@ -53,15 +53,25 @@ export const getElementById = async (collectionName: string, docId: string) => {
 export const getElementsByProperty = async (
     collectionName: string,
     property: string,
-    searchTerm: string
+    searchTerm: string,
+    secondProperty?: string,
+    secondSearchTerm?: string
 ) => {
-    const q = query(
+    let q = query(
         collection(firestore, collectionName),
         orderBy(property),
         startAt(searchTerm),
         endAt(searchTerm + "\uf8ff"),
         where(property, "==", searchTerm)
     );
+
+    if (
+        secondProperty !== undefined &&
+        secondSearchTerm !== undefined &&
+        secondSearchTerm !== null
+    ) {
+        q = query(q, where(secondProperty, "==", secondSearchTerm));
+    }
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {

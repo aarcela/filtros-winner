@@ -59,6 +59,12 @@ function Page() {
                 async (element: any) =>
                     (element.data.productName = await searchProductName(element.data.product_id))
             );
+            data.sort(
+                (a: any, b: any) =>
+                    a.data.brand.localeCompare(b.data.brand) ||
+                    a.data.model.localeCompare(b.data.model)
+            );
+
             setData(data);
         } catch (error: any) {
             setError(error);

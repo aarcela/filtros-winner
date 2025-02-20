@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../../utils/product";
 import { ProductList } from "@/models/product";
 import { getAllElements } from "@/app/utils/firebaseConnections";
@@ -11,6 +11,9 @@ function Page() {
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
     const productTableHeader = ["Categoría", "Código", "Descripción", "Acción"];
+    const [sortConfig, setSortConfig] = useState<{ key: string; direction: string } | null>(
+        null
+    );
 
     useEffect(() => {
         fetchData();
@@ -22,6 +25,7 @@ function Page() {
 
         try {
             const data: any = await getAllElements("product");
+            data.sort((a: any, b: any) => a.data.name.localeCompare(b.data.name));
             setData(data);
         } catch (error: any) {
             setError(error);
@@ -47,8 +51,7 @@ function Page() {
                         <td className="px-4 py-2 bg-gray font-light">
                             <Link
                                 href={`/main/products/detail/${product.id}`}
-                                className="text-primary"
-                            >
+                                className="text-primary">
                                 <button>Editar</button>
                             </Link>
                         </td>

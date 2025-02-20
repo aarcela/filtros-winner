@@ -39,6 +39,7 @@ function Page() {
         try {
             const data: any = await getAllElements("reference");
             console.log("RefereceList: ", data);
+            data.sort((a: any, b: any) => a.data.code.localeCompare(b.data.code));
             setData(data);
         } catch (error: any) {
             setError(error);
