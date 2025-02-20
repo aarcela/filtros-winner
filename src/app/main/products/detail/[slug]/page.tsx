@@ -9,6 +9,14 @@ import {
     validCategoriesLonguitud,
     validCategoriesOD,
     validCategoriesTH,
+    validCategoriesW,
+    validCategoriesWe,
+    validCategoryAntiDrain,
+    validCategoryByPassValve,
+    validCategoryDrain,
+    validCategoryGSID,
+    validCategoryLe,
+    validCategoryLi,
 } from "@/app/constants";
 import { updateElement } from "@/app/utils/firebaseConnections";
 import { getProductById, updateProduct } from "@/app/utils/product";
@@ -17,12 +25,14 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { storage } from "../../../../../../firebase";
 import { deleteObject, ref } from "firebase/storage";
+import Specifications from "@/app/components/Specifications";
 //EDITAR
 function Page({ params }: { params: { slug: string } }) {
     const [newName, setNewname] = React.useState("");
     const [byPass, setByPass] = useState("");
     const [newCategory, setNewCategory] = React.useState("");
     const [newDescription, setNewdescription] = React.useState("");
+    const [drain, setDrain] = useState("");
     const [antiDrain, setAntiDrain] = useState("");
     const [gsID, setGsID] = useState("");
     const [gsOD, setGsOD] = useState("");
@@ -94,12 +104,13 @@ function Page({ params }: { params: { slug: string } }) {
             console.log("Producto: ", await product);
 
             setNewname(product.name);
-            setByPass(product["by_pass_valve"]);
+            product["by_pass_valve"] && setByPass(product["by_pass_valve"]);
             setNewCategory(product.category);
             setNewdescription(product.description);
-            setAntiDrain(product.drain);
-            setGsID(product["gs-id"]);
-            setGsOD(product["gs-od"]);
+            setDrain(product.drain);
+            product["anti-drain"] && setAntiDrain(product["anti-drain"]);
+            product["gs-id"] && setGsID(product["gs-id"]);
+            product["gs-od"] && setGsOD(product["gs-od"]);
             setH(product.h);
             setId(product.id);
             setId2(product.id2);
@@ -114,7 +125,7 @@ function Page({ params }: { params: { slug: string } }) {
             setW(product.w);
             setWe(product.we);
             setWi(product.wi);
-            setImages(product.images);
+            product.images ? setImages(product.images) : setImages([]);
         }
         getProductData();
     }, [params.slug]);
@@ -133,8 +144,7 @@ function Page({ params }: { params: { slug: string } }) {
             <select
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value)}
-                className="w-full bg-gray border-none px-4 py-3 mb-5  focus:outline-none"
-            >
+                className="w-full bg-gray border-none px-4 py-3 mb-5  focus:outline-none">
                 <option value="" className="text-gray">
                     Seleccione categoría del producto
                 </option>
@@ -153,144 +163,72 @@ function Page({ params }: { params: { slug: string } }) {
                 <option value="Filtro Combustible Cartucho / CAV">
                     Filtro Combustible Cartucho / CAV
                 </option>
-                <option value="Filtro Cabina Pane">Filtro Cabina Panel</option>
+                <option value="Filtro Cabina Panel">Filtro Cabina Panel</option>
                 <option value="Filtro Secante Spin On">Filtro Secante Spin On</option>
-                <option value="Filtro Hidraulico Spin On">Filtro Hidraúlico Spin On</option>
-                <option value="Filtro Hidraulico Elemento">Filtro Hidraúlico Elemento</option>
-                <option value="Filtro Hidraulico Vaso">Filtro Hidraúlico Vaso</option>
+                <option value="Filtro Hidraúlico Spin On">Filtro Hidraúlico Spin On</option>
+                <option value="Filtro Hidraúlico Elemento">Filtro Hidraúlico Elemento</option>
+                <option value="Filtro Hidraúlico Vaso">Filtro Hidraúlico Vaso</option>
                 <option value="Filtro Refrigerante Spin On">Filtro Refrigerante Spin On</option>
             </select>
             <h1 className="text-gray font-semibold text-2xl mb-5">Especificaciones Técnicas</h1>
             <div className="flex flex-wrap px-10 mb-10">
                 {validCategoriesOD.includes(newCategory) && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">OD</span>
-                            <input
-                                value={od}
-                                onChange={(e) => setOd(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                    <Specifications onChange={setOd} name="OD" value={od} />
+                )}
+                {validCategoriesOD.includes(newCategory) && (
+                    <Specifications onChange={setOd2} name="OD2" value={od2} />
                 )}
                 {validCategoriesH.includes(newCategory) && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">H</span>
-                            <input
-                                value={H}
-                                onChange={(e) => setH(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                    <Specifications onChange={setH} name="H" value={H} />
                 )}
                 {validCategoriesTH.includes(newCategory) && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">TH</span>
-                            <input
-                                value={th}
-                                onChange={(e) => setTh(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                    <Specifications onChange={setTh} name="TH" value={th} />
                 )}
                 {validCategoriesGSOD.includes(newCategory) && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">GS OD</span>
-                            <input
-                                value={gsOD}
-                                onChange={(e) => setGsOD(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                    <Specifications onChange={setGsOD} name="GS OD" value={gsOD} />
                 )}
-                {newCategory === "Filtro Aceite Spin On" && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">GS ID</span>
-                            <input
-                                value={gsID}
-                                onChange={(e) => setGsID(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                {validCategoryGSID.includes(newCategory) && (
+                    <Specifications onChange={setGsID} name="GS ID" value={gsID} />
                 )}
-                {newCategory === "Filtro Aceite Spin On" && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">By Pass Valve</span>
-                            <input
-                                value={byPass}
-                                onChange={(e) => setByPass(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                {validCategoriesLonguitud.includes(newCategory) && (
+                    <Specifications onChange={setL} name="l" value={l} />
                 )}
-                {newCategory === "Filtro Aceite Spin On" && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">Anti Drain</span>
-                            <input
-                                value={antiDrain}
-                                onChange={(e) => setAntiDrain(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                {validCategoryByPassValve.includes(newCategory) && (
+                    <Specifications onChange={setByPass} name="By Pass Valve" value={byPass} />
+                )}
+                {validCategoryDrain.includes(newCategory) && (
+                    <Specifications onChange={setDrain} name="Drain" value={drain} />
+                )}
+                {validCategoryAntiDrain.includes(newCategory) && (
+                    <Specifications
+                        onChange={setAntiDrain}
+                        name="Anti Drain"
+                        value={antiDrain}
+                    />
                 )}
                 {validCategoriesDiametroInterno.includes(newCategory) && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">Diámetro Interno</span>
-                            <input
-                                value={id}
-                                onChange={(e) => setId(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                    <Specifications onChange={setId} name="Diámetro Interno" value={id} />
                 )}
                 {validCategoriesDiametroInterno.includes(newCategory) && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">Diámetro Interno</span>
-                            <input
-                                value={id2}
-                                onChange={(e) => setId2(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                    <Specifications onChange={setId2} name="Diámetro Interno 2" value={id2} />
                 )}
-                {newCategory === "Filtro Aceite Spin On" && (
-                    <div className="w-1/2 mb-1">
-                        <div className="flex">
-                            <span className="w-1/3">Válvula Antidrenaje</span>
-                            <input
-                                value={antiDrain}
-                                onChange={(e) => setAntiDrain(e.target.value)}
-                                type="text"
-                                className="bg-gray border-none px-4 py-2 focus:outline-none basis-1/2"
-                            />
-                        </div>
-                    </div>
+                {/* {validCategoriesDiametroRosca.includes(newCategory) && (
+                    <Specifications onChange={setId} name="Diámetro Rosca" />
+                )} */}
+                {validCategoriesDiametroExterno.includes(newCategory) && (
+                    <Specifications onChange={setOut} name="Diámetro Externo" value={outt} />
+                )}
+                {validCategoriesW.includes(newCategory) && (
+                    <Specifications onChange={setW} name="W" value={w} />
+                )}
+                {validCategoriesWe.includes(newCategory) && (
+                    <Specifications onChange={setWe} name="We" value={we} />
+                )}
+                {validCategoryLe.includes(newCategory) && (
+                    <Specifications onChange={setLe} name="Le" value={le} />
+                )}
+                {validCategoryLi.includes(newCategory) && (
+                    <Specifications onChange={setLi} name="Li" value={li} />
                 )}
             </div>
             <div className="mb-10">
@@ -302,8 +240,7 @@ function Page({ params }: { params: { slug: string } }) {
                             alt="preview"
                             width="100"
                             height="100"
-                            onClick={() => handleRemoveImage(img)}
-                        ></Image>
+                            onClick={() => handleRemoveImage(img)}></Image>
                     ))}
             </div>
             <h1 className="text-gray font-semibold text-2xl mb-2">Agregar Imágenes</h1>

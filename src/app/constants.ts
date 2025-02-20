@@ -7,8 +7,22 @@ export const validCategoriesOD = [
     "Filtro Combustible Spin On",
     "Filtro Combustible Cartucho / CAV",
     "Filtro Secante Spin On",
-    "Filtro Hidraulico Spin On",
-    "Filtro Hidraulico Elemento",
+    "Filtro Hidraúlico Spin On",
+    "Filtro Hidraúlico Elemento",
+    "Filtro Refrigerante Spin On",
+];
+
+export const validCategoriesOD2 = [
+    "Filtro Aceite Spin On",
+    "Filtro Aceite Elemento",
+    "Filtro Aceite Centrifugo",
+    "Filtro Aire Cilíndrico",
+    "Filtro Combustible In-Line / In-Tank / Regulador / Modulo",
+    "Filtro Combustible Spin On",
+    "Filtro Combustible Cartucho / CAV",
+    "Filtro Secante Spin On",
+    "Filtro Hidraúlico Spin On",
+    "Filtro Hidraúlico Elemento",
     "Filtro Refrigerante Spin On",
 ];
 
@@ -23,16 +37,17 @@ export const validCategoriesH = [
     "Filtro Combustible Cartucho / CAV",
     "Filtro Cabina Panel",
     "Filtro Secante Spin On",
-    "Filtro Hidraulico Elemento",
-    "Filtro Hidraulico Vaso",
+    "Filtro Hidraúlico Elemento",
+    "Filtro Hidraúlico Vaso",
     "Filtro Refrigerante Spin On",
+    "Filtro Hidraúlico Spin On",
 ];
 
 export const validCategoriesTH = [
     "Filtro Aceite Spin On",
     "Filtro Combustible Spin On",
     "Filtro Secante Spin On",
-    "Filtro Hidraulico Spin On",
+    "Filtro Hidraúlico Spin On",
     "Filtro Refrigerante Spin On",
 ];
 
@@ -56,8 +71,8 @@ export const validCategoriesDiametroInterno = [
 
 export const validCategoriesDiametroRosca = [
     "Filtro Refrigerante Spin On",
-    "Filtro Hidraulico Spin On",
-    "Filtro Hidraulico Spin",
+    "Filtro Hidraúlico Spin On",
+    "Filtro Hidraúlico Spin",
     "Filtro Secante Spin On",
     "Filtro Combustible Spin On",
 ];
@@ -67,6 +82,33 @@ export const validCategoriesLonguitud = [
     "Filtro Aire Toroide Rect. o Elip.",
     "Filtro Cabina Panel",
 ];
+
+export const validCategoriesW = [
+    "Filtro Aire Panel",
+    "Filtro Cabina Panel",
+    "Filtro Hidraúlico Vaso",
+];
+
+export const validCategoriesWe = ["Filtro Aire Toroide Rect. o Elip."];
+
+export const validCategoriesWi = ["Filtro Aire Toroide Rect. o Elip."];
+
+export const validCategoryByPassValve = ["Filtro Aceite Spin On"];
+
+export const validCategoryDrain = [
+    "Filtro Combustible In-Line / In-Tank / Regulador / Modulo",
+    "Filtro Combustible Spin On",
+];
+
+export const validCategoryAntiDrain = ["Filtro Aceite Spin On"];
+
+export const validCategoryGSID = ["Filtro Aceite Spin On"];
+
+export const validCategoryLe = ["Filtro Aire Toroide Rect. o Elip."];
+
+export const validCategoryLi = ["Filtro Aire Toroide Rect. o Elip."];
+
+
 
 export const brands = [
     "ACURA",
