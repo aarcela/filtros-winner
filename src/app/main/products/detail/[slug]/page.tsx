@@ -1,13 +1,13 @@
 "use client";
 import ImageUpload from "@/app/components/ImageUpload";
 import {
-    validCategoriesDiametroExterno,
     validCategoriesDiametroInterno,
-    validCategoriesDiametroRosca,
+    validCategoriesDiametroInterno2,
+    validCategoriesEntrada,
     validCategoriesGSOD,
-    validCategoriesH,
     validCategoriesLonguitud,
     validCategoriesOD,
+    validCategoriesSalida,
     validCategoriesTH,
     validCategoriesW,
     validCategoriesWe,
@@ -173,31 +173,31 @@ function Page({ params }: { params: { slug: string } }) {
             <h1 className="text-gray font-semibold text-2xl mb-5">Especificaciones Técnicas</h1>
             <div className="flex flex-wrap px-10 mb-10">
                 {validCategoriesOD.includes(newCategory) && (
-                    <Specifications onChange={setOd} name="OD" value={od} />
+                    <Specifications onChange={setOd} name="Diámetro Externo (OD)" value={od} />
                 )}
-                {validCategoriesOD.includes(newCategory) && (
-                    <Specifications onChange={setOd2} name="OD2" value={od2} />
-                )}
-                {validCategoriesH.includes(newCategory) && (
-                    <Specifications onChange={setH} name="H" value={H} />
-                )}
+                {/* {validCategoriesOD2.includes(newCategory) && (
+                    <Specifications onChange={setOd2} name="Diámetro Externo 2" value={od2} />
+                )} */}
+                <Specifications onChange={setH} name="Altura (H)" value={H} />
                 {validCategoriesTH.includes(newCategory) && (
-                    <Specifications onChange={setTh} name="TH" value={th} />
+                    <Specifications onChange={setTh} name="Dimensiones Rosca (TH)" value={th} />
                 )}
                 {validCategoriesGSOD.includes(newCategory) && (
-                    <Specifications onChange={setGsOD} name="GS OD" value={gsOD} />
+                    <Specifications
+                        onChange={setGsOD}
+                        name="Diámetro Externo Empacadura (GS-OD)"
+                        value={gsOD}
+                    />
                 )}
                 {validCategoryGSID.includes(newCategory) && (
-                    <Specifications onChange={setGsID} name="GS ID" value={gsID} />
-                )}
-                {validCategoriesLonguitud.includes(newCategory) && (
-                    <Specifications onChange={setL} name="l" value={l} />
+                    <Specifications
+                        onChange={setGsID}
+                        name="Diámetro Inteno Empacadura (GS-ID)"
+                        value={gsID}
+                    />
                 )}
                 {validCategoryByPassValve.includes(newCategory) && (
                     <Specifications onChange={setByPass} name="By Pass Valve" value={byPass} />
-                )}
-                {validCategoryDrain.includes(newCategory) && (
-                    <Specifications onChange={setDrain} name="Drain" value={drain} />
                 )}
                 {validCategoryAntiDrain.includes(newCategory) && (
                     <Specifications
@@ -207,28 +207,39 @@ function Page({ params }: { params: { slug: string } }) {
                     />
                 )}
                 {validCategoriesDiametroInterno.includes(newCategory) && (
-                    <Specifications onChange={setId} name="Diámetro Interno" value={id} />
+                    <Specifications onChange={setId} name="Diámetro Interno (ID)" value={id} />
                 )}
-                {validCategoriesDiametroInterno.includes(newCategory) && (
-                    <Specifications onChange={setId2} name="Diámetro Interno 2" value={id2} />
+                {validCategoriesDiametroInterno2.includes(newCategory) && (
+                    <Specifications
+                        onChange={setId2}
+                        name="Diámetro Interno 2 (ID2)"
+                        value={id2}
+                    />
                 )}
-                {/* {validCategoriesDiametroRosca.includes(newCategory) && (
-                    <Specifications onChange={setId} name="Diámetro Rosca" />
-                )} */}
-                {validCategoriesDiametroExterno.includes(newCategory) && (
-                    <Specifications onChange={setOut} name="Diámetro Externo" value={outt} />
+                {validCategoriesEntrada.includes(newCategory) && (
+                    <Specifications onChange={setIn} name="Entrada (IN)" value={inn} />
+                )}
+                {validCategoriesSalida.includes(newCategory) && (
+                    <Specifications onChange={setOut} name="Salida (OUT)" value={outt} />
+                )}
+                {validCategoriesLonguitud.includes(newCategory) && (
+                    <Specifications onChange={setL} name="Longuitud (L)" value={l} />
                 )}
                 {validCategoriesW.includes(newCategory) && (
-                    <Specifications onChange={setW} name="W" value={w} />
-                )}
-                {validCategoriesWe.includes(newCategory) && (
-                    <Specifications onChange={setWe} name="We" value={we} />
+                    <Specifications onChange={setW} name="Ancho (W)" value={w} />
                 )}
                 {validCategoryLe.includes(newCategory) && (
-                    <Specifications onChange={setLe} name="Le" value={le} />
+                    <Specifications onChange={setLe} name="Longuitud Externa (LE)" value={le} />
                 )}
                 {validCategoryLi.includes(newCategory) && (
-                    <Specifications onChange={setLi} name="Li" value={li} />
+                    <Specifications onChange={setLi} name="Longuitud Interna (LI)" value={li} />
+                )}
+
+                {validCategoriesWe.includes(newCategory) && (
+                    <Specifications onChange={setWe} name="Ancho Externo (WE)" value={we} />
+                )}
+                {validCategoryDrain.includes(newCategory) && (
+                    <Specifications onChange={setDrain} name="Drain" value={drain} />
                 )}
             </div>
             <div className="mb-10">

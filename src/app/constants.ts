@@ -1,3 +1,4 @@
+//DIAMETRO EXTERNO
 export const validCategoriesOD = [
     "Filtro Aceite Spin On",
     "Filtro Aceite Elemento",
@@ -12,36 +13,19 @@ export const validCategoriesOD = [
     "Filtro Refrigerante Spin On",
 ];
 
-export const validCategoriesOD2 = [
-    "Filtro Aceite Spin On",
-    "Filtro Aceite Elemento",
-    "Filtro Aceite Centrifugo",
-    "Filtro Aire Cilíndrico",
-    "Filtro Combustible In-Line / In-Tank / Regulador / Modulo",
-    "Filtro Combustible Spin On",
-    "Filtro Combustible Cartucho / CAV",
-    "Filtro Secante Spin On",
-    "Filtro Hidraúlico Spin On",
-    "Filtro Hidraúlico Elemento",
-    "Filtro Refrigerante Spin On",
-];
-
-export const validCategoriesH = [
-    "Filtro Aceite Spin On",
-    "Filtro Aceite Elemento",
-    "Filtro Aceite Centrifugo",
-    "Filtro Aire Panel",
-    "Filtro Aire Cilíndrico",
-    "Filtro Combustible In-Line / In-Tank / Regulador / Modulo",
-    "Filtro Secante Spin On",
-    "Filtro Combustible Cartucho / CAV",
-    "Filtro Cabina Panel",
-    "Filtro Secante Spin On",
-    "Filtro Hidraúlico Elemento",
-    "Filtro Hidraúlico Vaso",
-    "Filtro Refrigerante Spin On",
-    "Filtro Hidraúlico Spin On",
-];
+// export const validCategoriesOD2 = [
+//     "Filtro Aceite Spin On",
+//     "Filtro Aceite Elemento",
+//     "Filtro Aceite Centrifugo",
+//     "Filtro Aire Cilíndrico",
+//     "Filtro Combustible In-Line / In-Tank / Regulador / Modulo",
+//     "Filtro Combustible Spin On",
+//     "Filtro Combustible Cartucho / CAV",
+//     "Filtro Secante Spin On",
+//     "Filtro Hidraúlico Spin On",
+//     "Filtro Hidraúlico Elemento",
+//     "Filtro Refrigerante Spin On",
+// ];
 
 export const validCategoriesTH = [
     "Filtro Aceite Spin On",
@@ -52,6 +36,29 @@ export const validCategoriesTH = [
 ];
 
 export const validCategoriesGSOD = ["Filtro Aceite Spin On"];
+export const validCategoryGSID = ["Filtro Aceite Spin On"];
+export const validCategoryByPassValve = ["Filtro Aceite Spin On"];
+export const validCategoryAntiDrain = ["Filtro Aceite Spin On"];
+export const validCategoriesDiametroInterno = [
+    "Filtro Aceite Elemento",
+    "Filtro Aire Cilíndrico",
+    "Filtro Combustible Cartucho / CAV",
+    "Filtro Hidraúlico Elemento",
+];
+
+export const validCategoriesDiametroInterno2 = [
+    "Filtro Aceite Elemento",
+    "Filtro Aire Cilíndrico",
+    "Filtro Combustible Cartucho / CAV",
+];
+export const validCategoriesEntrada = [
+    "Filtro Aceite Centrífugo",
+    "Filtro Combustible In-Line / In-Tank / Regulador / Modulo",
+];
+export const validCategoriesSalida = [
+    "Filtro Aceite Centrífugo",
+    "Filtro Combustible In-Line / In-Tank / Regulador / Modulo",
+];
 
 export const validCategoriesDiametroExterno = [
     "Filro Aceite Spin On",
@@ -61,14 +68,6 @@ export const validCategoriesDiametroExterno = [
     "Filtro Refrigerante Spin On",
     "Filtro Aire Toroide Rect. o Elip",
 ];
-
-export const validCategoriesDiametroInterno = [
-    "Filtro Aire Toroide Rect. o Elip",
-    "Filtro Aire Cilíndrico",
-    "Filtro Aceite Elemento",
-    "Filtro Combustible Cartucho / CAV",
-];
-
 export const validCategoriesDiametroRosca = [
     "Filtro Refrigerante Spin On",
     "Filtro Hidraúlico Spin On",
@@ -93,22 +92,14 @@ export const validCategoriesWe = ["Filtro Aire Toroide Rect. o Elip."];
 
 export const validCategoriesWi = ["Filtro Aire Toroide Rect. o Elip."];
 
-export const validCategoryByPassValve = ["Filtro Aceite Spin On"];
-
 export const validCategoryDrain = [
     "Filtro Combustible In-Line / In-Tank / Regulador / Modulo",
     "Filtro Combustible Spin On",
 ];
 
-export const validCategoryAntiDrain = ["Filtro Aceite Spin On"];
-
-export const validCategoryGSID = ["Filtro Aceite Spin On"];
-
 export const validCategoryLe = ["Filtro Aire Toroide Rect. o Elip."];
 
 export const validCategoryLi = ["Filtro Aire Toroide Rect. o Elip."];
-
-
 
 export const brands = [
     "ACURA",
