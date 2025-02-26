@@ -11,6 +11,7 @@ export const validCategoriesOD = [
     "Filtro Hidraúlico Spin On",
     "Filtro Hidraúlico Elemento",
     "Filtro Refrigerante Spin On",
+    "Filtro Hidraúlico Vaso",
 ];
 
 // export const validCategoriesOD2 = [
@@ -80,6 +81,7 @@ export const validCategoriesLonguitud = [
     "Filtro Aire Panel",
     "Filtro Aire Toroide Rect. o Elip.",
     "Filtro Cabina Panel",
+    "Filtro Hidraúlico Vaso",
 ];
 
 export const validCategoriesW = [

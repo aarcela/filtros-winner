@@ -118,11 +118,11 @@ function Page() {
                 <option value="Filtro Combustible Cartucho / CAV">
                     Filtro Combustible Cartucho / CAV
                 </option>
-                <option value="Filtro Cabina Pane">Filtro Cabina Panel</option>
+                <option value="Filtro Cabina Panel">Filtro Cabina Panel</option>
                 <option value="Filtro Secante Spin On">Filtro Secante Spin On</option>
-                <option value="Filtro Hidraulico Spin On">Filtro Hidraúlico Spin On</option>
-                <option value="Filtro Hidraulico Elemento">Filtro Hidraúlico Elemento</option>
-                <option value="Filtro Hidraulico Vaso">Filtro Hidraúlico Vaso</option>
+                <option value="Filtro Hidraúlico Spin On">Filtro Hidraúlico Spin On</option>
+                <option value="Filtro Hidraúlico Elemento">Filtro Hidraúlico Elemento</option>
+                <option value="Filtro Hidraúlico Vaso">Filtro Hidraúlico Vaso</option>
                 <option value="Filtro Refrigerante Spin On">Filtro Refrigerante Spin On</option>
             </select>
             <h1 className="text-gray font-semibold text-2xl mb-5">Especificaciones Técnicas</h1>
