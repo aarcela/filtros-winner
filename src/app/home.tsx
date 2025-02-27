@@ -22,24 +22,24 @@ function HomePage() {
                                 height={53}
                             />
                         </Link>
-                        <div className="flex gap-2 sm:hidden w-1/3 mr-10">
+                        <div className="flex gap-2 sm:hidden w-1/3  justify-end">
                             <Link
                                 href="https://www.instagram.com/winnerfiltros/"
                                 target="_blank"
-                                className="flex items-center justify-center w-7 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
-                                <FaInstagram size={10} />
+                                className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                                <FaInstagram size={11} />
                             </Link>
                             <Link
                                 href="https://www.facebook.com/p/Winner-Filtros-100031039042106/"
                                 target="_blank"
-                                className="flex items-center justify-center w-7 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
-                                <FaFacebookF size={10} />
+                                className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                                <FaFacebookF size={11} />
                             </Link>
                             <Link
                                 href=""
                                 target="_blank"
-                                className="flex items-center justify-center w-7 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
-                                <FaWhatsapp size={10} />
+                                className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                                <FaWhatsapp size={11} />
                             </Link>
                         </div>
                     </div>
