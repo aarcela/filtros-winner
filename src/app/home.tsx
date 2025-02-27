@@ -27,19 +27,19 @@ function HomePage() {
                                 href="https://www.instagram.com/winnerfiltros/"
                                 target="_blank"
                                 className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full hover:scale-110 transition-transform">
-                                <FaInstagram size={11} />
+                                <FaInstagram size={15} />
                             </Link>
                             <Link
                                 href="https://www.facebook.com/p/Winner-Filtros-100031039042106/"
                                 target="_blank"
                                 className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full hover:scale-110 transition-transform">
-                                <FaFacebookF size={11} />
+                                <FaFacebookF size={15} />
                             </Link>
                             <Link
                                 href=""
                                 target="_blank"
                                 className="flex items-center justify-center w-8 h-8 border-2 border-black rounded-full hover:scale-110 transition-transform">
-                                <FaWhatsapp size={11} />
+                                <FaWhatsapp size={15} />
                             </Link>
                         </div>
                     </div>
