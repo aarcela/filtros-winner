@@ -24,9 +24,9 @@ function ApplicationFilter() {
 
     return (
         <section className="w-full bg-gray h-auto pl-5 py-3 sm:pl-20 order-3 sm:order-2 flex flex-col">
-            <h3 className="font-bold text-2xl mb-4">Búsqueda por aplicación</h3>
+            <h3 className="font-bold text-2xl mb-1">Búsqueda por aplicación</h3>
             <div className="flex w-full flex-col sm:flex-row gap-3 sm:gap-1">
-                <select className="mr-4 p-4 sm:w-1/3" onChange={handleFirstSelect}>
+                <select className="mr-4 px-4 py-1 sm:w-1/3 h-11" onChange={handleFirstSelect}>
                     <option value="">Seleccione la marca</option>
                     {brands.map((element, index) => {
                         return (
@@ -40,7 +40,7 @@ function ApplicationFilter() {
                     <>
                         <select
                             id="model-select"
-                            className="mr-4 p-4 sm:w-1/3"
+                            className="mr-4 px-4 py-2 sm:w-1/3 h-11"
                             onChange={handleModelSelection}>
                             <option value="">Selecciona el modelo</option>
                             {filteredModels.map((model: any, index: number) => (
@@ -52,7 +52,7 @@ function ApplicationFilter() {
                     </>
                 )}
                 <button
-                    className="bg-primary text-white p-4 mr-5 sm:w-1/3"
+                    className="bg-primary text-white px-4 py-2 mr-5 sm:w-1/3"
                     onClick={() => searchApplication()}>
                     Buscar Filtro
                 </button>
