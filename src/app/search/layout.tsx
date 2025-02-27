@@ -22,19 +22,19 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
                             <Link
                                 href="https://www.instagram.com/winnerfiltros/"
                                 target="_blank"
-                                className="flex items-center justify-center w-10 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                                className="flex items-center justify-center w-7 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
                                 <FaInstagram size={15} />
                             </Link>
                             <Link
                                 href="https://www.facebook.com/p/Winner-Filtros-100031039042106/"
                                 target="_blank"
-                                className="flex items-center justify-center w-10 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                                className="flex items-center justify-center w-7 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
                                 <FaFacebookF size={15} />
                             </Link>
                             <Link
                                 href=""
                                 target="_blank"
-                                className="flex items-center justify-center w-10 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                                className="flex items-center justify-center w-7 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
                                 <FaWhatsapp size={15} />
                             </Link>
                         </div>
