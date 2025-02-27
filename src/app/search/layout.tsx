@@ -18,7 +18,7 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
                                 height={53}
                             />
                         </Link>
-                        <div className="flex gap-2 sm:hidden w-1/3  justify-end">
+                        <div className="flex gap-2 sm:hidden w-1/3  justify-end align-bottom">
                             <Link
                                 href="https://www.instagram.com/winnerfiltros/"
                                 target="_blank"
