@@ -5,12 +5,14 @@ import Link from "next/link";
 import React from "react";
 import Page from "./search/home/page";
 import { CustomSearchBox } from "./components/SearchBox";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { CiInstagram } from "react-icons/ci";
 
 function HomePage() {
     return (
         <>
             <section className="bg-white flex flex-col justify-between h-screen">
-                <nav className="bg-primary  px-5 py-1 flex sm:gap-10 sm:items-center sm:px-20 sm:flex-row flex-col">
+                <nav className="bg-primary  px-5 py-2 flex sm:gap-10 sm:items-center sm:px-20 sm:flex-row flex-col">
                     <div className="flex gap-10">
                         <Link href="/" className="order-first w-2/3 sm:w-full">
                             <Image
@@ -23,67 +25,43 @@ function HomePage() {
                         <div className="flex gap-2 sm:hidden w-1/3 mr-10">
                             <Link
                                 href="https://www.instagram.com/winnerfiltros/"
-                                target="_blank">
-                                <Image
-                                    className="p-1 bg-white rounded-full"
-                                    src="/assets/icons/instagram.svg"
-                                    height={200}
-                                    width={200}
-                                    alt=""
-                                />
+                                target="_blank"
+                                className="flex items-center justify-center w-10 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                                <FaInstagram size={15} />
                             </Link>
                             <Link
                                 href="https://www.facebook.com/p/Winner-Filtros-100031039042106/"
-                                target="_blank">
-                                <Image
-                                    className="p-1 bg-white rounded-full"
-                                    src="/assets/icons/facebook.svg"
-                                    height={200}
-                                    width={200}
-                                    alt=""
-                                />
+                                target="_blank"
+                                className="flex items-center justify-center w-10 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                                <FaFacebookF size={15} />
                             </Link>
-                            <Link href="" target="_blank">
-                                <Image
-                                    className="p-1 bg-white rounded-full"
-                                    src="/assets/icons/whatsapp.svg"
-                                    height={200}
-                                    width={200}
-                                    alt=""
-                                />
+                            <Link
+                                href=""
+                                target="_blank"
+                                className="flex items-center justify-center w-10 h-7 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                                <FaWhatsapp size={15} />
                             </Link>
                         </div>
                     </div>
                     <CustomSearchBox />
                     <div className=" gap-2 hidden sm:order-3 sm:flex sm:visible">
-                        <Link href="https://www.instagram.com/winnerfiltros/" target="_blank">
-                            <Image
-                                className="p-2 bg-white rounded-full"
-                                src="/assets/icons/instagram.svg"
-                                height={55}
-                                width={55}
-                                alt=""
-                            />
+                        <Link
+                            href="https://www.instagram.com/winnerfiltros/"
+                            target="_blank"
+                            className="flex items-center justify-center w-10 h-10 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                            <FaInstagram size={20} />
                         </Link>
                         <Link
                             href="https://www.facebook.com/p/Winner-Filtros-100031039042106/"
-                            target="_blank">
-                            <Image
-                                className="p-2 bg-white rounded-full"
-                                src="/assets/icons/facebook.svg"
-                                height={55}
-                                width={55}
-                                alt=""
-                            />
+                            target="_blank"
+                            className="flex items-center justify-center w-10 h-10 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                            <FaFacebookF size={20} />
                         </Link>
-                        <Link href="" target="_blank">
-                            <Image
-                                className="p-2 bg-white rounded-full"
-                                src="/assets/icons/whatsapp.svg"
-                                height={55}
-                                width={55}
-                                alt=""
-                            />
+                        <Link
+                            href=""
+                            target="_blank"
+                            className="flex items-center justify-center w-10 h-10 border-2 border-black rounded-full hover:scale-110 transition-transform">
+                            <FaWhatsapp size={20} />
                         </Link>
                     </div>
                 </nav>
