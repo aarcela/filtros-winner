@@ -109,6 +109,7 @@ export default function Page({ searchParams }: any) {
                     "secondary_air",
                     "secondary_gas",
                     "separator_gas",
+                    "hydraulic",
                 ];
                 const imagePromises = products.map(async (product) => {
                     const productData = await getExactElementByProperty(
@@ -239,19 +240,19 @@ export default function Page({ searchParams }: any) {
                                     <td className="px-4 py-2">
                                         <ImageProductLink
                                             productName={element?.data?.secondary_gas}
-                                            productImage={element?.data?.gasImage}
+                                            productImage={element?.data?.secondary_gasImage}
                                         />
                                     </td>
                                     <td className="px-4 py-2">
                                         <ImageProductLink
                                             productName={element?.data?.separator_gas}
-                                            productImage={element?.data?.gasImage}
+                                            productImage={element?.data?.separatr_gasImage}
                                         />
                                     </td>
                                     <td className="px-4 py-2">
                                         <ImageProductLink
-                                            productName={element?.data?.oil}
-                                            productImage={element?.data?.oilImage}
+                                            productName={element?.data?.hydraulic}
+                                            productImage={element?.data?.hydraulicImage}
                                         />
                                     </td>
                                     <td className="px-4 py-2">
