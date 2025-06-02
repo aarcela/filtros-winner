@@ -14,7 +14,11 @@ const config: Config = {
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
                 "search-bg": "url('/assets/main-bg.png')",
                 "search-bg-mobile": "url('/assets/main-bg-mobile.jpg')",
-                "search-bg-medium": "url('/assets/main-bg-medium.png')",
+                "bg1": "url('/assets/1.jpg')",
+                "bg2": "url('/assets/2.jpg')",
+                "bg3": "url('/assets/3.jpg')",
+                "bg4": "url('/assets/4.jpg')"
+
             },
             fontFamily: {
                 arimo: ["Arimo", "sans-serif"],
