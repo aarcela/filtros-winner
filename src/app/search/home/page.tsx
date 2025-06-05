@@ -6,13 +6,15 @@ function Page() {
 
    const [currentIndex, setCurrentIndex] = useState(0);
    const images = [
+      '/assets/main-bg-medium.png',
       '/assets/1.jpg',
       '/assets/2.jpg',
       '/assets/3.jpg',
       '/assets/4.jpg',
    ];
    const imagesMobile = [
-      '/assets/mobile/1.jpg',
+      '/assets/main-bg-mobile.jpg',
+      '/assets/mobile/1.png',
       '/assets/mobile/2.jpg',
       '/assets/mobile/3.jpg',
       '/assets/mobile/4.jpg',
